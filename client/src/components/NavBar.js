@@ -9,6 +9,12 @@ const NavBar = () => {
         <nav className="navbar">
             <ul className="nav-list">
                 <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                        <span> <FontAwesomeIcon iicon={"camera-retro"}> </FontAwesomeIcon></span>&nbsp;
+                        Home
+                    </Link>
+                </li>
+                <li className="nav-item">
                     <Link to="/register" className="nav-link">
                         <span> <FontAwesomeIcon icon={"camera-retro"}> </FontAwesomeIcon></span>&nbsp;
                         Register
@@ -18,12 +24,6 @@ const NavBar = () => {
                     <Link to="/login" className="nav-link">
                         <span> <FontAwesomeIcon icon={"camera-retro"}> </FontAwesomeIcon></span>&nbsp;
                         Login
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                        <span> <FontAwesomeIcon iicon={"camera-retro"}> </FontAwesomeIcon></span>&nbsp;
-                        About
                     </Link>
                 </li>
             </ul>

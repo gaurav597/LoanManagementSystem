@@ -1,6 +1,5 @@
 package com.wellsfargo.loanManagementSystem.service;
 
-
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,5 @@ public class EmployeeService {
     {
         return erepo.findById(id); //Invokes custom method
     }
-
 
 }

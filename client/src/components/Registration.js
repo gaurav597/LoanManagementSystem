@@ -7,17 +7,13 @@ const Registration = () => {
     const history = useNavigate();
     //defining state
     const [dealer, setDealer] = useState({
-        email: '',
-        fname: '',
-        lname: '',
+        employeeId: '',
+        employeeName: '',
+        gender: '',
         password: '',
-        dob: '',
-        phoneNo: '',
-        address: {
-            street: '',
-            city: '',
-            pincode: ''
-        }
+        dateOfBirth: '',
+        dateOfJoin: '',
+        designation: '',
     });
     const [errors, setErrors] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -61,7 +57,6 @@ part of an existing array or object into another array or object.
             }
 
             catch (error) {
-                console.error('Registration error', error);
                 setSuccessMessage('An error occurred during registration.');
             }
         } else {
@@ -72,18 +67,14 @@ part of an existing array or object into another array or object.
     const validateForm = () => {
         let validationErrors = {};
 
-        if (!dealer.email) {
-            validationErrors.email = 'Email is required.';
+        if (!dealer.employeeId) {
+            validationErrors.employeeId = 'User ID is required.';
         }
-        if (!dealer.fname) {
-            validationErrors.fname = 'First name is required.';
+        if (!dealer.employeeName) {
+            validationErrors.employeeName = 'Name is required.';
         }
-        else if (!/^[a-zA-Z]*$/.test(dealer.fname)) {
-            validationErrors.fname = 'Enter Alphabets Only';
-        }
-
-        if (!dealer.lname) {
-            validationErrors.lname = 'Last name is required.';
+        else if (!/^[a-zA-Z]*$/.test(dealer.employeeName)) {
+            validationErrors.employeeName = 'Enter Alphabets Only';
         }
 
         if (!dealer.password) {
@@ -92,26 +83,16 @@ part of an existing array or object into another array or object.
             validationErrors.password = 'Password must be at least 6 characters.';
         }
 
-        if (!dealer.dob) {
-            validationErrors.dob = 'Date of Birth is required.';
+        if (!dealer.dateOfBirth) {
+            validationErrors.dateOfBirth = 'Date of Birth is required.';
         }
 
-        if (!dealer.phoneNo) {
-            validationErrors.phoneNo = 'Phone number is required.';
-        } else if (!/^\d{10}$/.test(dealer.phoneNo)) {
-            validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
+        if (!dealer.dateOfJoin) {
+            validationErrors.dateOfJoin = 'Date of Joining is required.';
         }
 
-        if (!dealer.address.street) {
-            validationErrors['address.street'] = 'Street is required.';
-        }
-
-        if (!dealer.address.city) {
-            validationErrors['address.city'] = 'City is required.';
-        }
-
-        if (!dealer.address.pincode) {
-            validationErrors['address.pincode'] = 'Pin Code is required.';
+        if (!dealer.designation) {
+            validationErrors.designation = 'Designation is required';
         }
 
         return validationErrors;
@@ -122,42 +103,30 @@ part of an existing array or object into another array or object.
         <div>
             <br /> <br />
             <div className='registration-container'>
-                <h2 style={{ color: "brown" }}> Dealer Registration </h2>
+                <h2 style={{ color: "brown" }}> Employee Registration </h2>
                 {successMessage && <p className='success-message'>{successMessage}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label>Email:</label>
+                        <label>User ID:</label>
                         <input
-                            type="email"
-                            name="email"
-                            value={dealer.email}
+                            type="text"
+                            name="employeeId"
+                            value={dealer.employeeId}
                             onChange={handleChange}
-                            className={errors.email && 'error'}
+                            className={errors.employeeId && 'error'}
                         />
                         {errors.email && <p className="error-message">{errors.email}</p>}
                     </div>
                     <div className="form-group">
-                        <label>First Name:</label>
+                        <label>Name</label>
                         <input
                             type="text"
-                            name="fname"
-                            value={dealer.fname}
+                            name="employeeName"
+                            value={dealer.employeeName}
                             onChange={handleChange}
-                            className={errors.fname && 'error'}
+                            className={errors.employeeName && 'error'}
                         />
-                        {errors.fname && <p className="error-message">{errors.fname}</p>}
-                    </div>
-
-                    <div className="form-group">
-                        <label>Last Name:</label>
-                        <input
-                            type="text"
-                            name="lname"
-                            value={dealer.lname}
-                            onChange={handleChange}
-                            className={errors.lname && 'error'}
-                        />
-                        {errors.lname && <p className="error-message">{errors.lname}</p>}
+                        {errors.employeeName && <p className="error-message">{errors.employeeName}</p>}
                     </div>
 
                     <div className="form-group">
@@ -176,60 +145,34 @@ part of an existing array or object into another array or object.
                         <label>Date of Birth:</label>
                         <input
                             type="date"
-                            name="dob"
-                            value={dealer.dob}
+                            name="dateOfBirth"
+                            value={dealer.dateOfBirth}
                             onChange={handleChange}
-                            className={errors.dob && 'error'}
+                            className={errors.dateOfBirth && 'error'}
                         />
-                        {errors.dob && <p className="error-message">{errors.dob}</p>}
+                        {errors.dateOfBirth && <p className="error-message">{errors.dateOfBirth}</p>}
                     </div>
-
                     <div className="form-group">
-                        <label>Phone Number:</label>
+                        <label>Date of Join:</label>
+                        <input
+                            type="date"
+                            name="dateOfJoin"
+                            value={dealer.dateOfJoin}
+                            onChange={handleChange}
+                            className={errors.dateOfJoin && 'error'}
+                        />
+                        {errors.dateOfJoin && <p className="error-message">{errors.dateOfJoin}</p>}
+                    </div>
+                    <div className="form-group">
+                        <label>Designation</label>
                         <input
                             type="text"
-                            name="phoneNo"
-                            value={dealer.phoneNo}
+                            name="designation"
+                            value={dealer.designation}
                             onChange={handleChange}
-                            className={errors.phoneNo && 'error'}
+                            className={errors.designation && 'error'}
                         />
-                        {errors.phoneNo && <p className="error-message">{errors.phoneNo}</p>}
-                    </div>
-
-                    <div className="form-group">
-                        <label>Street:</label>
-                        <input
-                            type="text"
-                            name="address.street"
-                            value={dealer.address.street}
-                            onChange={handleChange}
-                            className={errors['address.street'] && 'error'}
-                        />
-                        {errors['address.street'] && <p className="error-message">{errors['address.street']}</p>}
-                    </div>
-
-                    <div className="form-group">
-                        <label>City:</label>
-                        <input
-                            type="text"
-                            name="address.city"
-                            value={dealer.address.city}
-                            onChange={handleChange}
-                            className={errors['address.city'] && 'error'}
-                        />
-                        {errors['address.city'] && <p className="error-message">{errors['address.city']}</p>}
-                    </div>
-
-                    <div className="form-group">
-                        <label>Pincode:</label>
-                        <input
-                            type="text"
-                            name="address.pincode"
-                            value={dealer.address.pincode}
-                            onChange={handleChange}
-                            className={errors['address.pincode'] && 'error'}
-                        />
-                        {errors['address.pincode'] && <p className="error-message">{errors['address.pincode']}</p>}
+                        {errors.designation && <p className="error-message">{errors.designation}</p>}
                     </div>
 
                     <div className="form-group">

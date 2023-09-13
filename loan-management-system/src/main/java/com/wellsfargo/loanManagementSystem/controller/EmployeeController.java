@@ -1,6 +1,5 @@
 package com.wellsfargo.loanManagementSystem.controller;
 
-
 import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
@@ -8,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value="/api")
 public class EmployeeController {
@@ -60,4 +59,3 @@ public class EmployeeController {
 
 
 }
-

@@ -5,28 +5,28 @@ import { useNavigate } from 'react-router-dom';
 import AuthenticationService from '../services/AuthenticationService';
 const Login = () => {
     const history = useNavigate();
-    const [email, setEmail] = useState('');
+    const [employeeId, setEmployeeId] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessmMg] = useState('');
 
     const handleLogin = async () => {
-        if (!email || !password) {
-            setErrorMsg('Please enter email and password');
+        if (!employeeId || !password) {
+            setErrorMsg('Please enter id and password');
             return;
         }
-        const dealer = { email, password };
+        const employee = { employeeId, password };
         try {
-            const loginSuccess = await AuthenticationService.login(dealer);
+            const loginSuccess = await AuthenticationService.login(employee);
             console.log('API Response', loginSuccess.data);
             if (loginSuccess) {
                 setSuccessmMg('Login Successful! Redirecting...')
                 setTimeout(() => {
-                    history('/products') // on successful login navigate to product component
+                    history('/dashboard') // on successful login navigate to product component
                 }, 500)
             }
             else {
-                setErrorMsg('Invakid Email or Password')
+                setErrorMsg('Invalid id or Password')
             }
         }
         catch (error) {
@@ -40,10 +40,10 @@ const Login = () => {
         <div>
             <br /> <br />
             <div className='container'>
-                <h2 style={{ color: "green" }}>Dealer Login</h2>
+                <h2 style={{ color: "green" }}>User Login</h2>
                 <div className='form-group'>
-                    <label> Email: </label>
-                    <input type='email' className='form-control' value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                    <label> User ID: </label>
+                    <input type='id' className='form-control' value={employeeId} onChange={(e) => { setEmployeeId(e.target.value) }}></input>
                 </div>
                 <div className='form-group'>
                     <label> Password: </label>

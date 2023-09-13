@@ -18,9 +18,9 @@ class AuthenticationService {
 
     static async login(dealer) {
         try {
-            const response = await axios.post('http://localhost:8085/ims/api/login', dealer);
+            const response = await axios.post('http://localhost:8085/lms/api/login', dealer);
             console.log("Rest API Resonse: ", response.data);
-            if (response.data == true) {
+            if (response.data === true) {
                 return true;
             }
             else return false;
@@ -32,13 +32,8 @@ class AuthenticationService {
 
     static async register(dealer) {
         try {
-            const response = await axios.post('http://localhost:8085/ims/api/register', dealer)
+            const response = await axios.post('http://localhost:8085/lms/api/register', dealer)
             return response.data;
-            // console.log("Rest API Resonse: ", response.data);
-            // if (response.data == 'Reg succ') {
-            //     return true;
-            // }
-            // else return false;
         }
         catch (error) {
             console.error('Registration error: ', error);

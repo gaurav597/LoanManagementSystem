@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from "./components/NavBar.js"
@@ -6,7 +5,7 @@ import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSign, faCameraRetro } from '@fortawesome/free-solid-svg-icons';
-import Products from './components/Products';
+import LoanDashboard from './components/LoanDashboard';
 library.add(faSign, faCameraRetro);
 /*
   React Router is a standard library for routing in React. 
@@ -26,14 +25,8 @@ library.add(faSign, faCameraRetro);
 */
 
 
-
-import Login from './pages/login/login';
-import AdminDashBoard from './pages/AdminDashBoard/AdminDashBoard'
-import { Fragment } from 'react';
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
-
     <div className="App">
       <header className="App-header">
         <h1> Loan Management System </h1>
@@ -50,7 +43,7 @@ function App() {
             <Routes>
               <Route path="/register" element={<Registration />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/products" element={<Products />} />
+              <Route path="/dashboard" element={<LoanDashboard />} />
             </Routes>
           </Router>
 
@@ -60,7 +53,6 @@ function App() {
         <p><strong>&copy; All rights reserved </strong> </p>
       </footer>
     </div>
-
   );
 }
 
