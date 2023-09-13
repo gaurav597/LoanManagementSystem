@@ -26,8 +26,14 @@ library.add(faSign, faCameraRetro);
 */
 
 
+
+import Login from './pages/login/login';
+import AdminDashBoard from './pages/AdminDashBoard/AdminDashBoard'
+import { Fragment } from 'react';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
+
     <div className="App">
       <header className="App-header">
         <h1> Loan Management System </h1>
@@ -54,6 +60,7 @@ function App() {
         <p><strong>&copy; All rights reserved </strong> </p>
       </footer>
     </div>
+
   );
 }
 
