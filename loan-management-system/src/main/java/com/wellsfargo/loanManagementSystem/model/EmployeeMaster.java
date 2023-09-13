@@ -1,5 +1,6 @@
 package com.wellsfargo.loanManagementSystem.model;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -32,6 +33,7 @@ public class EmployeeMaster {
                 normalString.getBytes(StandardCharsets.UTF_8) );
         this.password = encodedString;
     }
+
 
 
 }
