@@ -1,11 +1,13 @@
 /* NavBar.css */
 /* Common styles for all screen sizes*/
 .navbar {
-    background-color: #007bff;
+    background: rgb(0,135,145);
+    background: radial-gradient(circle, rgba(0,135,145,1) 0%, rgba(30,140,96,1) 61%, rgba(89,179,76,1) 93%);
     color: white;
     padding: 10px;
     display: flex;
     justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 39, 1, 0.2), 0 6px 20px 0 rgba(0, 39, 1, 0.2);
   }
   
   .nav-list {
@@ -29,7 +31,7 @@
   }
   
   .nav-link:hover {
-    color: #0056b3;
+    color: #a4df7f;
   }
 
   /* Media queries for responsiveness */
