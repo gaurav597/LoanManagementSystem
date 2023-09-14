@@ -6,6 +6,7 @@ import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSign, faCameraRetro } from '@fortawesome/free-solid-svg-icons';
 import LoanDashboard from './components/LoanDashboard';
+import AddCustomer from './components/AddCustomer';
 library.add(faSign, faCameraRetro);
 /*
   React Router is a standard library for routing in React. 
@@ -44,6 +45,7 @@ function App() {
               <Route path="/register" element={<Registration />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<LoanDashboard />} />
+              <Route path="/addCustomer" element={<AddCustomer/>} />
             </Routes>
           </Router>
 
