@@ -1,6 +1,7 @@
 package com.wellsfargo.training.IMS.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,15 @@ public class ProductService {
 	public List<Product> listAll()
 	{
 		return prepo.findAll();
+	}
+
+	public Optional<Product> getSingleProduct(long id)
+	{
+		return prepo.findById(id);
+	}
+
+	public void deleteProduct(long id)
+	{
+		prepo.deleteById(id);
 	}
 }
