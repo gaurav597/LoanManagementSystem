@@ -34,11 +34,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1> Loan Management System </h1>
-        <h3> GIS Global Mart </h3>
+       
       </header>
       <section>
         <div style={{
-          backgroundImage: "url(/images/loan-bg.jpg)",
+          backgroundColor:"#e2e4da",
           backgroundSize: 'cover', backgroundRepeat: "no-repeat",
           minHeight: '140vh', minWidth: '100vw'
         }}>
