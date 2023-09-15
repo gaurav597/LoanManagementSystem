@@ -22,7 +22,8 @@ const Login = () => {
             if (loginSuccess) {
                 setSuccessmMg('Login Successful! Redirecting...')
                 setTimeout(() => {
-                    history('/dashboard') // on successful login navigate to product component
+                    //history('/dashboard') // on successful login navigate to product component
+                    history('/adminDashboard')
                 }, 500)
             }
             else {
