@@ -13,7 +13,7 @@
     flex-direction: column;
   }
   
-  .form-group {
+  /* .form-group {
     margin-bottom: 15px;
   }
   
@@ -46,6 +46,8 @@
   button:hover {
     background-color: #69cc45;
   }
+    background-color: #0056b3;
+  } */
   
   .error-message {
     color: red;
