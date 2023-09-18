@@ -5,30 +5,17 @@ import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSign, faCameraRetro } from '@fortawesome/free-solid-svg-icons';
-import LoanDashboard from './components/LoanDashboard';
-import AddCustomer from './components/AddCustomer';
-import AdminDashboard from './components/AdminDashboard'
-import CustomerDataManagement from './components/CustomerDataManagement';
-import LoanCardManagement from './components/LoanCardManagement';
-import ItemsMasterData from './components/ItemsMasterData';
+import AddCustomer from './components/Admin/AddCustomer';
+import AdminDashboard from './components/Admin/AdminDashboard'
+import CustomerDataManagement from './components/Admin/CustomerDataManagement';
+import LoanCardManagement from './components/Admin/LoanCardManagement';
+import ItemsMasterData from './components/Admin/ItemsMasterData';
+import EmployeeDashboard from './components/Employee/EmployeeDashboard';
+import ViewLoans from './components/Employee/ViewLoans';
+import ApplyLoan from './components/Employee/ApplyLoan';
+import ItemPurchased from "./components/Employee/ItemPurchased";
+
 library.add(faSign, faCameraRetro);
-/*
-  React Router is a standard library for routing in React. 
-  It enables the navigation among views of various components in a React Application, 
-  allows changing the browser URL, and keeps the UI in sync with the URL. 
-
-  React Router is a JavaScript framework that lets us handle client and server-side 
-  routing in React applications. 
-  It enables the creation of single-page web or mobile apps that allow navigating without 
-  refreshing the page. 
-  It also allows us to use browser history features while preserving the right application
-   view.
-
-   Used Version6 of Router
-
- > npm install react-router-dom --save
-*/
-
 
 function App() {
   return (
@@ -48,12 +35,18 @@ function App() {
             <Routes>
               <Route path="/register" element={<Registration />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<LoanDashboard />} />
-              <Route path="/addCustomer" element={<AddCustomer/>} />
+              
+              <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+              <Route path="/viewLoans" element ={<ViewLoans/>}/>
+              <Route path="applyLoan" element={<ApplyLoan/>}/>
+              <Route path="itemPurchased" element={<ItemPurchased/>}/>
+
               <Route path="/adminDashboard" element={<AdminDashboard/>} />
               <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
+              <Route path="/addCustomer" element={<AddCustomer/>} />
               <Route path="/loanCardManagement" element={<LoanCardManagement/>} />
               <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
+
 
             </Routes>
           </Router>
