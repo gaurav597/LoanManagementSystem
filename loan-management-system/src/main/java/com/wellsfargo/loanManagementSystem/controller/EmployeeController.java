@@ -57,5 +57,11 @@ public class EmployeeController {
         return isLoggedin;
     }
 
+    @PostMapping("/addCustomer")
+    public String addCustomer(@Validated @RequestBody EmployeeMaster empMaster){
+        employeeService.addEmployee(empMaster);
+        return "Customer added";
+    }
+
 
 }

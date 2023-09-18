@@ -11,7 +11,7 @@ import java.util.Optional;
 public class EmployeeService {
 
     @Autowired
-    private EmployeeRepository erepo;
+    private  EmployeeRepository erepo;
 
     public EmployeeMaster registerEmployee(EmployeeMaster e)
     {
@@ -23,4 +23,7 @@ public class EmployeeService {
         return erepo.findById(id); //Invokes custom method
     }
 
+    public void addEmployee(EmployeeMaster e){
+        erepo.save(e);
+    }
 }
