@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import "../styles/Login.css"
-import { useNavigate } from 'react-router-dom';
-
 import AuthenticationService from '../services/AuthenticationService';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
 const Login = () => {
     const history = useNavigate();
     const [employeeId, setEmployeeId] = useState('');
@@ -20,6 +21,7 @@ const Login = () => {
             const loginSuccess = await AuthenticationService.login(employee);
             console.log('API Response', loginSuccess.data);
             if (loginSuccess) {
+                console.log(loginSuccess)
                 setSuccessmMg('Login Successful! Redirecting...')
                 setTimeout(() => {
                     //history('/dashboard') // on successful login navigate to product component
@@ -37,24 +39,82 @@ const Login = () => {
 
         }
     }
-
     return (
         <div>
-            <br /> <br />
-            <div className='container'>
-                <h2 style={{ color: "green" }}>User Login</h2>
-                <div className='form-group'>
-                    <label> User ID: </label>
-                    <input type='id' className='form-control' value={employeeId} onChange={(e) => { setEmployeeId(e.target.value) }}></input>
+            <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+                <div class="card card0 border-0">
+                    <div class="row d-flex">
+                        <div class="col-lg-6">
+                            <div class="card1 pb-5">
+                                <br /> <br />
+                                <div class="row px-3 justify-content-center mt-4 mb-5 ml-4 font">
+                                    <h1> Loan Management System </h1>
+                                </div>
+                                <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                                    <img src="https://simplyfi.tech/images/LMS/Digital-Loan-Management.svg" class="image" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card2 card border-0 px-4 py-5">
+                                <br /> <br />
+                                <div>
+                                    <label class="mb-1"> Employee ID </label>
+                                    <input
+                                        class="mb-4"
+                                        type="text"
+                                        name="id"
+                                        placeholder="Enter your employee ID"
+                                        value={employeeId}
+                                        onChange={(e) => { setEmployeeId(e.target.value) }}
+                                    />
+                                </div>
+                                <div>
+                                    <label class="mb-1">Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Enter password"
+                                        value={password}
+                                        onChange={(e) => { setPassword(e.target.value) }}
+                                    />
+                                </div>
+                                <br /><br />
+                                <div class="row px-3 mb-4">
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input id="chk1" type="checkbox" name="chk" class="custom-control-input" />
+                                        <label for="chk1" class="custom-control-label text-sm">Remember me</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 px-3">
+                                    <Button style={{
+                                        background: "radial-gradient(circle, rgba(0, 135, 145, 1) 0%, rgba(30, 140, 96, 1) 61%, rgba(89, 179, 76, 1) 93%)"
+                                    }}
+                                        onClick={handleLogin}
+                                    > Login </Button>
+                                </div>
+                                <div class="row mb-4 px-3">
+                                    <small class="font-weight-bold">Don't have an account? <a class="text-danger "> <Link to="/register"> Register </Link></a></small>
+                                </div>
+                                {errorMsg && <p className='error-message'>{errorMsg}</p>}
+                                {successMsg && <p className='success-message'>{successMsg}</p>}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue py-4">
+                        <div class="row px-3">
+                            <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2023. All rights reserved.</small>
+                            <div class="social-contact ml-4 ml-sm-auto">
+                                <span class="fa fa-facebook mr-4 text-sm"></span>
+                                <span class="fa fa-google-plus mr-4 text-sm"></span>
+                                <span class="fa fa-linkedin mr-4 text-sm"></span>
+                                <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className='form-group'>
-                    <label> Password: </label>
-                    <input type='password' className='form-control' value={password} onChange={(e) => { setPassword(e.target.value) }}></input>
-                </div>
-                <button className='btn btn-primary' onClick={handleLogin}>Login </button>
-                {errorMsg && <p className='error-message'>{errorMsg}</p>}
-                {successMsg && <p className='success-message'>{successMsg}</p>}
             </div>
+
         </div>
     )
 }

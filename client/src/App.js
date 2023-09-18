@@ -19,11 +19,7 @@ library.add(faSign, faCameraRetro);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1> Loan Management System </h1>
-       
-      </header>
+    <div className="App gradient-custom">
       <section>
         <div style={{
           backgroundColor:"#e2e4da",
@@ -53,9 +49,6 @@ function App() {
 
         </div>
       </section>
-      <footer className="footer">
-        <p><strong>&copy; All rights reserved </strong> </p>
-      </footer>
     </div>
   );
 }
