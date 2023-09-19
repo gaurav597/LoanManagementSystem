@@ -19,13 +19,9 @@ library.add(faSign, faCameraRetro);
 
 function App() {
   return (
-    <div className="App gradient-custom">
+    <div className="App bg1">
       <section>
-        <div style={{
-          backgroundColor:"#e2e4da",
-          backgroundSize: 'cover', backgroundRepeat: "no-repeat",
-          minHeight: '140vh', minWidth: '100vw'
-        }}>
+        <div>
           <Router>
             <NavBar />
             <Routes>

@@ -3,6 +3,7 @@ import "../styles/Registration.css";
 import AuthenticationService from '../services/AuthenticationService';
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 
 const Registration = () => {
     const history = useNavigate();
@@ -19,6 +20,7 @@ const Registration = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
+        console.log(e.target.name, e.target.value)
         const { name, value } = e.target;
         if (name.includes('.')) {
             const [parent, child] = name.split('.');
@@ -194,8 +196,15 @@ const Registration = () => {
                                                     {errors.designation && <p className="error-message">{errors.designation}</p>}
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    
-
+                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                        <Form.Label>Gender</Form.Label>
+                                                        <Form.Select aria-label="Default select example" onChange={handleChange}>
+                                                            <option value="M">Male</option>
+                                                            <option value="F">Female</option>
+                                                            <option value="O">Other</option>
+                                                        </Form.Select>
+                                                    </Form.Group>
+                                                    {errors.gender && <p className="error-message">{errors.gender}</p>}
                                                 </div>
                                             </div>
                                             <div> <div class="row mb-3 px-3">
