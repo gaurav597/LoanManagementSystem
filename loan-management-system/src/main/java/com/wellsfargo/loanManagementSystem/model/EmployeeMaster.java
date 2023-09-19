@@ -18,8 +18,6 @@ import java.util.Base64;
 public class EmployeeMaster {
     @Id
     private String employeeId;
-
-
     private String employeeName;
     private String password;
     private char gender;
@@ -28,6 +26,7 @@ public class EmployeeMaster {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfJoin;
     private String designation;
+
 
     public void setPassword(String password) {
         Base64.Encoder encoder = Base64.getEncoder();

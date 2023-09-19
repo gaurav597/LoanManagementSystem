@@ -3,15 +3,14 @@ package com.wellsfargo.loanManagementSystem.controller;
 import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -61,6 +60,12 @@ public class EmployeeController {
     public String addCustomer(@Validated @RequestBody EmployeeMaster empMaster){
         employeeService.addEmployee(empMaster);
         return "Customer added";
+    }
+
+    @GetMapping("/getCustomer")
+    public ResponseEntity<List<EmployeeMaster>> getCustomer(){
+        List<EmployeeMaster> e=employeeService.getEmployee();
+        return new ResponseEntity<List<EmployeeMaster>>(e, HttpStatus.OK);
     }
 
 

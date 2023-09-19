@@ -14,8 +14,7 @@ public class ItemMaster {
     private String itemId;
     private String itemDescription;
     private char issueStatus;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate itemMake;
+    private String itemMake;
 
     private String itemCategory;
     private Integer itemValuation;
