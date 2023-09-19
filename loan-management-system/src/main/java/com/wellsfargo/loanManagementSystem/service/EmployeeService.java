@@ -32,4 +32,8 @@ public class EmployeeService {
         return erepo.findAll();
     }
 
+    public void deleteEmployee(String empId){
+        erepo.deleteById(empId);
+    }
+
 }
