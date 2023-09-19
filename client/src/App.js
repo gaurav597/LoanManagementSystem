@@ -35,8 +35,8 @@ function App() {
 
               <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
               <Route path="/viewLoans" element={<ViewLoans />} />
-              <Route path="applyLoan" element={<ApplyLoan />} />
-              <Route path="itemPurchased" element={<ItemPurchased />} />
+              <Route path="/applyLoan" element={<ApplyLoan />} />
+              <Route path="/itemPurchased" element={<ItemPurchased />} />
 
               <Route path="/adminDashboard" element={<AdminDashboard />} />
               <Route path="/customerDataManagement" element={<CustomerDataManagement />} />
