@@ -14,6 +14,7 @@ import EmployeeDashboard from './components/Employee/EmployeeDashboard';
 import ViewLoans from './components/Employee/ViewLoans';
 import ApplyLoan from './components/Employee/ApplyLoan';
 import ItemPurchased from "./components/Employee/ItemPurchased";
+import LandingPage from './components/LandingPage';
 
 library.add(faSign, faCameraRetro);
 
@@ -21,23 +22,27 @@ function App() {
   return (
     <div className="App bg1">
       <section>
-        <div>
+        <div style={{
+          // backgroundImage: "url(/images/loan-bg.jpg)",
+          backgroundSize: 'cover', backgroundRepeat: "no-repeat",
+          minHeight: '140vh', minWidth: '100vw'
+        }}>
           <Router>
-            <NavBar />
             <Routes>
+              <Route path="/" element={<LandingPage />} />
               <Route path="/register" element={<Registration />} />
               <Route path="/login" element={<Login />} />
-              
-              <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
-              <Route path="/viewLoans" element ={<ViewLoans/>}/>
-              <Route path="applyLoan" element={<ApplyLoan/>}/>
-              <Route path="itemPurchased" element={<ItemPurchased/>}/>
 
-              <Route path="/adminDashboard" element={<AdminDashboard/>} />
-              <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
-              <Route path="/addCustomer" element={<AddCustomer/>} />
-              <Route path="/loanCardManagement" element={<LoanCardManagement/>} />
-              <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
+              <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+              <Route path="/viewLoans" element={<ViewLoans />} />
+              <Route path="applyLoan" element={<ApplyLoan />} />
+              <Route path="itemPurchased" element={<ItemPurchased />} />
+
+              <Route path="/adminDashboard" element={<AdminDashboard />} />
+              <Route path="/customerDataManagement" element={<CustomerDataManagement />} />
+              <Route path="/addCustomer" element={<AddCustomer />} />
+              <Route path="/loanCardManagement" element={<LoanCardManagement />} />
+              <Route path="/itemsMasterData" element={<ItemsMasterData />} />
 
 
             </Routes>
@@ -45,6 +50,11 @@ function App() {
 
         </div>
       </section>
+      <footer>
+        <div class="row px-3 footer">
+          <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2023. All rights reserved.</small>
+        </div>
+      </footer>
     </div>
   );
 }

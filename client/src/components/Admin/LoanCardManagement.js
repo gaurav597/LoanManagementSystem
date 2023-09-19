@@ -4,26 +4,28 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import LoanCardService from '../../services/LoanCardService';
+import Header from '../Header';
 
 function LoanCardManagement() {
 
   const [loanId, setLoanId] = useState("");
-  const [loanType, setLoanType]  = useState("");
+  const [loanType, setLoanType] = useState("");
   const [duration, setDuration] = useState(0);
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
     const LoanCard = {
       loanId,
       loanType,
-      durationInYears:duration
+      durationInYears: duration
     }
 
-    LoanCardService.addLoanCard(LoanCard).then((response)=>{console.log(response)});
+    LoanCardService.addLoanCard(LoanCard).then((response) => { console.log(response) });
 
   }
   return (
     <div>
+      <Header />
       <Container fluid="md">
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -42,7 +44,7 @@ function LoanCardManagement() {
           </Form.Group>
         </Form>
         <Button variant="primary" type="submit" onClick={handleSubmit}>
-                    Submit
+          Submit
         </Button>
       </Container>
     </div>
