@@ -2,6 +2,7 @@ package com.wellsfargo.loanManagementSystem.controller;
 
 import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
+import com.wellsfargo.loanManagementSystem.model.LoanCardMaster;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,8 @@ public class EmployeeController {
         List<EmployeeMaster> e=employeeService.getEmployee();
         return new ResponseEntity<List<EmployeeMaster>>(e, HttpStatus.OK);
     }
+
+
 
 
 }

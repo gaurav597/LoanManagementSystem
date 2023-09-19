@@ -2,16 +2,14 @@ package com.wellsfargo.loanManagementSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.ManyToAny;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Base64;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,6 +24,10 @@ public class EmployeeMaster {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfJoin;
     private String designation;
+    @OneToMany(mappedBy = "employeeId")
+    private List<EmployeeCardDetails> employeeCardDetailsList ;
+    @OneToMany(mappedBy = "employeeId")
+    private List<EmployeeIssueDetails> employeeIssueDetailsList;
 
 
     public void setPassword(String password) {
