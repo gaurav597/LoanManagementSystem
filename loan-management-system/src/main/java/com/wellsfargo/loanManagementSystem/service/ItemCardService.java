@@ -16,6 +16,8 @@ public class ItemCardService {
     public void addItemData(ItemMaster itemMaster){
         itemRepo.save(itemMaster);
     }
+
+
     public List<ItemMaster> getItemData(){
         return itemRepo.findAll();
     }

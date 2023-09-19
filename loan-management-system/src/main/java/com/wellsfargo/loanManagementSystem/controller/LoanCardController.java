@@ -47,6 +47,12 @@ public class LoanCardController {
         return new ResponseEntity<List<ItemMaster>>(i, HttpStatus.OK);
     }
 
+    @PostMapping(value="/applyLoan")
+    public String applyLoan(@Validated @RequestBody ItemMaster itemMaster) {
+        itemCardService.addItemData(itemMaster);
+        return  "Item added";
+    }
+
 
 
 }

@@ -8,7 +8,9 @@ import org.hibernate.annotations.ManyToAny;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -30,6 +32,8 @@ public class EmployeeMaster {
     private List<EmployeeIssueDetails> employeeIssueDetailsList;
 
 
+
+
     public void setPassword(String password) {
         Base64.Encoder encoder = Base64.getEncoder();
         String normalString = password;
@@ -38,5 +42,15 @@ public class EmployeeMaster {
         this.password = encodedString;
     }
 
+//    public void add(ItemMaster order) {
+//
+//        if (order != null) {
+//
+//
+//
+//            purchasedItemsList.add(order);
+//
+//        }
+//    }
 
 }
