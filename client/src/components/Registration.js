@@ -4,6 +4,7 @@ import AuthenticationService from '../services/AuthenticationService';
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import NavBar from './NavBar';
 
 const Registration = () => {
     const history = useNavigate();
@@ -97,6 +98,7 @@ const Registration = () => {
 
     return (
         <div>
+            <NavBar />
             <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
                 <div class="card card0 border-0">
                     <div class="row d-flex">
@@ -209,9 +211,8 @@ const Registration = () => {
                                             </div>
                                             <div> <div class="row mb-3 px-3">
                                                 <Button style={{
-                                                    background: "radial-gradient(circle, rgba(0, 135, 145, 1) 0%, rgba(30, 140, 96, 1) 61%, rgba(89, 179, 76, 1) 93%)"
+                                                    background: "#322333"
                                                 }}
-
                                                 > Login </Button>
                                             </div>
                                                 <div class="row mb-4 px-3">
@@ -235,17 +236,6 @@ const Registration = () => {
                             </div>
                         </div>
 
-                    </div>
-                    <div class="bg-blue py-4">
-                        <div class="row px-3">
-                            <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2023. All rights reserved.</small>
-                            <div class="social-contact ml-4 ml-sm-auto">
-                                <span class="fa fa-facebook mr-4 text-sm"></span>
-                                <span class="fa fa-google-plus mr-4 text-sm"></span>
-                                <span class="fa fa-linkedin mr-4 text-sm"></span>
-                                <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div >

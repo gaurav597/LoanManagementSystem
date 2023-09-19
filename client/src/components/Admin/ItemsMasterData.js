@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ItemMasterService from "../../services/ItemMasterService";
+import Header from '../Header';
 
 export default function ItemMasterData() {
   const [itemId, setItemId] = useState("");
@@ -32,6 +33,7 @@ export default function ItemMasterData() {
   return (
 
     <div className='container'>
+      <Header />
       <h1>Add Item Data</h1>
       <Container fluid="md">
         <Form>

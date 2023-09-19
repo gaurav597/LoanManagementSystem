@@ -1,41 +1,30 @@
 import React from 'react'
-
-import { useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import "../../styles/AdminDashboard.css"
+import Header from '../Header';
+import CustomerDataManagement from './CustomerDataManagement';
 function AdminDashboard() {
     const history = useNavigate();
 
-    const routeToCustomerData = () =>{
+    const routeToCustomerData = () => {
         history('/customerDataManagement')
 
     }
 
-    const routeToLoanCard = () =>{
+    const routeToLoanCard = () => {
         history('/loanCardManagement')
     }
 
-    const routeToItems = () =>{
+    const routeToItems = () => {
         history('/itemsMasterData')
     }
 
-    
+
     return (
         <div>
-            <br /> <br />
-            <div className='container'>
-                <h2 style={{ color: "green" }}>Admin Dashboard</h2>
-             </div>
-
-             <div className='container'>   
-
-                <button className='btn btn-primary' onClick={routeToCustomerData}>Customer Data Management </button>
-                <br /> <br />
-                <button className='btn btn-primary' onClick={routeToLoanCard}>Loan Card Management </button>
-                <br /> <br />
-                <button className='btn btn-primary' onClick={routeToItems}>Items Master Data </button>
-                
-            </div>
+            <Header />
         </div>
+
     )
 }
 
