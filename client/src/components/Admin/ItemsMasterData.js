@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ItemMasterService from "../../services/ItemMasterService";
 import Header from '../Header';
+import AdminDashboard from './AdminDashboard';
 
 export default function ItemMasterData() {
   const [itemId, setItemId] = useState("");
@@ -33,7 +34,7 @@ export default function ItemMasterData() {
   return (
 
     <div className='container'>
-      <Header />
+      <AdminDashboard />
       <h1>Add Item Data</h1>
       <Container fluid="md">
         <Form>

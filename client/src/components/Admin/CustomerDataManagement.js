@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import CustomerService from '../../services/CustomerService';
-import Header from '../Header';
 import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import AdminDashboard from './AdminDashboard';
 function CustomerDataManagement() {
   const history = useNavigate();
   const addCustomer = () => {
@@ -30,7 +30,7 @@ function CustomerDataManagement() {
   }
   return (
     <div>
-      <Header />
+     <AdminDashboard/>
       <button onClick={addCustomer}> Add Customer </button>
       <table class="table table-striped">
         <thead>
