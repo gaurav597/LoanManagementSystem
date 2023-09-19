@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import CustomerService from '../../services/CDS'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AdminDashboard from './AdminDashboard';
 
 function CDE() {
     const history = useNavigate();
@@ -31,13 +32,14 @@ function CDE() {
     }
 
     const deleteCustomer = (id) => {
-        CustomerService.deleteCustomer(id);
+        CustomerService.deleteCustomer(id).then(()=>{
             fetchCustomerData();
             setMessage('Customer deleted successfully.');
             //Clear the message after 2 seconds.
             setTimeout(() => {
                 setMessage('');
             }, 2000);
+        });
     }
 
     const editButton = (data) =>
@@ -65,8 +67,8 @@ function CDE() {
     return (
         <div>
             <br/>
-        
-            <h1 className="text-heading">Customer Master Data Details</h1>
+            <AdminDashboard />
+            <h1 className="text-heading" style={{color: "white"}}>Customer Master Data Details</h1>
             <div className="row justify-content-center" >
                 <table className="table table-success w-auto">
                 <thead>

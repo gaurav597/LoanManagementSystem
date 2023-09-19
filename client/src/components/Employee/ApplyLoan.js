@@ -1,8 +1,12 @@
 import React from 'react'
+import EmployeeDashboard from './EmployeeDashboard'
 
 const ApplyLoan = () => {
   return (
-    <div>ApplyLoan</div>
+    <div>
+      <EmployeeDashboard />
+      <h1> Apply for Loan </h1>
+    </div>
   )
 }
 
