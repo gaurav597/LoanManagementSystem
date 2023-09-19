@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import "../styles/Registration.css";
 import AuthenticationService from '../services/AuthenticationService';
-import { Link, useNavigate } from 'react-router-dom'
-import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
 import NavBar from './NavBar';
-
+import { Button } from 'react-bootstrap';
 const Registration = () => {
     const history = useNavigate();
+    //defining state
     const [dealer, setDealer] = useState({
         employeeId: '',
         employeeName: '',
@@ -20,8 +19,12 @@ const Registration = () => {
     const [errors, setErrors] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
+    /*
+The JavaScript spread operator (...) allows us to quickly copy all or 
+part of an existing array or object into another array or object.
+*/
+    //Updates the state of a dealer Object when user enters data in the input fields
     const handleChange = (e) => {
-        console.log(e.target.name, e.target.value)
         const { name, value } = e.target;
         if (name.includes('.')) {
             const [parent, child] = name.split('.');
@@ -95,6 +98,7 @@ const Registration = () => {
 
         return validationErrors;
     };
+
 
     return (
         <div>
@@ -198,22 +202,24 @@ const Registration = () => {
                                                     {errors.designation && <p className="error-message">{errors.designation}</p>}
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
-                                                        <Form.Label>Gender</Form.Label>
-                                                        <Form.Select aria-label="Default select example" onChange={handleChange}>
-                                                            <option value="M">Male</option>
-                                                            <option value="F">Female</option>
-                                                            <option value="O">Other</option>
-                                                        </Form.Select>
-                                                    </Form.Group>
+                                                    {/* <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                    <Form.Label>Gender</Form.Label>
+                                                    <Form.Select aria-label="Default select example" onChange={handleChange}>
+                                                        <option value="M">Male</option>
+                                                        <option value="F">Female</option>
+                                                        <option value="O">Other</option>
+                                                    </Form.Select>
+                                                </Form.Group> */}
                                                     {errors.gender && <p className="error-message">{errors.gender}</p>}
                                                 </div>
                                             </div>
                                             <div> <div class="row mb-3 px-3">
-                                                <Button style={{
-                                                    background: "#322333"
+                                                <button style={{
+                                                    background: "#322333",
+                                                    color: "white",
+                                                    borderRadius: "5px"
                                                 }}
-                                                > Login </Button>
+                                                > Register </button>
                                             </div>
                                                 <div class="row mb-4 px-3">
                                                     <small class="font-weight-bold">Already have an account? <a class="text-danger "> <Link to="/login"> Login </Link></a></small>
@@ -226,10 +232,7 @@ const Registration = () => {
                         </div>
                         <div class="col-lg-6">
                             <div class="card1 pb-5">
-                                <br /> <br />
-                                <div class="row px-3 justify-content-center mt-4 mb-5 ml-4 font">
-                                    <h1> Loan Management System </h1>
-                                </div>
+                                <br /> <br />  <br /> <br />  <br />
                                 <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                                     <img src="https://simplyfi.tech/images/LMS/Digital-Loan-Management.svg" class="image" />
                                 </div>

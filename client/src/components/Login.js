@@ -26,8 +26,8 @@ const Login = () => {
                 setSuccessmMg('Login Successful! Redirecting...')
                 setTimeout(() => {
                     //history('/dashboard') // on successful login navigate to product component
-                    // history('/adminDashboard');
-                    history('/employeeDashboard')
+                    history('/adminDashboard');
+                    // history('/employeeDashboard')
                 }, 500)
             }
             else {
@@ -48,10 +48,7 @@ const Login = () => {
                     <div class="row d-flex">
                         <div class="col-lg-6">
                             <div class="card1 pb-5">
-                                <br /> <br />
-                                <div class="row px-3 justify-content-center mt-4 mb-5 ml-4 font">
-                                    <h1> Loan Management System </h1>
-                                </div>
+                                <br /> <br />  <br /> <br />
                                 <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                                     <img src="https://simplyfi.tech/images/LMS/Digital-Loan-Management.svg" class="image" />
                                 </div>
