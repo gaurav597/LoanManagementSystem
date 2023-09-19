@@ -18,6 +18,14 @@ const NavBar = () => {
                     </Link>
                 </li>
                 <li className="nav-item">
+                    <Link to="/CDE" className="nav-link">
+                        <span>
+                            <FontAwesomeIcon icon="people-group" />
+                        </span>&nbsp;
+                        Customer Data
+                    </Link>
+                </li>
+                <li className="nav-item">
                     <Link to="/register" className="nav-link">
                         <span> <FontAwesomeIcon icon={"camera-retro"}> </FontAwesomeIcon></span>&nbsp;
                         Register

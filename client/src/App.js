@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar.js"
 import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSign, faCameraRetro } from '@fortawesome/free-solid-svg-icons';
+import { faSign, faCameraRetro, faPeopleGroup, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AddCustomer from './components/Admin/AddCustomer';
 import AdminDashboard from './components/Admin/AdminDashboard'
 import CustomerDataManagement from './components/Admin/CustomerDataManagement';
@@ -14,8 +14,10 @@ import EmployeeDashboard from './components/Employee/EmployeeDashboard';
 import ViewLoans from './components/Employee/ViewLoans';
 import ApplyLoan from './components/Employee/ApplyLoan';
 import ItemPurchased from "./components/Employee/ItemPurchased";
+import CDE from './components/Admin/CDE';
+import CreateCustomer from './components/Admin/CreateCustomer'
 
-library.add(faSign, faCameraRetro);
+library.add(faSign, faCameraRetro, faPeopleGroup, faTrash, faEdit);
 
 function App() {
   return (
@@ -42,8 +44,10 @@ function App() {
               <Route path="itemPurchased" element={<ItemPurchased/>}/>
 
               <Route path="/adminDashboard" element={<AdminDashboard/>} />
+              <Route path='/cde' element={<CDE />} />
               <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
               <Route path="/addCustomer" element={<AddCustomer/>} />
+              <Route path='/addCustomer/:id' element={<CreateCustomer />} />
               <Route path="/loanCardManagement" element={<LoanCardManagement/>} />
               <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
 
