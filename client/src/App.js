@@ -34,8 +34,8 @@ function App() {
               <Route path="itemPurchased" element={<ItemPurchased/>}/>
 
               <Route path="/adminDashboard" element={<AdminDashboard/>} />
-              <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
-              <Route path="/addCustomer" element={<AddCustomer/>} />
+              {/* <Route path="/customerDataManagement" element={<CustomerDataManagement/>} /> */}
+              <Route path="/customerDataManagement" element={<AddCustomer/>} />
               <Route path="/loanCardManagement" element={<LoanCardManagement/>} />
               <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
 
