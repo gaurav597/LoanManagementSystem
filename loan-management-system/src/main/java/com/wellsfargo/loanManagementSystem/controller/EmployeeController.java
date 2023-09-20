@@ -69,9 +69,9 @@ public class EmployeeController {
         return new ResponseEntity<List<EmployeeMaster>>(e, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteCustomer")
-    public String deleteCustomer(@RequestBody String empId){
-        employeeService.deleteEmployee(empId);
+    @DeleteMapping("/deleteCustomer/{id}")
+    public String deleteCustomer(@PathVariable String id){
+        employeeService.deleteEmployee(id);
         return "Employee Deleted";
     }
 
