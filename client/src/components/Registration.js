@@ -232,9 +232,9 @@ part of an existing array or object into another array or object.
                         </div>
                         <div class="col-lg-6">
                             <div class="card1 pb-5">
-                                <br /> <br />  <br /> <br />  <br />
+                                <br /> <br />  <br /> <br />  <br /> <br />  <br />
                                 <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                                    <img src="https://simplyfi.tech/images/LMS/Digital-Loan-Management.svg" class="image" />
+                                    <img src="https://img.freepik.com/free-vector/premium-cash-reward-bonus-work-done-best-employee-rewarding-promotion-order-efficiency-stimulation-boss-subordinate-cartoon-characters_335657-2984.jpg?w=2000" class="image" />
                                 </div>
                             </div>
                         </div>
