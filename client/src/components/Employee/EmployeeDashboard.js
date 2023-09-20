@@ -1,38 +1,33 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import Header from '../Header';
-import "../../styles/Navbar.css"
+import React from "react";
+import Header from "../Header";
+import "../../styles/Navbar.css";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import ViewLoans from "./ViewLoans";
+import ApplyLoan from "./ApplyLoan";
+import ItemPurchased from "./ItemPurchased";
 const EmployeeDashboard = () => {
-  ;
-  const history = useNavigate()
-
   return (
     <div>
       <Header />
-      <nav
-        className="navbar justify-content-center"
+      <Tabs
+        defaultActiveKey="viewLoans"
+        id="uncontrolled-tab-example"
+        className="mb-3 navbar justify-content-center"
         style={{ background: "#780078" }}
       >
-        <ul className='nav-list'>
-          <li className="nav-item">
-            <Link to="/viewLoans" className="nav-link">
-              View Loans
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/applyLoan" className="nav-link">
-              Apply Loans
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/itemPurchased" className="nav-link">
-              View Items Purchased
-            </Link>
-          </li>
-        </ul>
-      </nav>
+        <Tab eventKey="viewLoans" title="View Loans">
+          <ViewLoans />
+        </Tab>
+        <Tab eventKey="applyLoans" title="Apply Loans">
+          <ApplyLoan />
+        </Tab>
+        <Tab eventKey="itemsPurchased" title="View Items Purchased">
+          <ItemPurchased />
+        </Tab>
+      </Tabs>
     </div>
-  )
-}
+  );
+};
 
-export default EmployeeDashboard
+export default EmployeeDashboard;

@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import LoanCardService from '../../services/LoanCardService';
-import AdminDashboard from './AdminDashboard';
 
 function LoanCardManagement() {
 
@@ -25,7 +24,6 @@ function LoanCardManagement() {
   }
   return (
     <div>
-      <AdminDashboard />
       <Container fluid="md">
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

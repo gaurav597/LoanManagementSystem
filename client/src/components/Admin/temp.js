@@ -1,16 +1,22 @@
-<div>
-<br /> <br />
-<div className='container'>
-    <h2 style={{ color: "green" }}>Admin Dashboard</h2>
- </div>
-
- <div className='container'>   
-
-    <button className='btn btn-primary' onClick={routeToCustomerData}>Customer Data Management </button>
-    <br /> <br />
-    <button className='btn btn-primary' onClick={routeToLoanCard}>Loan Card Management </button>
-    <br /> <br />
-    <button className='btn btn-primary' onClick={routeToItems}>Items Master Data </button>
-    
-</div>
-</div>
+<nav
+                className="navbar justify-content-center"
+                style={{ background: "#780078" }}
+            >
+                <ul className='nav-list'>
+                    <li className="nav-item">
+                        <Link to="/customerDataManagement" className="nav-link">
+                            Customer Data Management
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/loanCardManagement" className="nav-link">
+                            Loan Card Management
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/itemsMasterData" className="nav-link">
+                            Items Master Data
+                        </Link>
+                    </li>
+                </ul>
+            </nav>

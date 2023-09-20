@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import CustomerService from "../../services/CustomerService";
-import AdminDashboard from './AdminDashboard';
 
 export default function AddCustomer() {
     const [empId, setEmpId] = useState("");
@@ -44,7 +43,6 @@ export default function AddCustomer() {
 
     return (
         <div className='container'>
-            <AdminDashboard />
             <h1>Add Customer Data</h1>
             <Container fluid="md">
                 <Form>

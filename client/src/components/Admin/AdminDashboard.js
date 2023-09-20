@@ -1,36 +1,33 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import "../../styles/Navbar.css"
-import Header from '../Header';
+import React from "react";
+import "../../styles/Navbar.css";
+import Header from "../Header";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import CustomerDataManagement from "./CustomerDataManagement";
+import LoanCardMaagement from "./LoanCardManagement";
+import ItemsMasterData from "./ItemsMasterData";
 function AdminDashboard() {
-    return (
-        <div>
-            <Header />
-            <nav
-                className="navbar justify-content-center"
-                style={{ background: "#780078" }}
-            >
-                <ul className='nav-list'>
-                    <li className="nav-item">
-                        <Link to="/customerDataManagement" className="nav-link">
-                            Customer Data Management
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/loanCardManagement" className="nav-link">
-                            Loan Card Management
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/itemsMasterData" className="nav-link">
-                            Items Master Data
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-    )
+  return (
+    <div>
+      <Header />
+      <Tabs
+        defaultActiveKey="custDataMgmt"
+        id="uncontrolled-tab-example"
+        className="mb-3 navbar justify-content-center"
+        style={{ background: "#780078" }}
+      >
+        <Tab eventKey="custDataMgmt" title="Customer Data Management">
+          <CustomerDataManagement />
+        </Tab>
+        <Tab eventKey="loanCardMgmt" title="Loan Card Management">
+          <LoanCardMaagement />
+        </Tab>
+        <Tab eventKey="itemsMasterCard" title="Items Master Data">
+          <ItemsMasterData />
+        </Tab>
+      </Tabs>
+    </div>
+  );
 }
 
-export default AdminDashboard
+export default AdminDashboard;
