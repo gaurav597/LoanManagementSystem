@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0c26c6-54f3-469b-a463-6d365b50640c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Employee/ItemPurchased.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Employee/ItemPurchased.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Employee/ApplyLoan.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Employee/ApplyLoan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/ApplyLoanService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/ApplyLoanService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/LoanCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/LoanCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/EmployeeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/ItemCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/ItemCardService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,29 +45,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "8e235fd5d6e9ae70c67cacf6ba7a8c73",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8e235fd5d6e9ae70c67cacf6ba7a8c73&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.LoanManagementSystemApplication">
     <configuration name="LoanManagementSystemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.LoanManagementSystemApplication" />
@@ -107,7 +105,8 @@
       <updated>1694454211883</updated>
       <workItem from="1694454213973" duration="8424000" />
       <workItem from="1694686628895" duration="5934000" />
-      <workItem from="1695152942443" duration="4723000" />
+      <workItem from="1695152942443" duration="5121000" />
+      <workItem from="1695203708242" duration="4089000" />
     </task>
     <servers />
   </component>

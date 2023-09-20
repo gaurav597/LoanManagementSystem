@@ -1,5 +1,6 @@
 package com.wellsfargo.loanManagementSystem.service;
 
+import com.wellsfargo.loanManagementSystem.model.EmployeeIssueDetails;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.model.ItemMaster;
 import com.wellsfargo.loanManagementSystem.repository.ItemRepository;
@@ -15,6 +16,10 @@ public class ItemCardService {
 
     public void addItemData(ItemMaster itemMaster){
         itemRepo.save(itemMaster);
+    }
+
+    public void applyLoan(ItemMaster itemMaster, EmployeeIssueDetails employeeIssueDetails){
+
     }
 
 

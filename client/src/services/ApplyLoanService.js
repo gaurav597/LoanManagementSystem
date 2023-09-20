@@ -1,10 +1,10 @@
 import axios from "axios";
 
-class ItemMasterService {
+class ApplyLoanService {
 
     static applyLoan(Item){
         return axios.post('http://localhost:8085/lms/api/applyLoan',Item);
     }
 }
 
-export default ItemMasterService;
+export default ApplyLoanService;
