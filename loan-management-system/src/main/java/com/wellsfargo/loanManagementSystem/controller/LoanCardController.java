@@ -1,5 +1,6 @@
 package com.wellsfargo.loanManagementSystem.controller;
 
+import com.wellsfargo.loanManagementSystem.model.EmployeeIssueDetails;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.model.ItemMaster;
 import com.wellsfargo.loanManagementSystem.model.LoanCardMaster;
@@ -45,6 +46,12 @@ public class LoanCardController {
     public ResponseEntity<List<ItemMaster>> getItem(){
         List<ItemMaster> i = itemCardService.getItemData();
         return new ResponseEntity<List<ItemMaster>>(i, HttpStatus.OK);
+    }
+
+    @PostMapping(value="/applyLoan")
+    public String applyLoan(@Validated @RequestBody ItemMaster itemMaster, EmployeeIssueDetails employeeIssueDetails) {
+        itemCardService.applyLoan(itemMaster, employeeIssueDetails);
+        return  "loan applied";
     }
 
 

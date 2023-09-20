@@ -15,6 +15,7 @@ import ViewLoans from './components/Employee/ViewLoans';
 import ApplyLoan from './components/Employee/ApplyLoan';
 import ItemPurchased from "./components/Employee/ItemPurchased";
 import LandingPage from './components/LandingPage';
+import EditCustomer from './components/Admin/EditCustomer';
 
 library.add(faSign, faCameraRetro);
 
@@ -43,7 +44,12 @@ function App() {
               <Route path="/addCustomer" element={<AddCustomer />} />
               <Route path="/loanCardManagement" element={<LoanCardManagement />} />
               <Route path="/itemsMasterData" element={<ItemsMasterData />} />
-
+              <Route path="/adminDashboard" element={<AdminDashboard/>} />
+              <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
+              <Route path="/addCustomer" element={<AddCustomer/>} />
+              <Route path="/loanCardManagement" element={<LoanCardManagement/>} />
+              <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
+              <Route path="/editCustomer" element={<EditCustomer/>} />
 
             </Routes>
           </Router>
