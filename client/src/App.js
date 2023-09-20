@@ -51,7 +51,6 @@ function App() {
               <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
               <Route path="/editCustomer" element={<EditCustomer/>} />
 
-
             </Routes>
           </Router>
 

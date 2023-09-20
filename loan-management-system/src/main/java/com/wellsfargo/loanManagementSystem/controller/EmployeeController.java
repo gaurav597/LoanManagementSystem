@@ -3,6 +3,7 @@ package com.wellsfargo.loanManagementSystem.controller;
 import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.model.LoanCardMaster;
+import com.wellsfargo.loanManagementSystem.repository.EmployeeRepository;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -19,6 +21,9 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
+    @Autowired
+    EmployeeRepository employeeRepository;
+
     @PostMapping("/register")
     public ResponseEntity<String> createEmployee(@Validated @RequestBody EmployeeMaster empMas)
     {
@@ -73,6 +78,22 @@ public class EmployeeController {
     public String deleteCustomer(@PathVariable String id){
         employeeService.deleteEmployee(id);
         return "Employee Deleted";
+    }
+
+
+
+    @PutMapping("/updateCustomer")
+    public String updateCustomer(@RequestBody EmployeeMaster employeeMaster){
+        EmployeeMaster existingEmployee = employeeRepository.findById(employeeMaster.getEmployeeId())
+                        .orElseThrow(() -> new org.springframework.data.rest.webmvc.ResourceNotFoundException("Employee not found with id:" + employeeMaster.getEmployeeId()));
+        existingEmployee.setEmployeeName(employeeMaster.getEmployeeName());
+        existingEmployee.setDesignation(employeeMaster.getDesignation());
+        existingEmployee.setGender(employeeMaster.getGender());
+        existingEmployee.setDateOfBirth(employeeMaster.getDateOfBirth());
+        existingEmployee.setDateOfJoin(employeeMaster.getDateOfJoin());
+
+        employeeRepository.save(existingEmployee);
+        return "Employee saved";
     }
 
 

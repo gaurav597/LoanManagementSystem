@@ -7,7 +7,7 @@ class CustomerService {
     }
 
     static updateCustomer(customer){
-        return axios.put('http://localhost:8085')
+        return axios.put('http://localhost:8085/lms/api/updateCustomer', customer);
     }
     static getCustomer(){
         return axios.get('http://localhost:8085/lms/api/getCustomer');
