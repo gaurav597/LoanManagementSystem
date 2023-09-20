@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from "./components/NavBar.js"
 import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -39,11 +38,6 @@ function App() {
               <Route path="/applyLoan" element={<ApplyLoan />} />
               <Route path="/itemPurchased" element={<ItemPurchased />} />
 
-              <Route path="/adminDashboard" element={<AdminDashboard />} />
-              <Route path="/customerDataManagement" element={<CustomerDataManagement />} />
-              <Route path="/addCustomer" element={<AddCustomer />} />
-              <Route path="/loanCardManagement" element={<LoanCardManagement />} />
-              <Route path="/itemsMasterData" element={<ItemsMasterData />} />
               <Route path="/adminDashboard" element={<AdminDashboard/>} />
               <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
               <Route path="/addCustomer" element={<AddCustomer/>} />
