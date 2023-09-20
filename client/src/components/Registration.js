@@ -108,6 +108,9 @@ const Registration = () => {
     } else if (dealer.confirmPassword !== dealer.password) {
       validationErrors.confirmPassword = "Password mismatch";
     }
+    if (!dealer.gender) {
+      validationErrors.gender = "Gender is required";
+    }
 
     return validationErrors;
   };
@@ -247,6 +250,7 @@ const Registration = () => {
                               style={{ height: "20%" }}
                               name="gender"
                             >
+                              <option value=""></option>
                               <option value="Male">Male</option>
                               <option value="Female">Female</option>
                               <option value="Other">Other</option>
