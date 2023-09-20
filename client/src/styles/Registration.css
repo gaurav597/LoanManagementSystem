@@ -2,7 +2,7 @@ body {
   color: #000;
   overflow-x: hidden;
   height: 100%;
-  background-color: #B0BEC5;
+  background-color: #b0bec5;
   background-repeat: no-repeat;
 }
 
@@ -27,24 +27,33 @@ body {
   height: 280px;
 }
 
+.error-message {
+  color: red;
+}
+
 .border-line {
-  border-right: 1px solid #EEEEEE;
+  border-right: 1px solid #eeeeee;
 }
 
 .font {
-  font-family: 'Croissant One', cursive;
+  font-family: "Croissant One", cursive;
 }
 
 .btn-style {
   background: rgb(0, 135, 145);
-  background: radial-gradient(circle, rgba(0, 135, 145, 1) 0%, rgba(30, 140, 96, 1) 61%, rgba(89, 179, 76, 1) 93%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 135, 145, 1) 0%,
+    rgba(30, 140, 96, 1) 61%,
+    rgba(89, 179, 76, 1) 93%
+  );
   box-shadow: 0 4px 8px 0 rgba(0, 39, 1, 0.2), 0 6px 20px 0 rgba(0, 39, 1, 0.2);
 }
 
 .line {
   height: 1px;
   width: 45%;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   margin-top: 10px;
 }
 
@@ -58,19 +67,19 @@ body {
 }
 
 ::placeholder {
-  color: #BDBDBD;
+  color: #bdbdbd;
   opacity: 1;
-  font-weight: 300
+  font-weight: 300;
 }
 
 :-ms-input-placeholder {
-  color: #BDBDBD;
-  font-weight: 300
+  color: #bdbdbd;
+  font-weight: 300;
 }
 
 ::-ms-input-placeholder {
-  color: #BDBDBD;
-  font-weight: 300
+  color: #bdbdbd;
+  font-weight: 300;
 }
 
 input,
@@ -82,7 +91,7 @@ textarea {
   margin-top: 2px;
   width: 100%;
   box-sizing: border-box;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 14px;
   letter-spacing: 1px;
 }
@@ -92,7 +101,7 @@ textarea:focus {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  border: 1px solid #304FFE;
+  border: 1px solid #304ffe;
   outline-width: 0;
 }
 
@@ -109,7 +118,7 @@ a {
 }
 
 .btn-blue {
-  background-color: #1A237E;
+  background-color: #1a237e;
   width: 150px;
   color: #fff;
   border-radius: 2px;
@@ -122,7 +131,7 @@ a {
 
 .bg-blue {
   color: #fff;
-  background-color: #1A237E;
+  background-color: #1a237e;
 }
 
 @media screen and (max-width: 991px) {
@@ -140,7 +149,7 @@ a {
   }
 
   .card2 {
-    border-top: 1px solid #EEEEEE !important;
+    border-top: 1px solid #eeeeee !important;
     margin: 0px 15px;
   }
 }
