@@ -2,8 +2,8 @@ import axios from "axios";
 
 class ApplyLoanService {
 
-    static applyLoan(Item){
-        return axios.post('http://localhost:8085/lms/api/applyLoan',Item);
+    static applyLoan(Payload){
+        return axios.post('http://localhost:8085/lms/api/applyLoan',Payload);
     }
 }
 
