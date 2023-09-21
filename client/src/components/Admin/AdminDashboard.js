@@ -6,6 +6,7 @@ import Tabs from "react-bootstrap/Tabs";
 import CustomerDataManagement from "./CustomerDataManagement";
 import LoanCardMaagement from "./LoanCardManagement";
 import ItemsMasterData from "./ItemsMasterData";
+import AddCustomer from "./AddCustomer";
 function AdminDashboard() {
   return (
     <div>
@@ -17,7 +18,7 @@ function AdminDashboard() {
         style={{ background: "#780078" }}
       >
         <Tab eventKey="custDataMgmt" title="Customer Data Management">
-          <CustomerDataManagement />
+          <AddCustomer/>
         </Tab>
         <Tab eventKey="loanCardMgmt" title="Loan Card Management">
           <LoanCardMaagement />

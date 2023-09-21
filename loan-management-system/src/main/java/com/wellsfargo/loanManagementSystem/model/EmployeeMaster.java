@@ -26,6 +26,7 @@ public class EmployeeMaster {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfJoin;
     private String designation;
+    private String department;
     @OneToMany(mappedBy = "employeeId")
     private List<EmployeeCardDetails> employeeCardDetailsList ;
     @OneToMany(mappedBy = "employeeId")
