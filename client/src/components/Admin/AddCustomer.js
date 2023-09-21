@@ -137,9 +137,9 @@ export default function AddCustomer() {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <Button variant="primary" type="submit" onClick={handleSubmit}>
+                            <button variant="primary" data-dismiss="modal" type="submit" onClick={handleSubmit}>
                                 Submit
-                            </Button>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -68,7 +68,7 @@ public class LoanCardController {
 	}
 
 	@GetMapping("/getEmpLoanData/{id}")
-	public ResponseEntity<List<LoanCardAndEmpCardProjection>> getLoanInfo(String id) {
+	public ResponseEntity<List<LoanCardAndEmpCardProjection>> getLoanInfo(@PathVariable String id) {
 		try {
 			List<LoanCardAndEmpCardProjection> selectedFields = loanCardService.getLoanInfo(id);
 			return ResponseEntity.ok(selectedFields);

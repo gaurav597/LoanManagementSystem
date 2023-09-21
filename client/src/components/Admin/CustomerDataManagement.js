@@ -39,12 +39,21 @@ function CustomerDataManagement() {
     })
   }
   
-  function handleSubmit(){
+  function handleSubmit(e){
+    e.preventDefault();
+        const customer = {
+            "employeeId": empId,
+            "employeeName": name,
+            "password": password,
+            "gender": gender,
+            "dateOfBirth": dob,
+            "dateOfJoin": doj,
+            "department": department,
+            "designation": desig
+        }
+        const hi = CustomerService.addCustomer(customer).then((response) => { console.log(response) });
+  }
 
-  }
-  const handleAddCustomer = () => {
-    history('/addCustomer');
-  }
 
   const handleEdit = (item) => {
     console.log("Its working");
@@ -167,9 +176,9 @@ function CustomerDataManagement() {
               </>}
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
-                  Submit
-                </Button>
+                <button class="btn btn-primary" type="submit" data-dismiss="modal" onClick={handleSubmit}>
+                  Update
+                </button>
               </div>
             </div>
           </div>
@@ -199,7 +208,7 @@ function CustomerDataManagement() {
                 <td>{item.gender}</td>
                 <td>{item.dateOfBirth}</td>
                 <td>{item.dateOfJoin}</td>
-                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-custom" onClick={(e) => handleEdit(item)}>Add Customer</button></td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-custom" onClick={(e) => handleEdit(item)}>Edit</button></td>
                 <td onClick={(e) => handleDelete(item.employeeId)}>Delete</td>
               </tr>
             ))}
