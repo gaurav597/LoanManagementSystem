@@ -251,9 +251,9 @@ const Registration = () => {
                               name="gender"
                             >
                               <option value=""></option>
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                              <option value="Other">Other</option>
+                              <option value="M">Male</option>
+                              <option value="F">Female</option>
+                              <option value="O">Other</option>
                             </Form.Select>
                           </Form.Group>
                           {errors.gender && (
