@@ -7,6 +7,8 @@ import CustomerDataManagement from "./CustomerDataManagement";
 import LoanCardMaagement from "./LoanCardManagement";
 import ItemsMasterData from "./ItemsMasterData";
 import AddCustomer from "./AddCustomer";
+import AddItem from "./AddItem";
+import AddLoanCard from "./AddLoanCard";
 function AdminDashboard() {
   return (
     <div>
@@ -21,10 +23,10 @@ function AdminDashboard() {
           <AddCustomer/>
         </Tab>
         <Tab eventKey="loanCardMgmt" title="Loan Card Management">
-          <LoanCardMaagement />
+          <AddLoanCard/>
         </Tab>
         <Tab eventKey="itemsMasterCard" title="Items Master Data">
-          <ItemsMasterData />
+          <AddItem/>
         </Tab>
       </Tabs>
     </div>
