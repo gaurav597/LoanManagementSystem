@@ -4,9 +4,10 @@ import AuthenticationService from "../services/AuthenticationService";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import NavBar from "./NavBar";
-
+import { useAuth } from "../context/AuthContext";
 const Login = () => {
   const history = useNavigate();
+  const auth = useAuth();
   const [employeeId, setEmployeeId] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -22,9 +23,10 @@ const Login = () => {
       const loginSuccess = await AuthenticationService.login(employee);
       if (loginSuccess[0]) {
         setSuccessmMg("Login Successful! Redirecting...");
+        auth.login(employeeId);
         setTimeout(() => {
           if (loginSuccess[1] == "Manager") {
-            history("/adminDashboard", { state: employeeId });
+            history("/adminDashboard", { state: employeeId }, { replace: true });
           }
           else
             history('/employeeDashboard')
