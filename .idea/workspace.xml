@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0c26c6-54f3-469b-a463-6d365b50640c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Employee/ApplyLoan.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Employee/ApplyLoan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/ApplyLoanService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/ApplyLoanService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/LoanCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/LoanCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeIssueDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeIssueDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/ItemMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/ItemMaster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/ItemCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/ItemCardService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +41,7 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2VGEqzQJ0YBAPsk2A5XmeYMpf76" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -107,6 +108,7 @@
       <workItem from="1694686628895" duration="5934000" />
       <workItem from="1695152942443" duration="5121000" />
       <workItem from="1695203708242" duration="4089000" />
+      <workItem from="1695324127637" duration="2004000" />
     </task>
     <servers />
   </component>

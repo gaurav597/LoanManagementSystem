@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import ItemMasterService from "../../services/ItemMasterService";
+import ApplyLoanService from "../../services/ApplyLoanService";
 import Header from "../Header";
 import EmployeeDashboard from "./EmployeeDashboard";
 
@@ -22,27 +22,23 @@ export default function ApplyLoan() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const Item = {
+    const Payload = {
       itemId,
       itemDescription,
       issueStatus,
       itemMake,
       itemCategory,
-      itemValuation: itemValue,
-    };
-
-    const EmployeeIssueDetails = {
       issueId,
       employeeId,
-      itemId,
       issueDate,
       returnDate,
-    };
+      itemValuation: itemValue
+    }
 
-    const hi = ItemMasterService.addItem(Item).then((response) => {
-      console.log(response);
-    });
+    const hi = ApplyLoanService.applyLoan(Payload).then((response) => { console.log(response) });
+
   }
+
 
   return (
     <div className="container">

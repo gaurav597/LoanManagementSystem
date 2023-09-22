@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -55,11 +56,12 @@ public class LoanCardController {
 		return new ResponseEntity<List<ItemMaster>>(i, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/applyLoan")
-	public String applyLoan(@Validated @RequestBody ItemMaster itemMaster, EmployeeIssueDetails employeeIssueDetails) {
-		itemCardService.applyLoan(itemMaster, employeeIssueDetails);
-		return "loan applied";
+	@PostMapping(value="/applyLoan")
+	public String applyLoan(@RequestBody Map<String, Object> payload) throws Exception{
+		itemCardService.applyLoan(payload);
+		return  "loan applied";
 	}
+
 
 	@PostMapping(value = "/addEmpCardDetails")
 	public String addEmpCardDetails(@Validated @RequestBody EmployeeCardDetails empCard) {
@@ -68,7 +70,7 @@ public class LoanCardController {
 	}
 
 	@GetMapping("/getEmpLoanData/{id}")
-	public ResponseEntity<List<LoanCardAndEmpCardProjection>> getLoanInfo(String id) {
+	public ResponseEntity<List<LoanCardAndEmpCardProjection>> getLoanInfo(@PathVariable String id) {
 		try {
 			List<LoanCardAndEmpCardProjection> selectedFields = loanCardService.getLoanInfo(id);
 			return ResponseEntity.ok(selectedFields);

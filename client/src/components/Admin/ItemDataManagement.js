@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 import { useNavigate } from 'react-router-dom';
 
-function CustomerDataManagement() {
+function ItemDataManagement() {
   const [empId, setEmpId] = useState("");
     const [desig, setDesig] = useState("Manager");
     const [name, setName] = useState("");
@@ -219,4 +219,4 @@ function CustomerDataManagement() {
   )
 }
 
-export default CustomerDataManagement
+export default ItemDataManagement;
