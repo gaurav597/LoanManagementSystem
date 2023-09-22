@@ -15,47 +15,49 @@ import ApplyLoan from './components/Employee/ApplyLoan';
 import ItemPurchased from "./components/Employee/ItemPurchased";
 import LandingPage from './components/LandingPage';
 import EditCustomer from './components/Admin/EditCustomer';
-
+import { AuthProvider } from './context/AuthContext';
+import RequireAuth from './context/RequireAuth';
 library.add(faSign, faCameraRetro);
 
 function App() {
   return (
-    <div className="App bg1">
-      <section>
-        <div style={{
-          // backgroundImage: "url(/images/loan-bg.jpg)",
-          backgroundSize: 'cover', backgroundRepeat: "no-repeat",
-          minHeight: '140vh', minWidth: '100vw'
-        }}>
-          <Router>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/login" element={<Login />} />
+    <AuthProvider>
+      <div className="App bg1">
+        <section>
+          <div style={{
+            // backgroundImage: "url(/images/loan-bg.jpg)",
+            backgroundSize: 'cover', backgroundRepeat: "no-repeat",
+            minHeight: '140vh', minWidth: '100vw'
+          }}>
+            <Router>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/register" element={<Registration />} />
+                <Route path="/login" element={<Login />} />
 
-              <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
-              <Route path="/viewLoans" element={<ViewLoans />} />
-              <Route path="/applyLoan" element={<ApplyLoan />} />
-              <Route path="/itemPurchased" element={<ItemPurchased />} />
+                <Route path="/employeeDashboard" element={<RequireAuth><EmployeeDashboard /></RequireAuth>} />
+                <Route path="/viewLoans" element={<RequireAuth><ViewLoans /></RequireAuth>} />
+                <Route path="/applyLoan" element={<RequireAuth><ApplyLoan /></RequireAuth>} />
+                <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
-              <Route path="/adminDashboard" element={<AdminDashboard/>} />
-              <Route path="/customerDataManagement" element={<CustomerDataManagement/>} />
-              <Route path="/addCustomer" element={<AddCustomer/>} />
-              <Route path="/loanCardManagement" element={<LoanCardManagement/>} />
-              <Route path="/itemsMasterData" element={<ItemsMasterData/>} />
-              <Route path="/editCustomer" element={<EditCustomer/>} />
+                <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
+                <Route path="/customerDataManagement" element={<RequireAuth><CustomerDataManagement /></RequireAuth>} />
+                <Route path="/addCustomer" element={<RequireAuth><AddCustomer /></RequireAuth>} />
+                <Route path="/loanCardManagement" element={<RequireAuth><LoanCardManagement /></RequireAuth>} />
+                <Route path="/itemsMasterData" element={<RequireAuth><ItemsMasterData /></RequireAuth>} />
+                <Route path="/editCustomer" element={<RequireAuth><EditCustomer /></RequireAuth>} />
+              </Routes>
+            </Router>
 
-            </Routes>
-          </Router>
-
-        </div>
-      </section>
-      <footer>
-        <div class="row px-3 footer">
-          <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2023. All rights reserved.</small>
-        </div>
-      </footer>
-    </div>
+          </div>
+        </section>
+        <footer>
+          <div class="row px-3 footer">
+            <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2023. All rights reserved.</small>
+          </div>
+        </footer>
+      </div>
+    </AuthProvider>
   );
 }
 

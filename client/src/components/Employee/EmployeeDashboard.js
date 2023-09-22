@@ -1,15 +1,18 @@
 import React from "react";
-import Header from "../Header";
 import "../../styles/Navbar.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import ViewLoans from "./ViewLoans";
 import ApplyLoan from "./ApplyLoan";
 import ItemPurchased from "./ItemPurchased";
+import NavBar from "../NavBar";
+import { useAuth } from "../../context/AuthContext";
 const EmployeeDashboard = () => {
+  const auth = useAuth();
   return (
     <div>
-      <Header />
+      <NavBar />
+      <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
       <Tabs
         defaultActiveKey="viewLoans"
         id="uncontrolled-tab-example"
