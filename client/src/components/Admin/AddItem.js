@@ -25,18 +25,19 @@ export default function ItemMasterData()
     if(id!=='_add')
     {
         const Response = ItemService.getItemById(id).then((Response)=>{
-            setDesc(Response.desc);
-            setStatus(Response.status);
-            setMake(Response.make);
-            setCtg(Response.ctg);
-            setVal(Response.val);
+            setItemId(Response.data.itemId);
+            setDesc(Response.data.itemDescription);
+            setStatus(Response.data.issueStatus);
+            setMake(Response.data.itemMake);
+            setCtg(Response.data.itemCategory);
+            setVal(Response.data.itemValuation);
         });
     }
 }, [id]);
 
 const saveOrUpdateItem = (event) => {
     event.preventDefault();
-    const item = {itemId, desc, status, make, ctg, val};
+    const item = {"itemId": itemId, "itemDescription": desc, "issueStatus": status, "itemMake": make, "itemCategory": ctg, "itemValuation": val};
 
     if(id==='_add')
     {
@@ -105,7 +106,7 @@ const getTitle = () => {
             </Col>
             <Col>
               <Form.Label>Item Category</Form.Label>
-              <Form.Select aria-label="Default select example" defaultValue={ctg} onChange={changeCtgHandler}>
+              <Form.Select aria-label="Default select example" value={ctg} onChange={changeCtgHandler}>
                 <option value="Furniture">Furniture</option>
                 <option value="Stationary">Stationary</option>
                 <option value="Crockery">Crockery</option>
@@ -130,7 +131,7 @@ const getTitle = () => {
             <Col>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Issue Status</Form.Label>
-                <Form.Select aria-label="Default select example" defaultValue={status} onChange={changeStatusHandler}>
+                <Form.Select aria-label="Default select example" value={status} onChange={changeStatusHandler}>
                   <option value="Y">Yes</option>
                   <option value="N">No</option>
                 </Form.Select>
@@ -139,7 +140,7 @@ const getTitle = () => {
             <Col>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Item Make</Form.Label>
-                <Form.Select aria-label="Default select example" defaultValue={make} onChange={changeMakeHandler}>
+                <Form.Select aria-label="Default select example" value={make} onChange={changeMakeHandler}>
                   <option value="Wodden">Wodden</option>
                   <option value="Plastic">Plastic</option>
                 </Form.Select>

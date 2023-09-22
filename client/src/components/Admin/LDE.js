@@ -16,11 +16,10 @@ function LDE() {
     }, []);
 
     const fetchLoanData = () => {
-        // CustomerService.getCustomers().then((Response) => {
-        //     console.log(Response.data);
-        //     setCustomers(Response.data);
-        // })
-        setLoans(LoanService.getLoans().data)
+        LoanService.getLoans().then((Response) => {
+            console.log(Response.data);
+            setLoans(Response.data);
+        });
     }
 
     const addLoan = () => {
@@ -44,7 +43,7 @@ function LDE() {
     const editButton = (data) =>
     {
         return(
-            <button className='btn btn-success' onClick={()=>editLoan(data.lid)}>
+            <button className='btn btn-success' onClick={()=>editLoan(data.loanId)}>
                 <span>
                     <FontAwesomeIcon icon="edit" />
                 </span>
@@ -55,7 +54,7 @@ function LDE() {
     const deleteButton = (data) =>
     {
         return(
-            <button className='btn btn-danger' onClick={()=>deleteLoan(data.lid)}>
+            <button className='btn btn-danger' onClick={()=>deleteLoan(data.loanId)}>
                 <span>
                     <FontAwesomeIcon icon="trash" />
                 </span>
@@ -83,9 +82,9 @@ function LDE() {
                         {loans&&loans.map(
                                 loan => 
                                 <tr key={loan.id}>
-                                    <td> {loan.lid} </td>
-                                    <td> {loan.type} </td>
-                                    <td> {loan.dur} </td>
+                                    <td> {loan.loanId} </td>
+                                    <td> {loan.loanType} </td>
+                                    <td> {loan.durationInYears} </td>
                                     <td>
                                         {editButton(loan)}
                                         &nbsp;

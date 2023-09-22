@@ -6,27 +6,27 @@ class ItemService {
 
     static getItems()
     {
-        return axios.get(IRA_URL);
+        return axios.get(IRA_URL+'/getItem');
     }
 
     static addItem(item)
     {
-        return axios.post(IRA_URL, item);
+        return axios.post(IRA_URL+'/addItem', item);
     }
 
     static getItemById(itemId)
     {
-        return axios.get(IRA_URL+'/'+itemId);
+        return axios.get(IRA_URL+'/getItem/'+itemId);
     }
 
     static updateItem(item, itemId)
     {
-        return axios.put(IRA_URL+'/'+itemId, item);
+        return axios.put(IRA_URL+'/addItem/'+itemId, item);
     }
 
     static deleteItem(itemId)
     {
-        return axios.delete(IRA_URL+'/'+itemId);
+        return axios.delete(IRA_URL+'/deleteItem/'+itemId);
     }
 }
 

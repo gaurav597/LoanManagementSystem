@@ -6,27 +6,27 @@ class LoanService {
 
     static getLoans()
     {
-        return axios.get(LRA_URL);;
+        return axios.get(LRA_URL+'/getLoan');
     }
 
-    static createLoans(loan)
+    static addLoan(loan)
     {
-        return axios.post(LRA_URL, loan);
+        return axios.post(LRA_URL+'/addLoan', loan);
     }
 
     static getLoanById(loanId)
     {
-        return axios.get(LRA_URL+'/'+loanId);
+        return axios.get(LRA_URL+'/getLoan/'+loanId);
     }
 
     static updateLoan(loan, loanId)
     {
-        return axios.put(LRA_URL+'/'+loanId, loan);
+        return axios.put(LRA_URL+'/addLoan/'+loanId, loan);
     }
 
     static deleteLoan(loanId)
     {
-        return axios.delete(LRA_URL+'/'+loanId);
+        return axios.delete(LRA_URL+'/deleteLoan/'+loanId);
     }
 }
 

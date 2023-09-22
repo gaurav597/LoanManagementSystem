@@ -3,9 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import CustomerService from "../../services/CDS";
-import AdminDashboard from './AdminDashboard';
 import { useNavigate, useParams} from 'react-router-dom';
 import moment from "moment"
 
@@ -27,20 +25,22 @@ export default function AddCustomer()
         if(id!=='_add')
         {
             const Response = CustomerService.getCustomerById(id).then((Response)=>{
-                setName(Response.name);
-                setDsg(Response.dsg);
-                setDept(Response.dept);
-                setGdr(Response.gdr);
-                setDob(Response.dob);
-                setDoj(Response.doj);
-                setPassword(Response.password);
+                setEmpId(Response.data.employeeId)
+                setName(Response.data.employeeName);
+                setDsg(Response.data.designation);
+                setDept(Response.data.department);
+                setGdr(Response.data.gender);
+                setDob(Response.data.dateOfBirth);
+                setDoj(Response.data.dateOfJoin);
+                setPassword(Response.data.password);
+                console.log('lol', Response);
             });
         }
     }, [id]);
 
     const saveOrUpdateCustomer = (event) => {
         event.preventDefault();
-        const customer = {empId, name, password, dsg, dept, gdr, dob, doj};
+        const customer = {"employeeId": empId, "employeeName": name, "password": password, "gender": gdr, "dateOfBirth": dob, "dateOfJoin": doj, "designation": dsg, "department": dept};
 
         if(id==='_add')
         {
@@ -51,6 +51,7 @@ export default function AddCustomer()
         }
         else
         {
+            console.log("lol", customer);
             CustomerService.updateCustomer(customer, id).then(()=>{
                 navigate('/CDE');
             });
@@ -135,7 +136,7 @@ export default function AddCustomer()
                            
                         </Form.Group> */}
                             <Form.Label>Designation</Form.Label>
-                            <Form.Select aria-label="Default select example" defaultValue={dsg} onChange={changeDsgHandler}>
+                            <Form.Select aria-label="Default select example" value={dsg} onChange={changeDsgHandler}>
                                 <option value="Manager">Manager</option>
                                 <option value="SDE1">SDE1</option>
                                 <option value="SDE2">SDE2</option>
@@ -161,7 +162,7 @@ export default function AddCustomer()
                         <Col>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Department</Form.Label>
-                                <Form.Select aria-label="Default select example" defaultValue={dept} onChange={changeDeptHandler}>
+                                <Form.Select aria-label="Default select example" value={dept} onChange={changeDeptHandler}>
                                     <option value="Finance">Finance</option>
                                     <option value="HR">HR</option>
                                     <option value="Sales">Sales</option>
@@ -180,7 +181,7 @@ export default function AddCustomer()
                         <Col>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Gender</Form.Label>
-                                <Form.Select aria-label="Default select example" defaultValue={gdr} onChange={changeGdrHandler}>
+                                <Form.Select aria-label="Default select example" value={gdr} onChange={changeGdrHandler}>
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
                                     <option value="O">Other</option>

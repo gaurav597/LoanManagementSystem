@@ -16,11 +16,10 @@ function CDE() {
     }, []);
 
     const fetchCustomerData = () => {
-        // CustomerService.getCustomers().then((Response) => {
-        //     console.log(Response.data);
-        //     setCustomers(Response.data);
-        // })
-        setCustomers(CustomerService.getCustomers().data)
+        CustomerService.getCustomers().then((Response) => {
+            console.log(Response.data);
+            setCustomers(Response.data);
+        })
     }
 
     const addCustomer = () => {
@@ -45,7 +44,7 @@ function CDE() {
     const editButton = (data) =>
     {
         return(
-            <button className='btn btn-success' onClick={()=>editCustomer(data.eid)}>
+            <button className='btn btn-success' onClick={()=>editCustomer(data.employeeId)}>
                 <span>
                     <FontAwesomeIcon icon="edit" />
                 </span>
@@ -56,7 +55,7 @@ function CDE() {
     const deleteButton = (data) =>
     {
         return(
-            <button className='btn btn-danger' onClick={()=>deleteCustomer(data.eid)}>
+            <button className='btn btn-danger' onClick={()=>deleteCustomer(data.employeeId)}>
                 <span>
                     <FontAwesomeIcon icon="trash" />
                 </span>
@@ -88,13 +87,13 @@ function CDE() {
                         {customers&&customers.map(
                                 cust => 
                                 <tr key={cust.id}>
-                                    <td> {cust.eid} </td>
-                                    <td> {cust.name} </td>
-                                    <td> {cust.dsg} </td>
-                                    <td> {cust.dept} </td>
-                                    <td> {cust.gdr} </td>
-                                    <td> {cust.dob} </td>
-                                    <td> {cust.doj} </td>
+                                    <td> {cust.employeeId} </td>
+                                    <td> {cust.employeeName} </td>
+                                    <td> {cust.designation} </td>
+                                    <td> {cust.department} </td>
+                                    <td> {cust.gender} </td>
+                                    <td> {cust.dateOfBirth} </td>
+                                    <td> {cust.dateOfJoining} </td>
                                     <td>
                                         {editButton(cust)}
                                         &nbsp;

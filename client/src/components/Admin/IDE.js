@@ -16,11 +16,11 @@ function IDE() {
     }, []);
 
     const fetchItemData = () => {
-        // CustomerService.getCustomers().then((Response) => {
-        //     console.log(Response.data);
-        //     setCustomers(Response.data);
-        // })
-        setItems(ItemService.getItems().data)
+        ItemService.getItems().then((Response) => {
+            console.log(Response.data);
+            setItems(Response.data);
+        })
+        // setItems(ItemService.getItems().data)
     }
 
     const addItem = () => {
@@ -28,7 +28,7 @@ function IDE() {
     }
 
     const editItem = (id) => {
-        history(`/editItem/${id}`); //Navigates to CreateCustomer component and passes 'id' as parameter.
+        history(`/addItem/${id}`); //Navigates to CreateCustomer component and passes 'id' as parameter.
     }
 
     const deleteItem = (id) => {
@@ -45,7 +45,7 @@ function IDE() {
     const editButton = (data) =>
     {
         return(
-            <button className='btn btn-success' onClick={()=>editItem(data.iid)}>
+            <button className='btn btn-success' onClick={()=>editItem(data.itemId)}>
                 <span>
                     <FontAwesomeIcon icon="edit" />
                 </span>
@@ -56,7 +56,7 @@ function IDE() {
     const deleteButton = (data) =>
     {
         return(
-            <button className='btn btn-danger' onClick={()=>deleteItem(data.iid)}>
+            <button className='btn btn-danger' onClick={()=>deleteItem(data.itemId)}>
                 <span>
                     <FontAwesomeIcon icon="trash" />
                 </span>
@@ -87,12 +87,12 @@ function IDE() {
                         {items&&items.map(
                                 item => 
                                 <tr key={item.id}>
-                                    <td> {item.iid} </td>
-                                    <td> {item.desc} </td>
-                                    <td> {item.status} </td>
-                                    <td> {item.make} </td>
-                                    <td> {item.ctg} </td>
-                                    <td> {item.val} </td>
+                                    <td> {item.itemId} </td>
+                                    <td> {item.itemDescription} </td>
+                                    <td> {item.issueStatus} </td>
+                                    <td> {item.itemMake} </td>
+                                    <td> {item.itemCategory} </td>
+                                    <td> {item.itemValuation} </td>
                                     <td>
                                         {editButton(item)}
                                         &nbsp;

@@ -12,28 +12,28 @@ function AddLoan()
   const {id} = useParams();
 
   const [loanId, setLoanId] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("Furniture");
   const [dur, setDur] = useState(0);
 
 useEffect(()=>{
   if(id!=='_add')
   {
     const Response = LoanService.getLoanById(id).then((Response)=>{
-      setLoanId(Response.lid);
-      setType(Response.type);
-      setDur(Response.dur);
+      setLoanId(Response.data.loanId);
+      setType(Response.data.loanType);
+      setDur(Response.data.durationInYears);
     });
   }
 }, [id]);
 
 const saveOrUpdateLoan = (event) => {
   event.preventDefault();
-  const loan = {loanId, type, dur};
+  const loan = {"loanId": loanId, "loanType": type, "durationInYears": dur};
 
   if(id==='_add')
   {
     LoanService.addLoan(loan).then((Response)=>{
-      console.log(Response)
+      console.log("lol", Response)
     })
     navigate('/LDE');
   }
@@ -78,7 +78,7 @@ const getTitle = () => {
             <Form.Control type="text" value={loanId} onChange={changeIdHandler} />
           </Form.Group>
           <Form.Label>Loan Type</Form.Label>
-          <Form.Select aria-label="Default select example" defaultValue={type} onChange={changeTypeHandler}>
+          <Form.Select aria-label="Default select example" value={type} onChange={changeTypeHandler}>
             <option value="Furniture">Furniture</option>
             <option value="Stationary">Stationary</option>
             <option value="Crockery">Crockery</option>

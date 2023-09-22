@@ -14,23 +14,19 @@ public class EmployeeService {
     @Autowired
     private  EmployeeRepository erepo;
 
-    public EmployeeMaster registerEmployee(EmployeeMaster e)
-    {
-        return erepo.save(e);
-    }
-
-    public Optional<EmployeeMaster> loginEmployee(String id)
+    public Optional<EmployeeMaster> getEmployee(String id)
     {
         return erepo.findById(id); //Invokes custom method
     }
 
-    public void addEmployee(EmployeeMaster e){
-        erepo.save(e);
+    public EmployeeMaster addEmployee(EmployeeMaster e){
+        return erepo.save(e);
     }
 
-    public List<EmployeeMaster> getEmployee(){
+    public List<EmployeeMaster> getEmployees(){
         return erepo.findAll();
     }
+   
 
     public void deleteEmployee(String empId){
         erepo.deleteById(empId);
