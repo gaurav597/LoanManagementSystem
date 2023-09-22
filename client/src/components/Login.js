@@ -20,20 +20,19 @@ const Login = () => {
     const employee = { employeeId, password };
     try {
       const loginSuccess = await AuthenticationService.login(employee);
-      console.log("API Response", loginSuccess.data);
-      if (loginSuccess) {
-        console.log(loginSuccess);
+      if (loginSuccess[0]) {
         setSuccessmMg("Login Successful! Redirecting...");
         setTimeout(() => {
-          //history('/dashboard') // on successful login navigate to product component
-          history("/adminDashboard");
-          // history('/employeeDashboard')
+          if (loginSuccess[1] == "Manager") {
+            history("/adminDashboard", { state: employeeId });
+          }
+          else
+            history('/employeeDashboard')
         }, 500);
       } else {
         setErrorMsg("Invalid id or Password");
       }
     } catch (error) {
-      console.log("Login Error: ", error);
       setErrorMsg("Error occured during login");
     }
   };

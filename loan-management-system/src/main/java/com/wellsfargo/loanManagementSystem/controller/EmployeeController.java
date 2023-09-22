@@ -5,6 +5,7 @@ import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.model.LoanCardMaster;
 import com.wellsfargo.loanManagementSystem.repository.EmployeeRepository;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
+import org.antlr.v4.runtime.misc.Pair;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/login")
-    public Boolean loginDealer(@Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
+    public Pair<Boolean, String >loginDealer(@Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
     {
         Boolean isLoggedin = false;
 
@@ -59,7 +60,7 @@ public class EmployeeController {
             isLoggedin = true;
         }
 
-        return isLoggedin;
+        return new Pair <Boolean,String> (isLoggedin, employee.getDesignation());
     }
 
     @PostMapping("/addCustomer")
