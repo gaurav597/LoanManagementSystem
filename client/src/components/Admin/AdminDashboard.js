@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "../../styles/Navbar.css";
 import Header from "../Header";
 import Tab from "react-bootstrap/Tab";
@@ -10,6 +11,9 @@ import AddCustomer from "./AddCustomer";
 import AddItem from "./AddItem";
 import AddLoanCard from "./AddLoanCard";
 function AdminDashboard() {
+  const location = useLocation();
+  const data = location.state;
+  console.log(data);
   return (
     <div>
       <Header />

@@ -19,9 +19,8 @@ class AuthenticationService {
     static async login(dealer) {
         try {
             const response = await axios.post('http://localhost:8085/lms/api/login', dealer);
-            console.log("Rest API Resonse: ", response.data);
-            if (response.data === true) {
-                return true;
+            if (response.data.a === true) {
+                return [true, response.data.b];
             }
             else return false;
         }
