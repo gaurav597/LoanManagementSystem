@@ -8,8 +8,11 @@ import ItemPurchased from "./ItemPurchased";
 import NavBar from "../NavBar";
 import "../../styles/Navbar.css"
 import { useAuth } from "../../context/AuthContext";
+import { useLocation } from "react-router-dom";
 const EmployeeDashboard = () => {
   const auth = useAuth();
+  const location = useLocation();
+  const data = location.state;
   return (
     <div>
       <NavBar />
@@ -19,16 +22,13 @@ const EmployeeDashboard = () => {
         className="mb-3 navbar justify-content-center tabBg"
       >
         <Tab eventKey="viewLoans" title="View Loans">
-        <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
-          <ViewLoans />
+          <ViewLoans id={auth.user} des={data[0]} dept={data[1]} />
         </Tab>
         <Tab eventKey="applyLoans" title="Apply Loans">
-        <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <ApplyLoan />
         </Tab>
         <Tab eventKey="itemsPurchased" title="View Items Purchased">
-        <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
-          <ItemPurchased />
+          <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} />
         </Tab>
       </Tabs>
     </div>

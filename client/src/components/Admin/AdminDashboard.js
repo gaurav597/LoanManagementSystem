@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "../../styles/Navbar.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -13,7 +13,6 @@ import { useAuth } from "../../context/AuthContext";
 import NavBar from "../NavBar";
 import "../../styles/Navbar.css"
 function AdminDashboard() {
-  const history = useNavigate();
   const location = useLocation();
   const data = location.state;
   console.log(data);

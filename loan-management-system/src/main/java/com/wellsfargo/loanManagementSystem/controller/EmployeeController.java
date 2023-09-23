@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/login")
-    public Pair<Boolean, String >loginDealer(@Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
+    public Pair<Boolean, String[] >loginDealer(@Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
     {
         Boolean isLoggedin = false;
 
@@ -59,8 +59,8 @@ public class EmployeeController {
         {
             isLoggedin = true;
         }
-
-        return new Pair <Boolean,String> (isLoggedin, employee.getDesignation());
+        String [] arr =new String [] {employee.getDesignation(), employee.getDepartment()};
+        return new Pair <Boolean,String[]> (isLoggedin, arr);
     }
 
     @PostMapping("/addCustomer")
