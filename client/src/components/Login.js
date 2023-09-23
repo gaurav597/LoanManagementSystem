@@ -102,7 +102,7 @@ const Login = () => {
                 <div class="row mb-3 px-3">
                   <Button
                     style={{
-                      background: "#322333",
+                      background: "radial-gradient(circle, rgba(0, 135, 145, 1) 0%, rgba(30, 140, 96, 1) 61%, rgba(89, 179, 76, 1) 93%)"
                     }}
                     onClick={handleLogin}
                   >

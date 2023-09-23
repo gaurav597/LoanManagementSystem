@@ -22,7 +22,7 @@ library.add(faSign, faCameraRetro);
 function App() {
   return (
     <AuthProvider>
-      <div className="App bg1">
+      <div className="App bg">
         <section>
           <div style={{
             // backgroundImage: "url(/images/loan-bg.jpg)",
