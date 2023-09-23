@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,18 +6,28 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ApplyLoanService from "../../services/ApplyLoanService";
 import EmployeeDashboard from "./EmployeeDashboard";
+import ItemMasterService from "../../services/ItemMasterService";
 
 export default function ApplyLoan() {
   const [itemId, setItemId] = useState("");
-  const [itemCategory, setItemCategory] = useState("Furniture");
+  const [itemCategory, setItemCategory] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [itemValue, setItemValue] = useState("");
   const [issueStatus, setIssueStatus] = useState("Y");
-  const [itemMake, setItemMake] = useState("Wodden");
+  const [itemMake, setItemMake] = useState("");
   const [issueId, setIssueId] = useState("");
   const [employeeId, setEmployeeId] = useState("");
   const [issueDate, setIssueDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [itemIds, setItemIds] = useState([]);
+
+  useEffect(()=>{
+    ItemMasterService.getItemIds().then((response)=>{
+      setItemIds(response.data);
+    })
+   
+
+  })
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,8 +39,6 @@ export default function ApplyLoan() {
       itemCategory,
       issueId,
       employeeId,
-      issueDate,
-      returnDate,
       itemValuation: itemValue
     }
 
@@ -38,9 +46,26 @@ export default function ApplyLoan() {
 
   }
 
+  function handleItemIds(item) {
+    console.log("hi there");
+    console.log(item);
+    ItemMasterService.getItemData(item).then((response)=>{
+      setItemId(item)
+      setItemCategory(response.data.itemCategory);
+      setItemDescription(response.data.itemDescription);
+      setItemMake(response.data.itemMake);
+      setItemValue(response.data.itemValuation);
+      setIssueStatus(response.data.issueStatus);
+      console.log(response.data);
+    })
+    // ItemMasterService.getItemData(item).then((response)=>{
+    //   console.log(response);
+    // });
+  }
+
 
   return (
-    <div className="container">
+    <div className="container" style={{backgroundColor:"white"}}>
       <h1>Apply for Loan</h1>
       <Container fluid="md">
         <Form>
@@ -75,28 +100,24 @@ export default function ApplyLoan() {
           </Row>
           <Row>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
+            <Form.Label>Item Id</Form.Label>
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => handleItemIds(e.target.value)}
               >
-                <Form.Label>Item Id</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={itemId}
-                  onChange={(e) => setItemId(e.target.value)}
-                />
-              </Form.Group>
+              <option>Select Item Id</option>
+                {itemIds.map((item)=>(
+                  <option value={item}>{item}</option>
+                ))}
+              </Form.Select>
             </Col>
             <Col>
               <Form.Label>Item Category</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setItemCategory(e.target.value)}
-              >
-                <option value="Furniture">Furniture</option>
-                <option value="Stationary">Stationary</option>
-                <option value="Crockery">Crockery</option>
-              </Form.Select>
+              <Form.Control
+                  readOnly
+                  type="text"
+                  value={itemCategory}
+                />
             </Col>
           </Row>
           <Row>
@@ -107,6 +128,7 @@ export default function ApplyLoan() {
               >
                 <Form.Label>Item Description</Form.Label>
                 <Form.Control
+                  readOnly
                   type="text"
                   value={itemDescription}
                   onChange={(e) => setItemDescription(e.target.value)}
@@ -120,6 +142,7 @@ export default function ApplyLoan() {
               >
                 <Form.Label>Item value</Form.Label>
                 <Form.Control
+                  readOnly
                   type="text"
                   value={itemValue}
                   onChange={(e) => setItemValue(e.target.value)}
@@ -134,56 +157,20 @@ export default function ApplyLoan() {
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Issue Status</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  onChange={(e) => setIssueStatus(e.target.value)}
-                >
-                  <option value="Y">Yes</option>
-                  <option value="N">No</option>
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Item Make</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  onChange={(e) => setItemMake(e.target.value)}
-                >
-                  <option value="Wodden">Wodden</option>
-                  <option value="Plastic">Plastic</option>
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Issue Date</Form.Label>
                 <Form.Control
-                  type="date"
-                  value={issueDate}
-                  onChange={(e) => setIssueDate(e.target.value)}
+                readOnly
+                  type="text"
+                  value={issueStatus}
                 />
               </Form.Group>
             </Col>
-
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Return Date</Form.Label>
+            <Form.Group>
+                <Form.Label>Item Make</Form.Label>
                 <Form.Control
-                  type="date"
-                  value={returnDate}
-                  onChange={(e) => setReturnDate(e.target.value)}
+                  readOnly
+                  type="text"
+                  value={itemMake}
                 />
               </Form.Group>
             </Col>

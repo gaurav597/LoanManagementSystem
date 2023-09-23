@@ -26,8 +26,7 @@ public class LoanCardController {
 	@Autowired
 	LoanCardService loanCardService;
 
-	@Autowired
-	ItemCardService itemCardService;
+
 
 	@Autowired
 	EmployeeCardService empCardService;
@@ -38,11 +37,7 @@ public class LoanCardController {
 		return "Loan card Added";
 	}
 
-	@PostMapping(value = "/addItemData")
-	public String addItemData(@Validated @RequestBody ItemMaster itemMaster) {
-		itemCardService.addItemData(itemMaster);
-		return "Item added";
-	}
+
 
 	@GetMapping("/getLoanData")
 	public ResponseEntity<List<LoanCardMaster>> getCustomer() {
@@ -50,15 +45,13 @@ public class LoanCardController {
 		return new ResponseEntity<List<LoanCardMaster>>(l, HttpStatus.OK);
 	}
 
-	@GetMapping("/getItemData")
-	public ResponseEntity<List<ItemMaster>> getItem() {
-		List<ItemMaster> i = itemCardService.getItemData();
-		return new ResponseEntity<List<ItemMaster>>(i, HttpStatus.OK);
-	}
+
 
 	@PostMapping(value="/applyLoan")
 	public String applyLoan(@RequestBody Map<String, Object> payload) throws Exception{
-		itemCardService.applyLoan(payload);
+		System.out.println(payload);
+		loanCardService.applyLoan(payload);
+//		itemCardService.applyLoan(payload);
 		return  "loan applied";
 	}
 

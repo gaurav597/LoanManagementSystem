@@ -10,8 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "loancards", path = "loancards")
+@Repository
 public interface LoanCardRepository extends JpaRepository<LoanCardMaster, String> {
 
 	@Query("SELECT new com.wellsfargo.loanManagementSystem.model.LoanCardAndEmpCardProjection"
@@ -19,4 +20,8 @@ public interface LoanCardRepository extends JpaRepository<LoanCardMaster, String
 			+ "e.cardIssueDate)"
 			+ "FROM LoanCardMaster l JOIN l.loanEmpCardDetails e where e.employeeId = :employeeId")
 	List<LoanCardAndEmpCardProjection> findSelectedFieldsFromLoanAndEmpCards(@Param("employeeId") String employeeId);
+
+//	@Query("SELECT *"
+//	+ "FROM LoanCardMaster l  where l.loanType = :loanType")
+//    List<LoanCardMaster> findByLoanType(@Param("loanType") String loanType);
 }

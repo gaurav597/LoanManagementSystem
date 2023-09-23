@@ -1,7 +1,9 @@
 package com.wellsfargo.loanManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.ManyToAny;
@@ -27,9 +29,11 @@ public class EmployeeMaster {
     private LocalDate dateOfJoin;
     private String designation;
     private String department;
-    @OneToMany(mappedBy = "employeeId")
+
+    @OneToMany(mappedBy = "employeeId", cascade = CascadeType.ALL)
     private List<EmployeeCardDetails> employeeCardDetailsList ;
-    @OneToMany(mappedBy = "employeeId")
+
+    @OneToMany(mappedBy = "employeeId",cascade = CascadeType.ALL)
     private List<EmployeeIssueDetails> employeeIssueDetailsList;
 
 

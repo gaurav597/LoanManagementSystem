@@ -34,10 +34,21 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/register" element={<Registration />} />
                 <Route path="/login" element={<Login />} />
-
+{/* 
                 <Route path="/employeeDashboard" element={<RequireAuth><EmployeeDashboard /></RequireAuth>} />
                 <Route path="/viewLoans" element={<RequireAuth><ViewLoans /></RequireAuth>} />
                 <Route path="/applyLoan" element={<RequireAuth><ApplyLoan /></RequireAuth>} />
+                <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
+
+                <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
+                <Route path="/customerDataManagement" element={<RequireAuth><CustomerDataManagement /></RequireAuth>} />
+                <Route path="/addCustomer" element={<RequireAuth><AddCustomer /></RequireAuth>} />
+                <Route path="/loanCardManagement" element={<RequireAuth><LoanCardManagement /></RequireAuth>} />
+                <Route path="/itemsMasterData" element={<RequireAuth><ItemsMasterData /></RequireAuth>} />
+                <Route path="/editCustomer" element={<RequireAuth><EditCustomer /></RequireAuth>} /> */}
+                <Route path="/employeeDashboard" element={<EmployeeDashboard />}/>
+                <Route path="/viewLoans" element={<RequireAuth><ViewLoans /></RequireAuth>} />
+                <Route path="/applyLoan" element={<ApplyLoan />} />
                 <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
                 <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
