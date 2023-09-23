@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import EmployeeDashboard from "./EmployeeDashboard";
+import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 
-const ViewLoans = () => {
-  const history = useNavigate();
+const ViewLoans = (props) => {
   const [loans, setLoans] = useState([]);
-
   useEffect(() => {
     fetchLoans();
   }, []);
@@ -25,7 +22,21 @@ const ViewLoans = () => {
         <h3>Loan Cards Availed</h3>
       </div>
       <br />
+
       <div className="row justify-content-center">
+
+        <div class="row d-flex text-center" style={{ color: "white", display: "flex", justifyContent: "center" }}>
+          <div class="col-lg-4" style={{ justifyContent: "center" }}>
+            <span style={{ fontSize: "16px" }}><b>Employee ID: {props['id']}</b></span>
+          </div>
+          <div class="col-lg-4">
+            <span style={{ fontSize: "16px" }}><b>Designation: {props['des']}</b></span>
+          </div>
+          <div class="col-lg-4">
+            <span style={{ fontSize: "16px" }}><b>Department: {props['dept']}</b></span>
+          </div>
+        </div>
+        <br /><br /><br />
         <Table striped bordered hover style={{ width: "50%" }}>
           <thead>
             <tr>

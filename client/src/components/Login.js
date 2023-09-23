@@ -25,11 +25,11 @@ const Login = () => {
         setSuccessmMg("Login Successful! Redirecting...");
         auth.login(employeeId);
         setTimeout(() => {
-          if (loginSuccess[1] == "Manager") {
-            history("/adminDashboard", { state: employeeId }, { replace: true });
+          if (loginSuccess[1][0] == "Manager") {
+            history("/adminDashboard", { state: loginSuccess[1] }, { replace: true });
           }
           else
-            history('/employeeDashboard')
+            history('/employeeDashboard', { state: loginSuccess[1] }, { replace: true });
         }, 500);
       } else {
         setErrorMsg("Invalid id or Password");
