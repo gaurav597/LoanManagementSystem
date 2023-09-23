@@ -1,6 +1,10 @@
 package com.wellsfargo.loanManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -26,13 +30,10 @@ public class ItemMaster {
 
     private String itemCategory;
     private Integer itemValuation;
-    @OneToMany(mappedBy = "itemId")
+
+
+    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL)
     private List<EmployeeIssueDetails> employeeIssueDetails ;
 
-    public void addIssue(EmployeeIssueDetails employeeIssueDetails){
-        if(this.employeeIssueDetails!= null)
-            this.employeeIssueDetails.add(employeeIssueDetails);
-        else
-            this.employeeIssueDetails = new ArrayList<EmployeeIssueDetails>();
-    }
+
 }
