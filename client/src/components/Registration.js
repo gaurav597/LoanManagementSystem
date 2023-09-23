@@ -15,12 +15,14 @@ const Registration = () => {
     dateOfBirth: "",
     dateOfJoin: "",
     designation: "",
+    department: "",
   });
   const [errors, setErrors] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name,value)
     if (name.includes(".")) {
       const [parent, child] = name.split(".");
       setDealer((prevDealer) => ({
@@ -98,8 +100,6 @@ const Registration = () => {
 
     if (!dealer.designation) {
       validationErrors.designation = "Designation is required";
-    } else if (!/^[a-zA-Z]*$/.test(dealer.designation)) {
-      validationErrors.designation = "Enter Alphabets Only";
     }
 
     if (!dealer.confirmPassword) {
@@ -109,6 +109,9 @@ const Registration = () => {
     }
     if (!dealer.gender) {
       validationErrors.gender = "Gender is required";
+    }
+    if (!dealer.department) {
+      validationErrors.department = "Department is required";
     }
 
     return validationErrors;
@@ -221,7 +224,7 @@ const Registration = () => {
                         </div>
                       </div>
                       <div class="row d-flex">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                           <label>Designation</label>
                           <input
                             type="text"
@@ -235,6 +238,30 @@ const Registration = () => {
                             <p className="error-message">
                               {errors.designation}
                             </p>
+                          )}
+                        </div>
+                      </div>
+                      <div class="row d-flex">
+                        <div class="col-lg-6">
+                          <Form.Group
+                            className="mb-4"
+                            controlId="exampleForm.ControlInput1"
+                          >
+                            <Form.Label>Department</Form.Label>
+                            <Form.Select
+                              onChange={handleChange}
+                              style={{ height: "20%" }}
+                              name="department"
+                            >
+                              <option value=""></option>
+                              <option value="Engineering">Engineering</option>
+                              <option value="Operations">Operations</option>
+                              <option value="Accounting">Accounting</option>
+                              <option value="Human Resources">Human Respurces</option>
+                            </Form.Select>
+                          </Form.Group>
+                          {errors.department && (
+                            <p className="error-message">{errors.department}</p>
                           )}
                         </div>
                         <div class="col-lg-6">
