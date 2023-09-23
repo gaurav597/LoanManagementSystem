@@ -11,6 +11,7 @@ import AddItem from "./AddItem";
 import AddLoanCard from "./AddLoanCard";
 import { useAuth } from "../../context/AuthContext";
 import NavBar from "../NavBar";
+import "../../styles/Navbar.css"
 function AdminDashboard() {
   const history = useNavigate();
   const location = useLocation();
@@ -20,20 +21,20 @@ function AdminDashboard() {
   return (
     <div>
       <NavBar />
-      <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
       <Tabs
         defaultActiveKey="custDataMgmt"
         id="uncontrolled-tab-example"
-        className="mb-3 navbar justify-content-center"
-        style={{ background: "#780078" }}
-      >
+        className="mb-3 navbar justify-content-center tabBg">
         <Tab eventKey="custDataMgmt" title="Customer Data Management">
+          <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <AddCustomer />
         </Tab>
         <Tab eventKey="loanCardMgmt" title="Loan Card Management">
+          <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <AddLoanCard />
         </Tab>
         <Tab eventKey="itemsMasterCard" title="Items Master Data">
+          <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <AddItem />
         </Tab>
       </Tabs>

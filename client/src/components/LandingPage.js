@@ -14,8 +14,9 @@ const LandingPage = () => {
                 <br /> <br /> <br /> <br />
                 <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                   <img
-                    src="https://png.pngtree.com/png-vector/20190615/ourmid/pngtree-helpcash-outdebtfinanceloan-flat-color-icon-vector-png-image_1485599.jpg"
-                    class="image"
+                    src="images\img-back.png"
+                    width="290px"
+                    height="230px"
                   />
                 </div>
                 <br /> <br /> <br />
