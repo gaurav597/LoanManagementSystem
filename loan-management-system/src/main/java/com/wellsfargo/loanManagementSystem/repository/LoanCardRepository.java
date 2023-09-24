@@ -24,4 +24,7 @@ public interface LoanCardRepository extends JpaRepository<LoanCardMaster, String
 //	@Query("SELECT *"
 //	+ "FROM LoanCardMaster l  where l.loanType = :loanType")
 //    List<LoanCardMaster> findByLoanType(@Param("loanType") String loanType);
+
+	@Query(value = "SELECT * FROM LOAN_CARD_MASTER  WHERE LOAN_TYPE= :loanType", nativeQuery = true)
+	List<LoanCardMaster> getLoanCard(@Param("loanType") String loanType);
 }

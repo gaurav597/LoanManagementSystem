@@ -17,7 +17,6 @@ public class LoanCardMaster {
     private String loanId;
     private String loanType;
     private Integer durationInYears;
-
     @OneToMany(mappedBy = "loanId",cascade = CascadeType.ALL)
     private List<EmployeeCardDetails> loanEmpCardDetails;
 }

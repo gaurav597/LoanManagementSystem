@@ -41,71 +41,55 @@ public class LoanCardService {
 	EmployeeRepository eRepo;
 	@Autowired
 	EmployeeCardDetailsRepository eCardrepo;
+
+	@Autowired
+	LoanCardAndEmpCardProjectionRepository laeRepo;
 	public void applyLoan(Map<String, Object> payload)throws Exception {
 		EmployeeIssueDetails eissue= new EmployeeIssueDetails();
 		eissue.setIssueId((String)payload.get("issueId"));
 		ItemMaster i = itemRepo.findById((String) payload.get("itemId"))
 				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
 		eissue.setItemId(i);
+
 		EmployeeMaster e = eRepo.findById((String) payload.get("employeeId"))
 				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
 		eissue.setEmployeeId(e);
 		issueRepo.save(eissue);
 
+		List<EmployeeIssueDetails> eissuelist = i.getEmployeeIssueDetails();
+		eissuelist.add(eissue);
+		i.setEmployeeIssueDetails(eissuelist);
+		itemRepo.save(i);
+
+		List<EmployeeIssueDetails> eissuelist1 = e.getEmployeeIssueDetailsList();
+		eissuelist1.add(eissue);
+		e.setEmployeeIssueDetailsList(eissuelist1);
+		eRepo.save(e);
+
 
 		EmployeeCardDetails ecard = new EmployeeCardDetails();
-		ecard.setCardId("123456");
+		ecard.setCardId((String)payload.get("issueId"));
+		EmployeeMaster e1 = eRepo.findById((String) payload.get("employeeId"))
+				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
+		ecard.setEmployeeId(e1);
 		ecard.setCardIssueDate(LocalDate.now());
+		LoanCardMaster l = loanRepo.getLoanCard((String) payload.get("itemCategory")).get(0);
+		ecard.setLoanId(l);
 		eCardrepo.save(ecard);
-//		LoanCardMaster l = loanRepo.findById("123")
-//				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
-//		EmployeeCardDetails ecard = new EmployeeCardDetails("123",e,l,LocalDate.now());
-//		ecard.setCardId((String)payload.get("issueId"));
-//		ecard.setCardIssueDate(LocalDate.now());
-//		LoanCardMaster l = loanRepo.findById("123")
-//				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
-//		ecard.setLoanId(l);
-//		eCardrepo.save(ecard);
-//		System.out.println(ecard);
 
-//		ecard.setCardId("1");
-//		ecard.setEmployeeId(e);
-//		ecard.setCardIssueDate(LocalDate.now());
-////		LoanCardMaster l = loanRepo.findByLoanType((String) payload.get("itemCategory")).get(0);
-////		ecard.setLoanId(l);
-//		eCardrepo.save(ecard);
-
-
-
-
-//		DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-//				.parseCaseInsensitive()
-//				.appendPattern("yyyy-MM-dd")
-//				.toFormatter(Locale.ENGLISH);
-//
-//
-//		LocalDate issueDate = LocalDate.parse((String) payload.get("issueDate"), formatter);
-//		LocalDate returnDate = LocalDate.parse((String) payload.get("returnDate"), formatter);
-//		System.out.println(payload.get("itemDescription"));
-//		System.out.println(payload);
-//		ItemMaster itemMaster = new ItemMaster();
-//		itemMaster.setItemId((String) payload.get("itemId"));
-//		itemMaster.setItemDescription((String) payload.get("itemDescription"));
-//		itemMaster.setIssueStatus(((String) payload.get("issueStatus")).charAt(0));
-//		itemMaster.setItemMake((String) payload.get("itemMake"));
-//		itemMaster.setItemValuation(Integer.parseInt((String) payload.get("itemValuation")));
-//		itemMaster.setItemCategory((String) payload.get("itemCategory"));
-//
-//
-//		EmployeeIssueDetails employeeIssueDetails = new EmployeeIssueDetails();
-//		employeeIssueDetails.setIssueId((String) payload.get("issueId"));
-//		employeeIssueDetails.setEmployeeId(employeeRepository.findById((String) payload.get("employeeId")).orElse(new EmployeeMaster()));
-//		employeeIssueDetails.setItemId(itemRepo.findById((String) payload.get("itemId")).orElse(new ItemMaster()));
-//		employeeIssueDetails.setIssueDate(issueDate);
-//		employeeIssueDetails.setReturnDate(returnDate);
-//		itemMaster.addIssue(employeeIssueDetails);
-//		employeeIssueDetailsRepository.save(employeeIssueDetails);
-//		itemRepo.save(itemMaster);
-
+		List<EmployeeCardDetails> ecardlist = e1.getEmployeeCardDetailsList();
+		ecardlist.add(ecard);
+		e1.setEmployeeCardDetailsList(ecardlist);
+		eRepo.save(e1);
+		List<EmployeeCardDetails> ecardlist2 = l.getLoanEmpCardDetails();
+		ecardlist2.add(ecard);
+		l.setLoanEmpCardDetails(ecardlist2);
+		loanRepo.save(l);
+		LoanCardAndEmpCardProjection lae = new LoanCardAndEmpCardProjection();
+		lae.setLoanId(l.getLoanId());
+		lae.setLoanType(l.getLoanType());
+		lae.setCardIssueDate(ecard.getCardIssueDate());
+		lae.setDurationInYears(l.getDurationInYears());
+		laeRepo.save(lae);
 	}
 	}
