@@ -25,10 +25,10 @@ const EmployeeDashboard = () => {
           <ViewLoans id={auth.user} des={data[0]} dept={data[1]} />
         </Tab>
         <Tab eventKey="applyLoans" title="Apply Loans">
-          <ApplyLoan />
+          {/* <ApplyLoan /> */}
         </Tab>
         <Tab eventKey="itemsPurchased" title="View Items Purchased">
-          <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} />
+          {/* <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} /> */}
         </Tab>
       </Tabs>
     </div>

@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-
+import LoanService from "../../services/LoanService";
 const ViewLoans = (props) => {
   const [loans, setLoans] = useState([]);
   useEffect(() => {
-    fetchLoans();
+    LoanService.getLoanById(props['id']).then((response) => {
+      setLoans(response.data)
+    })
   }, []);
-
-  const fetchLoans = () => {
-    // LoanService.getLoanById().then((Response) => {
-    //     setProducts(Response.data); //setting response to state (products)
-    // })
-  };
   return (
     <div>
       <br />
@@ -47,20 +43,19 @@ const ViewLoans = (props) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1001</td>
-              <td>Housing</td>
-              <td>2</td>
-              <td>23/10/2022</td>
-            </tr>
-            {/* {loans.map((loan) => (
-              <tr key={loan.id}>
-                <td> {loan.id} </td>
-                <td> {loan.type} </td>
-                <td> {loan.duration} </td>
-                <td> {loan.IssueDt} </td>
+            {loans.map((loan, index) => (
+
+              <tr key={index} >
+
+                <td> {loan.loanId} </td>
+                <td> {loan.loanType} </td>
+                <td> {loan.durationInYears} </td>
+                <td> {loan.cardIssueDate} </td>
+
               </tr>
-            ))} */}
+
+
+            ))}
           </tbody>
         </Table>
       </div>

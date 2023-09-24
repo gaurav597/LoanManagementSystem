@@ -1,9 +1,10 @@
 import axios from "axios";
-const LOANS_REST_API_URL = "http://localhost:8085/lms/api/loans";
+const LOANS_REST_API_URL = "http://localhost:8085/lms/api/getEmpLoanData";
 
 class LoanService {
-  static getLoanById(loanIdId) {
-    return axios.get(LOANS_REST_API_URL + "/" + loanId);
+  static async getLoanById(empId) {
+    const res= await axios.get(LOANS_REST_API_URL + "/" + empId);
+    return res;
   }
 }
 
