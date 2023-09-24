@@ -1,5 +1,6 @@
 package com.wellsfargo.loanManagementSystem.controller;
 
+import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
 import com.wellsfargo.loanManagementSystem.model.EmployeeCardDetails;
 import com.wellsfargo.loanManagementSystem.model.EmployeeIssueDetails;
 import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -25,8 +27,6 @@ public class LoanCardController {
 
 	@Autowired
 	LoanCardService loanCardService;
-
-
 
 	@Autowired
 	EmployeeCardService empCardService;
@@ -37,24 +37,19 @@ public class LoanCardController {
 		return "Loan card Added";
 	}
 
-
-
 	@GetMapping("/getLoanData")
 	public ResponseEntity<List<LoanCardMaster>> getCustomer() {
 		List<LoanCardMaster> l = loanCardService.getLoanCardData();
 		return new ResponseEntity<List<LoanCardMaster>>(l, HttpStatus.OK);
 	}
 
-
-
-	@PostMapping(value="/applyLoan")
-	public String applyLoan(@RequestBody Map<String, Object> payload) throws Exception{
+	@PostMapping(value = "/applyLoan")
+	public String applyLoan(@RequestBody Map<String, Object> payload) throws Exception {
 		System.out.println(payload);
 		loanCardService.applyLoan(payload);
 //		itemCardService.applyLoan(payload);
-		return  "loan applied";
+		return "loan applied";
 	}
-
 
 	@PostMapping(value = "/addEmpCardDetails")
 	public String addEmpCardDetails(@Validated @RequestBody EmployeeCardDetails empCard) {
@@ -63,7 +58,7 @@ public class LoanCardController {
 	}
 
 	@GetMapping("/getEmpLoanData/{id}")
-	public ResponseEntity<List<LoanCardAndEmpCardProjection>> getLoanInfo(@PathVariable String id) {
+	public ResponseEntity<List<LoanCardAndEmpCardProjection>> getLoanInfo(@PathVariable(value = "id") String id) {
 		try {
 			List<LoanCardAndEmpCardProjection> selectedFields = loanCardService.getLoanInfo(id);
 			return ResponseEntity.ok(selectedFields);
@@ -73,4 +68,12 @@ public class LoanCardController {
 		}
 	}
 
+	@GetMapping("/viewLoans/{id}")
+	public ResponseEntity<LoanCardMaster> viewLoans(@PathVariable(value = "id") String id)
+			throws ResourceNotFoundException {
+		LoanCardMaster l = loanCardService.getLoanCardById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not found"));
+		return ResponseEntity.ok().body(l);
+
+	}
 }

@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LoanCardService {
@@ -33,6 +34,9 @@ public class LoanCardService {
 		return loanRepo.findAll();
 	}
 	
+	public Optional<LoanCardMaster> getLoanCardById(String id){
+		return loanRepo.findById(id);
+	}
 	public List<LoanCardAndEmpCardProjection> getLoanInfo(String id){
 		return loanRepo.findSelectedFieldsFromLoanAndEmpCards(id);
 	}
