@@ -9,7 +9,7 @@ import LoanCardDataManagement from './LoanCardDataManagement';
 function AddLoanCard() {
 
   const [loanId, setLoanId] = useState("");
-  const [loanType, setLoanType] = useState("");
+  const [loanType, setLoanType] = useState("Furniture");
   const [duration, setDuration] = useState(0);
 
   function handleSubmit(e) {

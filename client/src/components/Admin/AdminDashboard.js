@@ -30,11 +30,11 @@ function AdminDashboard() {
         </Tab>
         <Tab eventKey="loanCardMgmt" title="Loan Card Management">
           <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
-          {/* <AddLoanCard /> */}
+          <AddLoanCard />
         </Tab>
         <Tab eventKey="itemsMasterCard" title="Items Master Data">
           <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
-          {/* <AddItem /> */}
+          <AddItem />
         </Tab>
       </Tabs>
     </div>

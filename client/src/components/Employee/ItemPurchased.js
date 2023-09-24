@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EmployeeDashboard from "./EmployeeDashboard";
 import Table from "react-bootstrap/Table";
+import ItemMasterService from "../../services/ItemMasterService";
 
 const ItemPurchased = (props) => {
+  
+  const [data, setData] = useState([]);
+  useEffect(()=>{
+     ItemMasterService.getItemsPurchased(props['id']).then((res)=>{
+      setData(res.data);
+      console.log(res.data);
+     })
+  },[]);
+
+
   return (
      <div>
       <br />
