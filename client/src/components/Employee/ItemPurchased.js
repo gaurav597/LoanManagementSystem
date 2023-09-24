@@ -49,13 +49,15 @@ const ItemPurchased = (props) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1001</td>
-              <td>Tea Table</td>
-              <td>Wooden</td>
-              <td>Furniture</td>
-              <td>5000</td>
+            {data.map((item)=>(
+              <tr>
+              <td>{item.issueId}</td>
+              <td>{item.itemDescription}</td>
+              <td>{item.itemMake}</td>
+              <td>{item.itemCategory}</td>
+              <td>{item.itemValuation}</td>
             </tr>
+            ))}
             {/* {loans.map((loan) => (
               <tr key={loan.id}>
                 <td> {loan.id} </td>

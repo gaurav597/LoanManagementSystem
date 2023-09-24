@@ -187,13 +187,9 @@ function LoanCardDataManagement() {
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Employee Id</th>
-              <th scope="col">Employee Name</th>
-              <th scope="col">Designation</th>
-              <th scope="col">Department</th>
-              <th scope="col">gender</th>
-              <th scope="col">Date_of_Birth</th>
-              <th scope="col">Date_of_Joining</th>
+              <th scope="col">Loan Id</th>
+              <th scope="col">Loan Type</th>
+              <th scope="col">Duration</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
@@ -201,13 +197,9 @@ function LoanCardDataManagement() {
           <tbody>
             {employeeData.map((item) => (
               <tr>
-                <th scope="row">{item.employeeId}</th>
-                <td>{item.employeeName}</td>
-                <td>{item.designation}</td>
-                <td>{item.department}</td>
-                <td>{item.gender}</td>
-                <td>{item.dateOfBirth}</td>
-                <td>{item.dateOfJoin}</td>
+                <th scope="row">{item.loanId}</th>
+                <td>{item.loanType}</td>
+                <td>{item.duration}</td>
                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-custom" onClick={(e) => handleEdit(item)}>Edit</button></td>
                 <td onClick={(e) => handleDelete(item.employeeId)}>Delete</td>
               </tr>

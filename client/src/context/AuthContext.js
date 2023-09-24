@@ -8,12 +8,14 @@ export function useAuth() {
 }
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(localStorage.getItem("sessionId") || null);
 
     const login = (user) => {
+        localStorage.setItem("sessionId", user);
         setUser(user)
     }
     const logout = () => {
+        localStorage.removeItem("sessionId");
         setUser(null);
     }
 

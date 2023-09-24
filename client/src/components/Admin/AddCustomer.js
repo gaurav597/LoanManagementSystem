@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -17,9 +17,28 @@ export default function AddCustomer() {
     const [gender, setGender] = useState("M");
     const [password, setPassword] = useState("");
     const [edit, setEdit] = useState(false)
+    const [employeeData, setEmployeeData] = useState([]);
+    const [sc ,setSC] = useState(false);
+    useEffect(()=>{
+        CustomerService.getCustomer().then((res) => {
+            console.log(res.data);
+            setEmployeeData(res.data);
+            console.log(employeeData)
+          }).then(setSC(true));
+    },[]);
+
+    useEffect(()=>{
+        CustomerService.getCustomer().then((res) => {
+            console.log(res.data);
+            setEmployeeData(res.data);
+            console.log(employeeData)
+          }).then(setSC(true));
+    },[employeeData]);
+
 
 
     function handleSubmit(e) {
+        setSC(false);
         e.preventDefault();
         const customer = {
             "employeeId": empId,
@@ -32,7 +51,11 @@ export default function AddCustomer() {
             "designation": desig
         }
         const hi = CustomerService.addCustomer(customer).then((response) => { console.log(response) });
-
+        CustomerService.getCustomer().then((res) => {
+            console.log(res.data);
+            setEmployeeData(res.data);
+            console.log(employeeData)
+          })
         console.log(empId);
         console.log(desig);
         console.log(name);
@@ -144,7 +167,8 @@ export default function AddCustomer() {
                     </div>
                 </div>
             </div>
-            <CustomerDataManagement />
+
+            {sc?<CustomerDataManagement data={employeeData}/>:<></>}
         </React.Fragment>
     )
 }
