@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api")
 public class ItemCardController {
@@ -28,11 +28,11 @@ public class ItemCardController {
         return "Item added";
     }
 
-    @GetMapping("/getItemData")
-    public ResponseEntity<List<ItemMaster>> getItem() {
-        List<ItemMaster> i = itemCardService.getItemData();
-        return new ResponseEntity<List<ItemMaster>>(i, HttpStatus.OK);
-    }
+//    @GetMapping("/getItemData")
+//    public ResponseEntity<List<ItemMaster>> getItem() {
+//        List<ItemMaster> i = itemCardService.getItemData();
+//        return new ResponseEntity<List<ItemMaster>>(i, HttpStatus.OK);
+//    }
 
 
     @GetMapping("/getItemIds")
@@ -52,4 +52,75 @@ public class ItemCardController {
         System.out.println(i);
         return new ResponseEntity<>(i,HttpStatus.OK);
     }
+
+    /********************************************************************************/
+    @PostMapping("/addItem")
+    public ResponseEntity<String> addItem(@Validated @RequestBody ItemMaster i)
+    {
+        try{
+        	ItemMaster item = itemCardService.addItemData(i);
+            if(item!=null)
+            {
+                return ResponseEntity.ok("Added item successfully.");
+            }
+            else
+            {
+                return ResponseEntity.badRequest().body("Couldn't add item.");
+            }
+        }
+        catch(Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error ocurred: "+e.getMessage());
+        }
+    }
+
+    @GetMapping("/getItem")
+    public ResponseEntity<List<ItemMaster>> getItem()
+    {
+		try
+		{
+	        List<ItemMaster> items = itemCardService.getItemData();
+			return ResponseEntity.ok(items);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+    }
+ 
+
+    @DeleteMapping("/deleteItem")
+    public String deleteItem(@RequestBody String itemId){
+        itemCardService.deleteItemData(itemId);
+        return "Item Deleted";
+    }
+ 
+	@GetMapping("/getItem/{id}")
+	public ResponseEntity<ItemMaster> getItemById(@PathVariable(value="id") String itemId) throws ResourceNotFoundException
+	{
+		ItemMaster i = itemCardService.getItemData(itemId).orElseThrow(()->new ResourceNotFoundException("Item not found for this Id: "+itemId));
+		return ResponseEntity.ok().body(i);
+	}
+
+	 //Open PostMan, make a PUT Request - http://localhost:8085/ims/api/products/1003
+    //Select body -> raw -> JSON 
+    //Update JSON product object with new Values.
+	@PutMapping("/addItem/{id}")
+	public ResponseEntity<ItemMaster> updateItem(@PathVariable(value="id") String itemId, @Validated @RequestBody ItemMaster i) throws ResourceNotFoundException
+	{
+		ItemMaster item = itemCardService.getItemData(itemId).orElseThrow(()->new ResourceNotFoundException("Item not found for this Id: "+itemId));
+
+		//Update product with new values
+		item.setItemId(i.getItemId());
+		item.setItemDescription(i.getItemDescription());
+	    item.setIssueStatus(i.getIssueStatus());
+	    item.setItemMake(i.getItemMake());
+	    item.setItemCategory(i.getItemCategory());
+	    item.setItemValuation(i.getItemValuation());
+
+		final ItemMaster updatedItem = itemCardService.addItemData(item);
+		return ResponseEntity.ok().body(updatedItem);
+	}
+	/********************************************************************************/
 }

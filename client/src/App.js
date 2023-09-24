@@ -46,13 +46,41 @@ function App() {
                 <Route path="/applyLoan" element={<ApplyLoan />} />
                 <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
-                <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
-                <Route path='/cde' element={<RequireAuth><CDE /></RequireAuth>} />
-                <Route path='/addCustomer/:id' element={<RequireAuth><AddCustomer /></RequireAuth>} />
-                <Route path="/LDE" element={<RequireAuth><LDE /></RequireAuth>} />
-                <Route path="/addLoan/:id" element={<RequireAuth><AddLoan /></RequireAuth>} />
-                <Route path="/IDE" element={<RequireAuth><IDE /></RequireAuth>} />
-                <Route path="/addItem/:id" element={<RequireAuth><AddItem /></RequireAuth>} />
+                <Route path="/adminDashboard" element={
+                // <RequireAuth>
+                  <AdminDashboard />
+                // </RequireAuth>
+              } />
+                <Route path='/CDE' element={
+                // <RequireAuth>
+                  <CDE />
+                // </RequireAuth>
+              } />
+                <Route path='/addCustomer/:id' element={
+                // <RequireAuth>
+                  <AddCustomer />
+                // </RequireAuth>
+              } />
+                <Route path="/LDE" element={
+                // <RequireAuth>
+                  <LDE />
+                // </RequireAuth>
+              } />
+                <Route path="/addLoan/:id" element={
+                // <RequireAuth>
+                  <AddLoan />
+                // </RequireAuth>
+              } />
+                <Route path="/IDE" element={
+                // <RequireAuth>
+                  <IDE />
+                // </RequireAuth>
+              } />
+                <Route path="/addItem/:id" element={
+                // <RequireAuth>
+                  <AddItem />
+                // </RequireAuth>
+              } />
 
               </Routes>
             </Router>
