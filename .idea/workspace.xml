@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0c26c6-54f3-469b-a463-6d365b50640c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/LoanCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/LoanCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeIssueDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeIssueDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/ItemMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/ItemMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/ItemCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/ItemCardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/AddLoanCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/AddLoanCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/LoanCardService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/LoanCardService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/ItemCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/ItemCardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

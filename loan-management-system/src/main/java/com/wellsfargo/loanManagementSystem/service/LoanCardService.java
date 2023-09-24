@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LoanCardService {
@@ -43,6 +44,9 @@ public class LoanCardService {
 	@Autowired
 	private EmployeeIssueDetailsRepository issueRepo;
 	
+	public Optional<LoanCardMaster> getLoanCardById(String id){
+		return loanRepo.findById(id);
+	}
 	public List<LoanCardAndEmpCardProjection> getLoanInfo(String id){
 		return loanRepo.findSelectedFieldsFromLoanAndEmpCards(id);
 	}

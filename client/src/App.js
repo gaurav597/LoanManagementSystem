@@ -31,7 +31,6 @@ function App() {
       <div className="App bg">
         <section>
           <div style={{
-            // backgroundImage: "url(/images/loan-bg.jpg)",
             backgroundSize: 'cover', backgroundRepeat: "no-repeat",
             minHeight: '140vh', minWidth: '100vw'
           }}>
@@ -47,41 +46,40 @@ function App() {
                 <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
                 <Route path="/adminDashboard" element={
-                // <RequireAuth>
+                <RequireAuth>
                   <AdminDashboard />
-                // </RequireAuth>
+                </RequireAuth>
               } />
                 <Route path='/CDE' element={
-                // <RequireAuth>
+                <RequireAuth>
                   <CDE />
-                // </RequireAuth>
+                </RequireAuth>
               } />
                 <Route path='/addCustomer/:id' element={
-                // <RequireAuth>
+                <RequireAuth>
                   <AddCustomer />
-                // </RequireAuth>
+                </RequireAuth>
               } />
                 <Route path="/LDE" element={
-                // <RequireAuth>
+                <RequireAuth>
                   <LDE />
-                // </RequireAuth>
+                </RequireAuth>
               } />
                 <Route path="/addLoan/:id" element={
-                // <RequireAuth>
+                <RequireAuth>
                   <AddLoan />
-                // </RequireAuth>
+                </RequireAuth>
               } />
                 <Route path="/IDE" element={
-                // <RequireAuth>
+                <RequireAuth>
                   <IDE />
-                // </RequireAuth>
+                </RequireAuth>
               } />
                 <Route path="/addItem/:id" element={
-                // <RequireAuth>
+                <RequireAuth>
                   <AddItem />
-                // </RequireAuth>
+                </RequireAuth>
               } />
-
               </Routes>
             </Router>
           </div>

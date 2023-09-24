@@ -20,5 +20,14 @@ public class LoanCardAndEmpCardProjection {
 	private String loanType;
 	private Integer durationInYears;
 	private LocalDate cardIssueDate;
+	private String employeeId;
+	
+	public LoanCardAndEmpCardProjection( String loanId, String loanType, Integer durationInYears, LocalDate cardIssueDate, EmployeeMaster employeeId) {
+		this.loanId=loanId;
+		this.loanType=loanType;
+		this.durationInYears=durationInYears;
+		this.cardIssueDate=cardIssueDate;
+		this.employeeId=employeeId.getEmployeeId();
+	}
 	
 }
