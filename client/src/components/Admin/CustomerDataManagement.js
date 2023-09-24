@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 import { useNavigate } from 'react-router-dom';
 
-function CustomerDataManagement() {
+function CustomerDataManagement(props) {
   const [empId, setEmpId] = useState("");
     const [desig, setDesig] = useState("Manager");
     const [name, setName] = useState("");
@@ -25,12 +25,22 @@ function CustomerDataManagement() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // console.log("hiii");
+    // console.log(props["data"]);
+    // CustomerService.getCustomer().then((res) => {
+    //   console.log(res.data);
+    //   setEmployeeData(res.data);
+    //   console.log(employeeData)
+    // })
+    console.log(props);
+    setEmployeeData(props["data"])
+  }, [props]);
+
+  useEffect(() => {
     CustomerService.getCustomer().then((res) => {
-      console.log(res.data);
       setEmployeeData(res.data);
-      console.log(employeeData)
     })
-  }, []);
+  }, [employeeData]);
 
   function handleDelete(empId) {
     console.log(empId);
@@ -52,6 +62,9 @@ function CustomerDataManagement() {
             "designation": desig
         }
         const hi = CustomerService.addCustomer(customer).then((response) => { console.log(response) });
+        CustomerService.getCustomer().then((res) => {
+          setEmployeeData(res.data);
+        })
   }
 
 

@@ -100,7 +100,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/itemsPurchased")
-    public List<ItemMaster> itemsPurchased(@RequestBody String eId){
+    public List<ItemPurchased> itemsPurchased(@RequestBody String eId){
         String empId = eId.substring(0, eId.length()-1);
         System.out.println(empId);
         return employeeService.itemsPurchased(empId);

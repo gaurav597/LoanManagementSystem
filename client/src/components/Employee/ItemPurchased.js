@@ -51,7 +51,7 @@ const ItemPurchased = (props) => {
           <tbody>
             {data.map((item)=>(
               <tr>
-              <td>1001</td>
+              <td>{item.issueId}</td>
               <td>{item.itemDescription}</td>
               <td>{item.itemMake}</td>
               <td>{item.itemCategory}</td>
