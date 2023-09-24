@@ -1,10 +1,12 @@
 package com.wellsfargo.loanManagementSystem.controller;
 
 import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
-import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
-import com.wellsfargo.loanManagementSystem.model.LoanCardMaster;
+import com.wellsfargo.loanManagementSystem.model.*;
+import com.wellsfargo.loanManagementSystem.repository.EmployeeRepository;
+import com.wellsfargo.loanManagementSystem.repository.ItemRepository;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
 
+import org.antlr.v4.runtime.misc.Pair;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -22,7 +25,10 @@ import java.util.Map;
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
- 
+
+    @Autowired
+    EmployeeRepository employeeRepository;
+
     @PostMapping("/register")
     public ResponseEntity<String> createEmployee(@Validated @RequestBody EmployeeMaster empMas)
     {
@@ -44,7 +50,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/login")
-    public Boolean loginDealer(@Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
+    public Pair<Boolean, String[] >loginDealer(@Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
     {
         Boolean isLoggedin = false;
 
@@ -57,8 +63,8 @@ public class EmployeeController {
         {
             isLoggedin = true;
         }
-
-        return isLoggedin;
+        String [] arr =new String [] {employee.getDesignation(), employee.getDepartment()};
+        return new Pair <Boolean,String[]> (isLoggedin, arr);
     }
 
     @PostMapping("/addCustomer")
@@ -97,9 +103,9 @@ public class EmployeeController {
     }
  
 
-    @DeleteMapping("/deleteCustomer")
-    public String deleteCustomer(@RequestBody String empId){
-        employeeService.deleteEmployee(empId);
+    @DeleteMapping("/deleteCustomer/{id}")
+    public String deleteCustomer(@PathVariable String id){
+        employeeService.deleteEmployee(id);
         return "Employee Deleted";
     }
  
@@ -130,4 +136,25 @@ public class EmployeeController {
 		final EmployeeMaster updatedEmployee = employeeService.addEmployee(employee);
 		return ResponseEntity.ok().body(updatedEmployee);
 	}
+
+    @PutMapping("/updateCustomer")
+    public String updateCustomer(@RequestBody EmployeeMaster employeeMaster){
+        EmployeeMaster existingEmployee = employeeRepository.findById(employeeMaster.getEmployeeId())
+                        .orElseThrow(() -> new org.springframework.data.rest.webmvc.ResourceNotFoundException("Employee not found with id:" + employeeMaster.getEmployeeId()));
+        existingEmployee.setEmployeeName(employeeMaster.getEmployeeName());
+        existingEmployee.setDesignation(employeeMaster.getDesignation());
+        existingEmployee.setGender(employeeMaster.getGender());
+        existingEmployee.setDateOfBirth(employeeMaster.getDateOfBirth());
+        existingEmployee.setDateOfJoin(employeeMaster.getDateOfJoin());
+
+        employeeRepository.save(existingEmployee);
+        return "Employee saved";
+    }
+
+    @PostMapping("/itemsPurchased")
+    public List<ItemMaster> itemsPurchased(@RequestBody String eId){
+        String empId = eId.substring(0, eId.length()-1);
+        System.out.println(empId);
+        return employeeService.itemsPurchased(empId);
+    }
 }

@@ -1,14 +1,18 @@
 package com.wellsfargo.loanManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.ManyToAny;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -25,10 +29,14 @@ public class EmployeeMaster {
     private LocalDate dateOfJoin;
     private String designation;
     private String department;
-    @OneToMany(mappedBy = "employeeId")
+
+    @OneToMany(mappedBy = "employeeId", cascade = CascadeType.ALL)
     private List<EmployeeCardDetails> employeeCardDetailsList ;
-    @OneToMany(mappedBy = "employeeId")
+
+    @OneToMany(mappedBy = "employeeId",cascade = CascadeType.ALL)
     private List<EmployeeIssueDetails> employeeIssueDetailsList;
+
+
 
 
     public void setPassword(String password) {
@@ -39,5 +47,15 @@ public class EmployeeMaster {
         this.password = encodedString;
     }
 
+//    public void add(ItemMaster order) {
+//
+//        if (order != null) {
+//
+//
+//
+//            purchasedItemsList.add(order);
+//
+//        }
+//    }
 
 }

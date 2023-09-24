@@ -1,38 +1,38 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import Header from '../Header';
+import React from "react";
+import "../../styles/Navbar.css";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import ViewLoans from "./ViewLoans";
+import ApplyLoan from "./ApplyLoan";
+import ItemPurchased from "./ItemPurchased";
+import NavBar from "../NavBar";
 import "../../styles/Navbar.css"
+import { useAuth } from "../../context/AuthContext";
+import { useLocation } from "react-router-dom";
 const EmployeeDashboard = () => {
-  ;
-  const history = useNavigate()
-
+  const auth = useAuth();
+  const location = useLocation();
+  const data = location.state;
   return (
     <div>
-      <Header />
-      <nav
-        className="navbar justify-content-center"
-        style={{ background: "#780078" }}
+      <NavBar />
+      <Tabs
+        defaultActiveKey="viewLoans"
+        id="uncontrolled-tab-example"
+        className="mb-3 navbar justify-content-center tabBg"
       >
-        <ul className='nav-list'>
-          <li className="nav-item">
-            <Link to="/viewLoans" className="nav-link">
-              View Loans
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/applyLoan" className="nav-link">
-              Apply Loans
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/itemPurchased" className="nav-link">
-              View Items Purchased
-            </Link>
-          </li>
-        </ul>
-      </nav>
+        <Tab eventKey="viewLoans" title="View Loans">
+          <ViewLoans id={auth.user} des={data[0]} dept={data[1]} />
+        </Tab>
+        <Tab eventKey="applyLoans" title="Apply Loans">
+          <ApplyLoan />
+        </Tab>
+        <Tab eventKey="itemsPurchased" title="View Items Purchased">
+          <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} />
+        </Tab>
+      </Tabs>
     </div>
-  )
-}
+  );
+};
 
-export default EmployeeDashboard
+export default EmployeeDashboard;
