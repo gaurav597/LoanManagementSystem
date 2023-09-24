@@ -36,7 +36,7 @@ public class EmployeeController {
             EmployeeMaster e = employeeService.addEmployee(empMas);
             if(e!=null)
             {
-                return ResponseEntity.ok("Registration Successfull");
+                return ResponseEntity.ok("Registration Successful");
             }
             else
             {

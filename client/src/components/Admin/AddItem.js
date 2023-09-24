@@ -70,7 +70,7 @@ export default function AddItem() {
                         <Form.Group className="mb-3" controlId="itemMakeInput">
                             <Form.Label><FontAwesomeIcon icon={faCogs} className="mr-2" />Item Make</Form.Label>
                             <Form.Select aria-label="Item Make" value={make} onChange={changeMakeHandler}>
-                                <option value="Wodden">Wodden</option>
+                                <option value="Wooden">Wooden</option>
                                 <option value="Plastic">Plastic</option>
                             </Form.Select>
                         </Form.Group>

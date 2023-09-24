@@ -47,7 +47,7 @@ const Registration = () => {
       try {
         await AuthenticationService.register(dealer);
         setSuccessMessage("Registration successful!");
-        alert("Registration Successfull");
+        alert("Registration Successful");
         setTimeout(() => {
           history("/login"); // navigates to Login Component
         }, 3000);

@@ -17,7 +17,7 @@ function IDE() {
     const [itemId, setItemId] = useState("");
     const [desc, setDesc] = useState("");
     const [status, setStatus] = useState("Y");
-    const [make, setMake] = useState("Wodden");
+    const [make, setMake] = useState("Wooden");
     const [ctg, setCtg] = useState("Furniture");
     const [val, setVal] = useState("");
     const [show, setShow] = useState(false);
