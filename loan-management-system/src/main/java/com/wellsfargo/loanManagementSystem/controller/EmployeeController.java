@@ -1,9 +1,9 @@
 package com.wellsfargo.loanManagementSystem.controller;
 
 import com.wellsfargo.loanManagementSystem.exception.ResourceNotFoundException;
-import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
-import com.wellsfargo.loanManagementSystem.model.LoanCardMaster;
+import com.wellsfargo.loanManagementSystem.model.*;
 import com.wellsfargo.loanManagementSystem.repository.EmployeeRepository;
+import com.wellsfargo.loanManagementSystem.repository.ItemRepository;
 import com.wellsfargo.loanManagementSystem.service.EmployeeService;
 import org.antlr.v4.runtime.misc.Pair;
 import org.apache.coyote.Response;
@@ -24,6 +24,8 @@ public class EmployeeController {
     EmployeeService employeeService;
     @Autowired
     EmployeeRepository employeeRepository;
+
+
 
     @PostMapping("/register")
     public ResponseEntity<String> createEmployee(@Validated @RequestBody EmployeeMaster empMas)
@@ -97,7 +99,12 @@ public class EmployeeController {
         return "Employee saved";
     }
 
-
+    @PostMapping("/itemsPurchased")
+    public List<ItemMaster> itemsPurchased(@RequestBody String eId){
+        String empId = eId.substring(0, eId.length()-1);
+        System.out.println(empId);
+        return employeeService.itemsPurchased(empId);
+    }
 
 
 }
