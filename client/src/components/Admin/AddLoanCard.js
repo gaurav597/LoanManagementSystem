@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -11,6 +11,15 @@ function AddLoanCard() {
   const [loanId, setLoanId] = useState("");
   const [loanType, setLoanType] = useState("Furniture");
   const [duration, setDuration] = useState(0);
+  const [loanData,setLoanData] = useState([]);
+  const [sc ,setSC] = useState(false); 
+
+  useEffect(()=>{
+    LoanCardService.getLoan().then((res) => {
+        console.log(res.data);
+        setLoanData(res.data);
+      }).then(setSC(true));
+},[]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -67,7 +76,7 @@ function AddLoanCard() {
                     </div>
                 </div>
             </div>
-        <LoanCardDataManagement/>
+        {sc?<LoanCardDataManagement data={loanData}/>:<></>}
         </React.Fragment>
   )
 }

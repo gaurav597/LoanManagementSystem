@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button';
 import ItemMasterService from "../../services/ItemMasterService";
 import ItemDataManagement from './ItemDataManagement';
@@ -14,7 +14,21 @@ export default function AddItem() {
   const [itemValue, setItemValue] = useState("");
   const [issueStatus, setIssueStatus] = useState("Y");
   const [itemMake, setItemMake] = useState("Wodden");
+  const [itemData, setItemData] = useState([]);
+  const [sc, setSC] =useState(false);
 
+
+  useEffect(()=>{
+      ItemMasterService.getItem().then((res) => {
+        setItemData(res.data);
+      }).then(setSC(true));
+},[]);
+
+useEffect(()=>{
+  ItemMasterService.getItem().then((res) => {
+    setItemData(res.data);
+  }).then(setSC(true));
+},[itemData]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -27,6 +41,9 @@ export default function AddItem() {
       itemValuation: itemValue
     }
     const hi = ItemMasterService.addItem(Item).then((response) => { console.log(response) });
+    ItemMasterService.getItem().then((res) => {
+      setItemData(res.data);
+    })
 
   }
 
@@ -112,7 +129,7 @@ export default function AddItem() {
                     </div>
                 </div>
             </div>
-            <ItemDataManagement/>
+            {sc?<ItemDataManagement data={itemData}/>:<></>}
         </React.Fragment>
    
   )

@@ -4,7 +4,7 @@ import "../../styles/Navbar.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import CustomerDataManagement from "./CustomerDataManagement";
-import LoanCardMaagement from "./LoanCardManagement";
+// import LoanCardMaagement from "./LoanCardManagement";
 import ItemsMasterData from "./ItemsMasterData";
 import AddCustomer from "./AddCustomer";
 import AddItem from "./AddItem";

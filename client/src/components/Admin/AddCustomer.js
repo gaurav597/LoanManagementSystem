@@ -14,7 +14,7 @@ export default function AddCustomer() {
     const [dob, setDob] = useState(new Date());
     const [department, setDepartment] = useState("Finance");
     const [doj, setDoj] = useState(new Date());
-    const [gender, setGender] = useState("M");
+    const [gender, setGender] = useState("M"); 
     const [password, setPassword] = useState("");
     const [edit, setEdit] = useState(false)
     const [employeeData, setEmployeeData] = useState([]);
@@ -56,14 +56,7 @@ export default function AddCustomer() {
             setEmployeeData(res.data);
             console.log(employeeData)
           })
-        console.log(empId);
-        console.log(desig);
-        console.log(name);
-        console.log(dob);
-        console.log(department);
-        console.log(doj);
-        console.log(gender);
-        console.log(password);
+
     }
 
     return (
