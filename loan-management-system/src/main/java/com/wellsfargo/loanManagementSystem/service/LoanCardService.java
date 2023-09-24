@@ -56,10 +56,10 @@ public class LoanCardService {
 		eissue.setEmployeeId(e);
 		issueRepo.save(eissue);
 
-		List<EmployeeIssueDetails> eissuelist = i.getEmployeeIssueDetails();
-		eissuelist.add(eissue);
-		i.setEmployeeIssueDetails(eissuelist);
-		itemRepo.save(i);
+//		List<EmployeeIssueDetails> eissuelist = i.getEmployeeIssueDetails();
+//		eissuelist.add(eissue);
+//		i.setEmployeeIssueDetails(eissuelist);
+//		itemRepo.save(i);
 
 		List<EmployeeIssueDetails> eissuelist1 = e.getEmployeeIssueDetailsList();
 		eissuelist1.add(eissue);

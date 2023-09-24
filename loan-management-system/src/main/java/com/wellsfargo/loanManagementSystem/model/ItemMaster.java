@@ -32,8 +32,8 @@ public class ItemMaster {
     private Integer itemValuation;
 
 
-    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL)
-    private List<EmployeeIssueDetails> employeeIssueDetails ;
+//    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL)
+//    private List<EmployeeIssueDetails> employeeIssueDetails ;
 
 
 }
