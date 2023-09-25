@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -20,19 +21,28 @@ public class LoanCardService {
 	@Autowired
 	private LoanCardRepository loanRepo;
 
+    public Optional<LoanCardMaster> getLoanCard(String id)
+    {
+        return loanRepo.findById(id); //Invokes custom method
+    }
+
+    public LoanCardMaster addLoanCard(LoanCardMaster l){
+        return loanRepo.save(l);
+    }
+
+    public List<LoanCardMaster> getLoanCardData(){
+        return loanRepo.findAll();
+    }
+
+    public void deleteLoanCard(String loanId){
+        loanRepo.deleteById(loanId);
+    }
+
 	@Autowired
 	private ItemRepository itemRepo;
 
 	@Autowired
 	private EmployeeIssueDetailsRepository issueRepo;
-
-	public void addLoanCard(LoanCardMaster l) {
-		loanRepo.save(l);
-	}
-
-	public List<LoanCardMaster> getLoanCardData() {
-		return loanRepo.findAll();
-	}
 	
 	public Optional<LoanCardMaster> getLoanCardById(String id){
 		return loanRepo.findById(id);
@@ -43,11 +53,13 @@ public class LoanCardService {
 
 	@Autowired
 	EmployeeRepository eRepo;
+	
 	@Autowired
 	EmployeeCardDetailsRepository eCardrepo;
 
 	@Autowired
 	LoanCardAndEmpCardProjectionRepository laeRepo;
+
 	public void applyLoan(Map<String, Object> payload)throws Exception {
 		EmployeeIssueDetails eissue= new EmployeeIssueDetails();
 		eissue.setIssueId((String)payload.get("issueId"));

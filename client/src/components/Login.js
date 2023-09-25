@@ -18,7 +18,7 @@ const Login = () => {
       setErrorMsg("Please enter id and password");
       return;
     }
-    const employee = { employeeId, password };
+    const employee = { "employeeId": employeeId, "password": password };
     try {
       const loginSuccess = await AuthenticationService.login(employee);
       if (loginSuccess[0]) {

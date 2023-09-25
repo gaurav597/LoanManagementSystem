@@ -3,21 +3,27 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSign, faCameraRetro } from '@fortawesome/free-solid-svg-icons';
+import { faSign, faCameraRetro, faPeopleGroup, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AddCustomer from './components/Admin/AddCustomer';
 import AdminDashboard from './components/Admin/AdminDashboard'
-import CustomerDataManagement from './components/Admin/CustomerDataManagement';
-// import LoanCardManagement from './components/Admin/LoanCardManagement';
-import ItemsMasterData from './components/Admin/ItemsMasterData';
+import AddLoan from './components/Admin/AddLoan';
+import AddItem from './components/Admin/AddItem';
 import EmployeeDashboard from './components/Employee/EmployeeDashboard';
 import ViewLoans from './components/Employee/ViewLoans';
 import ApplyLoan from './components/Employee/ApplyLoan';
 import ItemPurchased from "./components/Employee/ItemPurchased";
+
+import CDE from './components/Admin/CDE';
+
 import LandingPage from './components/LandingPage';
-import EditCustomer from './components/Admin/EditCustomer';
+import LDE from './components/Admin/LDE'
+
+import IDE from './components/Admin/IDE'
+
+
 import { AuthProvider } from './context/AuthContext';
 import RequireAuth from './context/RequireAuth';
-library.add(faSign, faCameraRetro);
+library.add(faSign, faCameraRetro, faPeopleGroup, faTrash, faEdit);
 
 function App() {
   return (
@@ -25,7 +31,6 @@ function App() {
       <div className="App bg">
         <section>
           <div style={{
-            // backgroundImage: "url(/images/loan-bg.jpg)",
             backgroundSize: 'cover', backgroundRepeat: "no-repeat",
             minHeight: '140vh', minWidth: '100vw'
           }}>
@@ -34,32 +39,49 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/register" element={<Registration />} />
                 <Route path="/login" element={<Login />} />
-{/* 
-                <Route path="/employeeDashboard" element={<RequireAuth><EmployeeDashboard /></RequireAuth>} />
-                <Route path="/viewLoans" element={<RequireAuth><ViewLoans /></RequireAuth>} />
-                <Route path="/applyLoan" element={<RequireAuth><ApplyLoan /></RequireAuth>} />
-                <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
-                <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
-                <Route path="/customerDataManagement" element={<RequireAuth><CustomerDataManagement /></RequireAuth>} />
-                <Route path="/addCustomer" element={<RequireAuth><AddCustomer /></RequireAuth>} />
-                <Route path="/loanCardManagement" element={<RequireAuth><LoanCardManagement /></RequireAuth>} />
-                <Route path="/itemsMasterData" element={<RequireAuth><ItemsMasterData /></RequireAuth>} />
-                <Route path="/editCustomer" element={<RequireAuth><EditCustomer /></RequireAuth>} /> */}
                 <Route path="/employeeDashboard" element={<EmployeeDashboard />}/>
                 <Route path="/viewLoans" element={<RequireAuth><ViewLoans /></RequireAuth>} />
                 <Route path="/applyLoan" element={<ApplyLoan />} />
                 <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
-                <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
-                <Route path="/customerDataManagement" element={<RequireAuth><CustomerDataManagement /></RequireAuth>} />
-                <Route path="/addCustomer" element={<RequireAuth><AddCustomer /></RequireAuth>} />
-                {/* <Route path="/loanCardManagement" element={<RequireAuth><LoanCardManagement /></RequireAuth>} /> */}
-                <Route path="/itemsMasterData" element={<RequireAuth><ItemsMasterData /></RequireAuth>} />
-                <Route path="/editCustomer" element={<RequireAuth><EditCustomer /></RequireAuth>} />
+                <Route path="/adminDashboard" element={
+                <RequireAuth>
+                  <AdminDashboard />
+                </RequireAuth>
+              } />
+                <Route path='/CDE' element={
+                <RequireAuth>
+                  <CDE />
+                </RequireAuth>
+              } />
+                <Route path='/addCustomer/:id' element={
+                <RequireAuth>
+                  <AddCustomer />
+                </RequireAuth>
+              } />
+                <Route path="/LDE" element={
+                <RequireAuth>
+                  <LDE />
+                </RequireAuth>
+              } />
+                <Route path="/addLoan/:id" element={
+                <RequireAuth>
+                  <AddLoan />
+                </RequireAuth>
+              } />
+                <Route path="/IDE" element={
+                <RequireAuth>
+                  <IDE />
+                </RequireAuth>
+              } />
+                <Route path="/addItem/:id" element={
+                <RequireAuth>
+                  <AddItem />
+                </RequireAuth>
+              } />
               </Routes>
             </Router>
-
           </div>
         </section>
         <footer>
