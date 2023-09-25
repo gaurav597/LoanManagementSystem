@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import LoanService from "../../services/LoanService";
 const ViewLoans = (props) => {
+
   const [loans, setLoans] = useState([]);
+
   useEffect(() => {
     LoanService.getLoanById(props['id']).then((response) => {
-      setLoans(response.data)
+      setLoans([...response.data.filter(loan => {
+        console.log(loan.employeeId)
+        if (loan.employeeId == props['id']) return loan;
+      })
+      ])
     })
   });
+
   return (
     <div>
       <br />
@@ -44,17 +50,12 @@ const ViewLoans = (props) => {
           </thead>
           <tbody>
             {loans.map((loan, index) => (
-
               <tr key={index} >
-
                 <td> {loan.loanId} </td>
                 <td> {loan.loanType} </td>
                 <td> {loan.durationInYears} </td>
                 <td> {loan.cardIssueDate} </td>
-
               </tr>
-
-
             ))}
           </tbody>
         </Table>
