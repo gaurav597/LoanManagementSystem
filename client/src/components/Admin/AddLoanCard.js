@@ -34,7 +34,7 @@ function AddLoanCard() {
   }
   return (
     <React.Fragment>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-customer">Add Customer</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-customer">Add Loan</button>
             
             <div class="modal fade bd-example-modal-lg-customer" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">

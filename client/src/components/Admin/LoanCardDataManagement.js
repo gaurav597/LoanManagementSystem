@@ -12,13 +12,15 @@ import { useNavigate } from 'react-router-dom';
 function LoanCardDataManagement(props) {
   
   const history = useNavigate(); 
-
-  const [employeeData, setEmployeeData] = useState([]);
+  const [loanId, setLoanId] = useState("");
+  const [loanType, setLoanType] = useState("Furniture");
+  const [duration, setDuration] = useState(0);
+  const [loanData,setLoanData] = useState([]);
   const [edit, setEdit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setEmployeeData(props["data"]);
+    setLoanData(props["data"]);
   }, [props]);
 
   function handleDelete(empId) {
@@ -152,7 +154,7 @@ function LoanCardDataManagement(props) {
             </tr>
           </thead>
           <tbody>
-            {employeeData.map((item) => (
+            {loanData.map((item) => (
               <tr>
                 <th scope="row">{item.loanId}</th>
                 <td>{item.loanType}</td>
