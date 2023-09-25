@@ -71,8 +71,8 @@ public class LoanCardController {
     }
  
 
-    @DeleteMapping("/deleteLoan")
-    public String deleteLoan(@RequestBody String loanId){
+    @DeleteMapping("/deleteLoan/{loanId}")
+    public String deleteLoan(@PathVariable String loanId){
         loanCardService.deleteLoanCard(loanId);
         return "Loan Deleted";
     }

@@ -90,8 +90,8 @@ public class ItemCardController {
     }
  
 
-    @DeleteMapping("/deleteItem")
-    public String deleteItem(@RequestBody String itemId){
+    @DeleteMapping("/deleteItem/{itemId}")
+    public String deleteItem(@PathVariable String itemId){
         itemCardService.deleteItemData(itemId);
         return "Item Deleted";
     }
