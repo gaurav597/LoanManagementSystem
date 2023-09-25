@@ -2,8 +2,9 @@ import axios from "axios";
 
 class ApplyLoanService {
 
-    static applyLoan(Payload){
-        return axios.post('http://localhost:8085/lms/api/applyLoan',Payload);
+    static async applyLoan(Payload) {
+        const res = await axios.post('http://localhost:8085/lms/api/applyLoan', Payload);
+        return res;
     }
 }
 

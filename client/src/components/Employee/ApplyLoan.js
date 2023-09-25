@@ -7,8 +7,9 @@ import Button from "react-bootstrap/Button";
 import ApplyLoanService from "../../services/ApplyLoanService";
 import EmployeeDashboard from "./EmployeeDashboard";
 import ItemMasterService from "../../services/ItemMasterService";
-
-export default function ApplyLoan() {
+import { useNavigate } from "react-router-dom";
+export default function ApplyLoan(props) {
+  const history = useNavigate();
   const [itemId, setItemId] = useState("");
   const [itemCategory, setItemCategory] = useState("");
   const [itemDescription, setItemDescription] = useState("");
@@ -20,17 +21,16 @@ export default function ApplyLoan() {
   const [issueDate, setIssueDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [itemIds, setItemIds] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  useEffect(()=>{
-    ItemMasterService.getItemIds().then((response)=>{
+  useEffect(() => {
+    ItemMasterService.getItemIds().then((response) => {
       setItemIds(response.data);
     })
-   
-
   })
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
     const Payload = {
       itemId,
       itemDescription,
@@ -41,32 +41,46 @@ export default function ApplyLoan() {
       employeeId,
       itemValuation: itemValue
     }
+    const data = [props['id'], props['des'], props["dept"]]
+    try {
+      const res = await ApplyLoanService.applyLoan(Payload);
 
-    const hi = ApplyLoanService.applyLoan(Payload).then((response) => { console.log(response) });
+      if (res.status === 200) {
+        alert("Loan Applied Successfully");
+        setSuccessMessage("Loan Applied successfully!");
+        setTimeout(() => {
+          // history("/employeeDashboard", { state: data });
+        }, 500)
+      }
+
+      if (res.status === 200) {
+        console.log(res.status);
+
+      }
+    }
+    catch (error) {
+      console.error(error)
+    }
 
   }
 
   function handleItemIds(item) {
-    console.log("hi there");
-    console.log(item);
-    ItemMasterService.getItemData(item).then((response)=>{
+    ItemMasterService.getItemData(item).then((response) => {
       setItemId(item)
       setItemCategory(response.data.itemCategory);
       setItemDescription(response.data.itemDescription);
       setItemMake(response.data.itemMake);
       setItemValue(response.data.itemValuation);
       setIssueStatus(response.data.issueStatus);
-      console.log(response.data);
     })
-    // ItemMasterService.getItemData(item).then((response)=>{
-    //   console.log(response);
-    // });
   }
 
 
   return (
-    <div className="container" style={{backgroundColor:"white"}}>
+    <div className="container" style={{ backgroundColor: "white" }}>
+      <br />
       <h1>Apply for Loan</h1>
+      <br />
       <Container fluid="md">
         <Form>
           <Row>
@@ -100,13 +114,13 @@ export default function ApplyLoan() {
           </Row>
           <Row>
             <Col>
-            <Form.Label>Item Id</Form.Label>
+              <Form.Label>Item Id</Form.Label>
               <Form.Select
                 aria-label="Default select example"
                 onChange={(e) => handleItemIds(e.target.value)}
               >
-              <option>Select Item Id</option>
-                {itemIds.map((item)=>(
+                <option>Select Item Id</option>
+                {itemIds.map((item) => (
                   <option value={item}>{item}</option>
                 ))}
               </Form.Select>
@@ -114,10 +128,10 @@ export default function ApplyLoan() {
             <Col>
               <Form.Label>Item Category</Form.Label>
               <Form.Control
-                  readOnly
-                  type="text"
-                  value={itemCategory}
-                />
+                readOnly
+                type="text"
+                value={itemCategory}
+              />
             </Col>
           </Row>
           <Row>
@@ -158,14 +172,14 @@ export default function ApplyLoan() {
               >
                 <Form.Label>Issue Status</Form.Label>
                 <Form.Control
-                readOnly
+                  readOnly
                   type="text"
                   value={issueStatus}
                 />
               </Form.Group>
             </Col>
             <Col>
-            <Form.Group>
+              <Form.Group>
                 <Form.Label>Item Make</Form.Label>
                 <Form.Control
                   readOnly
@@ -179,6 +193,9 @@ export default function ApplyLoan() {
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Apply
         </Button>
+        <br /> <br />
+        {/* {errorMsg && <p className="error-message">{errorMsg}</p>} */}
+        {successMessage && <p className="success-message">{successMessage}</p>}
       </Container>
     </div>
   );
