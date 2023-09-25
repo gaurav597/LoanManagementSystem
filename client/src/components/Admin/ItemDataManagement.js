@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 import { useNavigate } from 'react-router-dom';
 
-function ItemDataManagement() {
+function ItemDataManagement(props) {
   const [empId, setEmpId] = useState("");
     const [desig, setDesig] = useState("Manager");
     const [name, setName] = useState("");
@@ -25,12 +25,8 @@ function ItemDataManagement() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    CustomerService.getCustomer().then((res) => {
-      console.log(res.data);
-      setEmployeeData(res.data);
-      console.log(employeeData)
-    })
-  }, []);
+    setEmployeeData(props["data"])
+  }, [props]);
 
   function handleDelete(empId) {
     console.log(empId);
@@ -187,13 +183,12 @@ function ItemDataManagement() {
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Employee Id</th>
-              <th scope="col">Employee Name</th>
-              <th scope="col">Designation</th>
-              <th scope="col">Department</th>
-              <th scope="col">gender</th>
-              <th scope="col">Date_of_Birth</th>
-              <th scope="col">Date_of_Joining</th>
+              <th scope="col">Item Id</th>
+              <th scope="col">Description</th>
+              <th scope="col">Issue Status</th>
+              <th scope="col">Item Make</th>
+              <th scope="col">Item Category</th>
+              <th scope="col">Item Valuation</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
@@ -201,13 +196,12 @@ function ItemDataManagement() {
           <tbody>
             {employeeData.map((item) => (
               <tr>
-                <th scope="row">{item.employeeId}</th>
-                <td>{item.employeeName}</td>
-                <td>{item.designation}</td>
-                <td>{item.department}</td>
-                <td>{item.gender}</td>
-                <td>{item.dateOfBirth}</td>
-                <td>{item.dateOfJoin}</td>
+                <th scope="row">{item.itemId}</th>
+                <td>{item.itemDescription}</td>
+                <td>{item.itemStatus}</td>
+                <td>{item.itemMake}</td>
+                <td>{item.itemCategory}</td>
+                <td>{item.itemValuation}</td>
                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-custom" onClick={(e) => handleEdit(item)}>Edit</button></td>
                 <td onClick={(e) => handleDelete(item.employeeId)}>Delete</td>
               </tr>

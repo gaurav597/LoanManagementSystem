@@ -9,28 +9,19 @@ import Button from 'react-bootstrap/Button';
 
 import { useNavigate } from 'react-router-dom';
 
-function LoanCardDataManagement() {
-  const [empId, setEmpId] = useState("");
-    const [desig, setDesig] = useState("Manager");
-    const [name, setName] = useState("");
-    const [dob, setDob] = useState(new Date());
-    const [department, setDepartment] = useState("Finance");
-    const [doj, setDoj] = useState(new Date());
-    const [gender, setGender] = useState("M");
-    const [password, setPassword] = useState("");
-  const history = useNavigate();
-
-  const [employeeData, setEmployeeData] = useState([]);
+function LoanCardDataManagement(props) {
+  
+  const history = useNavigate(); 
+  const [loanId, setLoanId] = useState("");
+  const [loanType, setLoanType] = useState("Furniture");
+  const [duration, setDuration] = useState(0);
+  const [loanData,setLoanData] = useState([]);
   const [edit, setEdit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    CustomerService.getCustomer().then((res) => {
-      console.log(res.data);
-      setEmployeeData(res.data);
-      console.log(employeeData)
-    })
-  }, []);
+    setLoanData(props["data"]);
+  }, [props]);
 
   function handleDelete(empId) {
     console.log(empId);
@@ -41,51 +32,19 @@ function LoanCardDataManagement() {
   
   function handleSubmit(e){
     e.preventDefault();
-        const customer = {
-            "employeeId": empId,
-            "employeeName": name,
-            "password": password,
-            "gender": gender,
-            "dateOfBirth": dob,
-            "dateOfJoin": doj,
-            "department": department,
-            "designation": desig
-        }
-        const hi = CustomerService.addCustomer(customer).then((response) => { console.log(response) });
+
   }
 
 
   const handleEdit = (item) => {
     console.log("Its working");
-    setIsLoading(true);
-    console.log(isLoading);
-    setEdit(true);
-    setEmpId(item.employeeId);
-    setName(item.employeeName);
-    setDepartment(item.department);
-    setDesig(item.designation);
-    setDob(item.dateOfBirth);
-    setDoj(item.dateOfJoin);
-    setGender(item.gender);
-    setPassword(item.password);
-    console.log(item);
-    console.log(empId);
-    console.log(isLoading);
-        console.log(desig);
-        console.log(name);
-        console.log(dob);
-        console.log(department);
-        console.log(doj);
-        console.log(gender);
-        console.log(password);
-    setIsLoading(false);
-    console.log(isLoading);
+  
   }
 
 
   return (
     <React.Fragment>
-        <div class="modal fade bd-example-modal-lg-custom" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        {/* <div class="modal fade bd-example-modal-lg-custom" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               <div class="modal-header">
@@ -182,7 +141,7 @@ function LoanCardDataManagement() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       <div class="container-fluid">
         <table class="table table-striped">
           <thead>
@@ -195,11 +154,11 @@ function LoanCardDataManagement() {
             </tr>
           </thead>
           <tbody>
-            {employeeData.map((item) => (
+            {loanData.map((item) => (
               <tr>
                 <th scope="row">{item.loanId}</th>
                 <td>{item.loanType}</td>
-                <td>{item.duration}</td>
+                <td>{item.durationInYears}</td>
                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-custom" onClick={(e) => handleEdit(item)}>Edit</button></td>
                 <td onClick={(e) => handleDelete(item.employeeId)}>Delete</td>
               </tr>

@@ -27,7 +27,7 @@ function CustomerDataManagement(props) {
   useEffect(() => {
     // console.log("hiii");
     // console.log(props["data"]);
-    // CustomerService.getCustomer().then((res) => {
+    // CustomerService.getCustomer().then((res) => { 
     //   console.log(res.data);
     //   setEmployeeData(res.data);
     //   console.log(employeeData)

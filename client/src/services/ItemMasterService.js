@@ -18,6 +18,10 @@ class ItemMasterService {
     static getItemsPurchased(itemId){
         return axios.post('http://localhost:8085/lms/api/itemsPurchased',itemId);
     }
+
+    static getItem(){
+        return axios.get('http://localhost:8085/lms/api/getItemData');
+    }
 }
 
 export default ItemMasterService;

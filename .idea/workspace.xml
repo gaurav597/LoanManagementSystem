@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0c26c6-54f3-469b-a463-6d365b50640c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/controller/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

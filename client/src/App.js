@@ -7,7 +7,7 @@ import { faSign, faCameraRetro } from '@fortawesome/free-solid-svg-icons';
 import AddCustomer from './components/Admin/AddCustomer';
 import AdminDashboard from './components/Admin/AdminDashboard'
 import CustomerDataManagement from './components/Admin/CustomerDataManagement';
-import LoanCardManagement from './components/Admin/LoanCardManagement';
+// import LoanCardManagement from './components/Admin/LoanCardManagement';
 import ItemsMasterData from './components/Admin/ItemsMasterData';
 import EmployeeDashboard from './components/Employee/EmployeeDashboard';
 import ViewLoans from './components/Employee/ViewLoans';
@@ -54,7 +54,7 @@ function App() {
                 <Route path="/adminDashboard" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
                 <Route path="/customerDataManagement" element={<RequireAuth><CustomerDataManagement /></RequireAuth>} />
                 <Route path="/addCustomer" element={<RequireAuth><AddCustomer /></RequireAuth>} />
-                <Route path="/loanCardManagement" element={<RequireAuth><LoanCardManagement /></RequireAuth>} />
+                {/* <Route path="/loanCardManagement" element={<RequireAuth><LoanCardManagement /></RequireAuth>} /> */}
                 <Route path="/itemsMasterData" element={<RequireAuth><ItemsMasterData /></RequireAuth>} />
                 <Route path="/editCustomer" element={<RequireAuth><EditCustomer /></RequireAuth>} />
               </Routes>
