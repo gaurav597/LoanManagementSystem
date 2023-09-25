@@ -1,167 +1,126 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import CustomerService from "../../services/CustomerService";
-import CustomerDataManagement from './CustomerDataManagement';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faBriefcase, faCalendarAlt, faVenusMars, faKey } from '@fortawesome/free-solid-svg-icons';
+import AppContext from '../../Context';
+import moment from "moment"
 
 export default function AddCustomer() {
-    const [empId, setEmpId] = useState("");
-    const [desig, setDesig] = useState("Manager");
-    const [name, setName] = useState("");
-    const [dob, setDob] = useState(new Date());
-    const [department, setDepartment] = useState("Finance");
-    const [doj, setDoj] = useState(new Date());
-    const [gender, setGender] = useState("M"); 
-    const [password, setPassword] = useState("");
-    const [edit, setEdit] = useState(false)
-    const [employeeData, setEmployeeData] = useState([]);
-    const [sc ,setSC] = useState(false);
-    useEffect(()=>{
-        CustomerService.getCustomer().then((res) => {
-            console.log(res.data);
-            setEmployeeData(res.data);
-            console.log(employeeData)
-          }).then(setSC(true));
-    },[]);
+    const {id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword, show, setShow} = useContext(AppContext);
 
-    useEffect(()=>{
-        CustomerService.getCustomer().then((res) => {
-            console.log(res.data);
-            setEmployeeData(res.data);
-            console.log(employeeData)
-          }).then(setSC(true));
-    },[employeeData]);
+    const changeIdHandler = (event) => {
+        setEmpId(event.target.value);
+    }
 
+    const changeNameHandler = (event) => {
+        setName(event.target.value);
+    };
 
+    const changeDsgHandler = (event) => {
+        setDsg(event.target.value);
+    };
 
-    function handleSubmit(e) {
-        setSC(false);
-        e.preventDefault();
-        const customer = {
-            "employeeId": empId,
-            "employeeName": name,
-            "password": password,
-            "gender": gender,
-            "dateOfBirth": dob,
-            "dateOfJoin": doj,
-            "department": department,
-            "designation": desig
-        }
-        const hi = CustomerService.addCustomer(customer).then((response) => { console.log(response) });
-        CustomerService.getCustomer().then((res) => {
-            console.log(res.data);
-            setEmployeeData(res.data);
-            console.log(employeeData)
-          })
+    const changeDeptHandler = (event) => {
+        setDept(event.target.value); 
+    };
 
+    const changeGdrHandler = (event) => {
+        setGdr(event.target.value);
+    };
+
+    const changeDobHandler = (event) => {
+        setDob(event.target.value);
+    };
+
+    const changeDojHandler = (event) => {
+        setDoj(event.target.value);
+    };
+
+    const changePasswordHandler = (event) => {
+        setPassword(event.target.value);
     }
 
     return (
-        <React.Fragment>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add Customer</button>
-            
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title" id="exampleModalLabel">Add Customer Data</h1>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div className='container'>
-                                <Container fluid="md">
-                                    <Form>
-
-                                        <Row>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Employee Id</Form.Label>
-                                                    <Form.Control type="text" value={empId} onChange={(e) => setEmpId(e.target.value)} />
-                                                </Form.Group>
-                                            </Col>
-                                            <Col>
-                                                <Form.Label>Designation</Form.Label>
-                                                <Form.Select aria-label="Default select example" onChange={(e) => setDesig(e.target.value)}>
-                                                    <option value="Manager">Manager</option>
-                                                    <option value="SDE1">SDE1</option>
-                                                    <option value="SDE2">SDE2</option>
-                                                    <option value="SDE3">SDE3</option>
-                                                </Form.Select>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Employee Name</Form.Label>
-                                                    <Form.Control type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                                                </Form.Group>
-                                            </Col>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Date of Birth</Form.Label>
-                                                    <Form.Control type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
-                                                </Form.Group>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Department</Form.Label>
-                                                    <Form.Select aria-label="Default select example" onChange={(e) => setDepartment(e.target.value)}>
-                                                        <option value="Finance">Finance</option>
-                                                        <option value="HR">HR</option>
-                                                        <option value="Sales">Sales</option>
-
-                                                    </Form.Select>
-                                                </Form.Group>
-                                            </Col>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Date of Joining</Form.Label>
-                                                    <Form.Control type="date" value={doj} onChange={(e) => setDoj(e.target.value)} />
-                                                </Form.Group>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Gender</Form.Label>
-                                                    <Form.Select aria-label="Default select example" onChange={(e) => { setGender(e.target.value) }}>
-                                                        <option value="M">Male</option>
-                                                        <option value="F">Female</option>
-                                                        <option value="O">Other</option>
-                                                    </Form.Select>
-                                                </Form.Group>
-                                            </Col>
-                                            <Col>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <Form.Label>Password</Form.Label>
-                                                    <Form.Control type="text" value={password} onChange={(e) => { setPassword(e.target.value) }} />
-                                                </Form.Group>
-
-                                            </Col>
-                                        </Row>
-
-                                    </Form>
-                                </Container>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button variant="primary" data-dismiss="modal" type="submit" onClick={handleSubmit}>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <Container fluid="md" className="py-5">
+            <div className="text-center mb-5">
+                <hr style={{ width: '50%', opacity: 0.2 }} />
             </div>
+            <Form>
+                <Row className="mb-3">
+                    <Col md={6}>
+                        <Form.Group controlId="employeeId">
+                            <Form.Label><FontAwesomeIcon icon={faUser} className="mr-2" />Employee Id</Form.Label>
+                            <Form.Control type="text" value={empId} onChange={changeIdHandler} />
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Label><FontAwesomeIcon icon={faBriefcase} className="mr-2" />Designation</Form.Label>
+                        <Form.Select aria-label="Designation" value={dsg} onChange={changeDsgHandler}>
+                            <option value="Manager">Manager</option>
+                            <option value="SDE1">SDE1</option>
+                            <option value="SDE2">SDE2</option>
+                            <option value="SDE3">SDE3</option>
+                        </Form.Select>
+                    </Col>
+                </Row>
 
-            {sc?<CustomerDataManagement data={employeeData}/>:<></>}
-        </React.Fragment>
+                <Row className="mb-3">
+                    <Col md={6}>
+                        <Form.Group controlId="employeeName">
+                            <Form.Label><FontAwesomeIcon icon={faUser} className="mr-2" />Employee Name</Form.Label>
+                            <Form.Control type="text" value={name} onChange={changeNameHandler} />
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group controlId="dateOfBirth">
+                            <Form.Label><FontAwesomeIcon icon={faCalendarAlt} className="mr-2" />Date of Birth</Form.Label>
+                            <Form.Control type="date" value={moment(dob).format('YYYY-MM-DD')} onChange={changeDobHandler} />
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row className="mb-3">
+                    <Col md={6}>
+                        <Form.Group controlId="department">
+                            <Form.Label><FontAwesomeIcon icon={faBriefcase} className="mr-2" />Department</Form.Label>
+                            <Form.Select aria-label="Department" value={dept} onChange={changeDeptHandler}>
+                                <option value="Finance">Finance</option>
+                                <option value="HR">HR</option>
+                                <option value="Sales">Sales</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group controlId="dateOfJoining">
+                            <Form.Label><FontAwesomeIcon icon={faCalendarAlt} className="mr-2" />Date of Joining</Form.Label>
+                            <Form.Control type="date" value={moment(doj).format('YYYY-MM-DD')} onChange={changeDojHandler} />
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row className="mb-3">
+                    <Col md={6}>
+                        <Form.Group controlId="gender">
+                            <Form.Label><FontAwesomeIcon icon={faVenusMars} className="mr-2" />Gender</Form.Label>
+                            <Form.Select aria-label="Gender" value={gdr} onChange={changeGdrHandler}>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Other</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group controlId="password">
+                            <Form.Label><FontAwesomeIcon icon={faKey} className="mr-2" />Password</Form.Label>
+                            <Form.Control type="password" value={password} onChange={changePasswordHandler} />
+                        </Form.Group>
+                    </Col>
+                </Row>
+            </Form>
+        </Container>
     )
 }
