@@ -105,6 +105,7 @@ function CDE() {
             setTimeout(() => {
                 setMessage('');
             }, 2000);
+            setChanged(true);
         });
     }
 

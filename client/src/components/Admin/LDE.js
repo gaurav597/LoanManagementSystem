@@ -84,6 +84,7 @@ function LDE() {
             setTimeout(() => {
                 setMessage('');
             }, 2000);
+            setChanged(true);
         });
     }
 

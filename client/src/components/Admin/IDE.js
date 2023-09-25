@@ -97,6 +97,7 @@ function IDE() {
             setTimeout(() => {
                 setMessage('');
             }, 2000);
+            setChanged(true);
         });
     }
 

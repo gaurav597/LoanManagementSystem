@@ -26,7 +26,7 @@ class CustomerService {
 
     static deleteCustomer(empId)
     {
-        return axios.delete(CRA_URL+'/deleteCustomer', empId);
+        return axios.delete(CRA_URL+'/deleteCustomer/'+empId);
     }
 }
 
