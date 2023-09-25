@@ -8,7 +8,7 @@ const ViewLoans = (props) => {
     LoanService.getLoanById(props['id']).then((response) => {
       setLoans(response.data)
     })
-  }, []);
+  });
   return (
     <div>
       <br />
