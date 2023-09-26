@@ -82,7 +82,7 @@ export default function ApplyLoan(props) {
                 <Form.Label>Employee Id</Form.Label>
                 <Form.Control
                   type="text"
-                  value={props['id']}
+                  value={employeeId}
                   onChange={(e) => setEmployeeId(e.target.value)}
                 />
               </Form.Group>
