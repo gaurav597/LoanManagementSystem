@@ -20,7 +20,7 @@ const ViewLoans = (props) => {
       <div
         style={{ color: "white", display: "flex", justifyContent: "center" }}
       >
-        <h3>Loan Cards Availed</h3>
+        <h1>Loan Cards Availed</h1>
       </div>
       <br />
 
@@ -39,8 +39,7 @@ const ViewLoans = (props) => {
         </div>
         <br /><br /><br />
         <Table striped bordered hover
-          style={{ width: "50%", borderRadius: "12px", backgroundColor: "#77dd77", textAlign: "center" }}
-          class="header"
+          style={{ width: "50%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
         >
           <thead class="table-success">
             <tr>
