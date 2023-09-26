@@ -107,7 +107,9 @@ const ViewLoans = (props) => {
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h1> Apply for Loan</h1>
+                <div class="ml-4 pl-3">
+                  <h2> Apply for Loan</h2>
+                </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -118,7 +120,7 @@ const ViewLoans = (props) => {
                 </div> : <></>}
               </div>
               <div class="modal-footer">
-                <button className="btn btn-success" data-dismiss='modal' onClick={handleSubmit}>Submit</button>
+                <button className="btn btn-success" data-dismiss='modal' onClick={handleSubmit}>Apply</button>
                 <button className="btn btn-danger" data-dismiss='modal' onClick={handleCancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
               </div>
             </div>
