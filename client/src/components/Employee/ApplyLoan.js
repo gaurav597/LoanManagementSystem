@@ -21,14 +21,15 @@ export default function ApplyLoan(props) {
     issueDate, setIssueDate,
     returnDate, setReturnDate,
     itemIds, setItemIds,
-    successMessage, setSuccessMessage
-  } = useContext(AppContext);
+    successMessage, setSuccessMessage,
+    errors, setErrors,
+     } = useContext(AppContext);
 
   useEffect(() => {
     ItemMasterService.getItemIds().then((response) => {
       setItemIds(response.data);
     })
-  })
+  });
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
@@ -82,9 +83,13 @@ export default function ApplyLoan(props) {
                 <Form.Label>Employee Id</Form.Label>
                 <Form.Control
                   type="text"
-                  value={props['id']}
+                  value={employeeId}
                   onChange={(e) => setEmployeeId(e.target.value)}
+                  className={errors.employeeId && "error"}
                 />
+                {errors.employeeId && (
+                  <p className="error-message">{errors.employeeId}</p>
+                )}
               </Form.Group>
             </Col>
 
@@ -98,7 +103,11 @@ export default function ApplyLoan(props) {
                   type="text"
                   value={issueId}
                   onChange={(e) => setIssueId(e.target.value)}
+                  className={errors.issueId && "error"}
                 />
+                {errors.issueId && (
+                  <p className="error-message">{errors.issueId}</p>
+                )}
               </Form.Group>
             </Col>
           </Row>
@@ -108,11 +117,16 @@ export default function ApplyLoan(props) {
               <Form.Select
                 aria-label="Default select example"
                 onChange={(e) => handleItemIds(e.target.value)}
+                name="itemIds"
+                className={errors.itemIds && "error"}
               >
                 <option>Select Item Id</option>
                 {itemIds.map((item) => (
                   <option value={item}>{item}</option>
                 ))}
+                {errors.itemIds && (
+                  <p className="error-message">{errors.itemIds}</p>
+                )}
               </Form.Select>
             </Col>
             <Col>
