@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import ItemService from '../../services/IDS'
@@ -23,7 +23,7 @@ function IDE() {
     const [show, setShow] = useState(false);
     const [changed, setChanged] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchItemData();
         setShow(false);
         setChanged(false);
@@ -37,9 +37,8 @@ function IDE() {
         // setItems(ItemService.getItems().data)
     }
 
-    useEffect(()=>{
-        if(id==="_none")
-        {
+    useEffect(() => {
+        if (id === "_none") {
             setShow(false);
             setItemId("");
             setDesc("");
@@ -49,9 +48,8 @@ function IDE() {
             setVal("");
             console.log('loli');
         }
-        else if(id!=='_add')
-        {
-            const Response = ItemService.getItemById(id).then((Response)=>{
+        else if (id !== '_add') {
+            const Response = ItemService.getItemById(id).then((Response) => {
                 console.log('lol', Response);
                 setItemId(Response.data.itemId);
                 setDesc(Response.data.itemDescription);
@@ -63,8 +61,7 @@ function IDE() {
                 // console.log('lol', Response);
             });
         }
-        else
-        {
+        else {
             setItemId("");
             setDesc("");
             setStatus("Y");
@@ -74,7 +71,7 @@ function IDE() {
             setShow(true);
             console.log('lolli');
         }
-      }, [id]);
+    }, [id]);
 
     const addItem = () => {
         setId("_add");
@@ -90,7 +87,7 @@ function IDE() {
     }
 
     const deleteItem = (iid) => {
-        ItemService.deleteItem(iid).then(()=>{
+        ItemService.deleteItem(iid).then(() => {
             fetchItemData();
             setMessage('Item deleted successfully.');
             //Clear the message after 2 seconds.
@@ -101,10 +98,9 @@ function IDE() {
         });
     }
 
-    const editButton = (data) =>
-    {
-        return(
-            <button className='btn btn-success' data-toggle='modal' data-target=".bd-example-modal-lg-item" onClick={()=>editItem(data.itemId)}>
+    const editButton = (data) => {
+        return (
+            <button className='btn btn-success' data-toggle='modal' data-target=".bd-example-modal-lg-item" onClick={() => editItem(data.itemId)}>
                 <span>
                     <FontAwesomeIcon icon="edit" />
                 </span>
@@ -112,10 +108,9 @@ function IDE() {
         )
     }
 
-    const deleteButton = (data) =>
-    {
-        return(
-            <button className='btn btn-danger' onClick={()=>deleteItem(data.itemId)}>
+    const deleteButton = (data) => {
+        return (
+            <button className='btn btn-danger' onClick={() => deleteItem(data.itemId)}>
                 <span>
                     <FontAwesomeIcon icon="trash" />
                 </span>
@@ -125,11 +120,10 @@ function IDE() {
 
     const saveOrUpdateItem = (event) => {
         event.preventDefault();
-        const item = {"itemId": itemId, "itemDescription": desc, "issueStatus": status, "itemMake": make, "itemCategory": ctg, "itemValuation": val};
-    
-        if(id==='_add')
-        {
-            ItemService.addItem(item).then((Response)=>{
+        const item = { "itemId": itemId, "itemDescription": desc, "issueStatus": status, "itemMake": make, "itemCategory": ctg, "itemValuation": val };
+
+        if (id === '_add') {
+            ItemService.addItem(item).then((Response) => {
                 console.log(Response)
             })
             setId("_none");
@@ -137,9 +131,8 @@ function IDE() {
             setChanged(true);
             // navigate('/IDE');
         }
-        else if(id!=="_none")
-        {
-            ItemService.updateItem(item, id).then(()=>{
+        else if (id !== "_none") {
+            ItemService.updateItem(item, id).then(() => {
                 // navigate('/IDE');
             });
             setId("_none");
@@ -149,12 +142,12 @@ function IDE() {
     };
 
     const getTitle = () => {
-        if (id==='_add') {
+        if (id === '_add') {
             return <h1 className="modal-title">Add Item</h1>;
         } else {
             return <h1 className="modal-title">Update Item</h1>;
         }
-      };
+    };
 
     const cancel = () => {
         // history('/IDE');
@@ -190,16 +183,22 @@ function IDE() {
                         </div>
                     </div>
                 </div>
-                
-                <h1 className="text-center mb-5" style={{ color: "white" }}>Item Master Data Details</h1>
+                <br />
+                <h1 className="text-center mb-4" style={{ color: "white" }}>Item Master Data Details</h1>
 
                 {message && <div className="alert alert-success">{message}</div>}
 
+
+                <div className="d-flex justify-content-center mt-3 mb-4">
+                    <button className="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg-item" onClick={addItem}>Add Item</button>
+                </div>
+
                 <div className="d-flex justify-content-center">
-                    <div className="table-responsive" style={{width: "80%"}}>
-                        <table className="table table-striped table-hover table-bordered w-100">
-                            <thead className="table-danger">
-                                <tr className="table-danger">
+                    <div className="table-responsive" style={{ width: "80%" }}>
+                        <table className="table table-striped table-hover table-bordered w-100"
+                            style={{ borderRadius: "20px", textAlign: "center" }}>
+                            <thead className="table-success">
+                                <tr className="table-success">
                                     <th>Item Id</th>
                                     <th>Description</th>
                                     <th>Issue Status</th>
@@ -230,9 +229,6 @@ function IDE() {
                     </div>
                 </div>
 
-                <div className="d-flex justify-content-center mt-4">
-                    <button className="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg-item" onClick={addItem}>Add Item</button>
-                </div>
             </div>
         </React.Fragment>
     )

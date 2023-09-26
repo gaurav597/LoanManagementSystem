@@ -8,7 +8,6 @@ const ViewLoans = (props) => {
   useEffect(() => {
     LoanService.getLoanById(props['id']).then((response) => {
       setLoans([...response.data.filter(loan => {
-        console.log(loan.employeeId)
         if (loan.employeeId == props['id']) return loan;
       })
       ])
@@ -21,7 +20,7 @@ const ViewLoans = (props) => {
       <div
         style={{ color: "white", display: "flex", justifyContent: "center" }}
       >
-        <h3>Loan Cards Availed</h3>
+        <h1>Loan Cards Availed</h1>
       </div>
       <br />
 
@@ -39,8 +38,10 @@ const ViewLoans = (props) => {
           </div>
         </div>
         <br /><br /><br />
-        <Table striped bordered hover style={{ width: "50%" }}>
-          <thead>
+        <Table striped bordered hover
+          style={{ width: "50%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
+        >
+          <thead class="table-success">
             <tr>
               <th>Loan ID</th>
               <th>Loan Type</th>
@@ -48,7 +49,7 @@ const ViewLoans = (props) => {
               <th>Card Issue Date</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ backgroundColor: "white" }}>
             {loans.map((loan, index) => (
               <tr key={index} >
                 <td> {loan.loanId} </td>

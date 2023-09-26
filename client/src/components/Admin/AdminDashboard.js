@@ -26,15 +26,12 @@ function AdminDashboard() {
         id="uncontrolled-tab-example"
         className="mb-3 navbar justify-content-center tabBg">
         <Tab eventKey="custDataMgmt" title="Customer Data Management">
-          <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <CDE />
         </Tab>
         <Tab eventKey="loanCardMgmt" title="Loan Card Management">
-          <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <LDE />
         </Tab>
         <Tab eventKey="itemsMasterCard" title="Items Master Data">
-          <div style={{ color: "white" }}> Employee ID:  {auth.user}</div>
           <IDE />
         </Tab>
       </Tabs>

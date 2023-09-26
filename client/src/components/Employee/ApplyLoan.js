@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ApplyLoanService from "../../services/ApplyLoanService";
-import EmployeeDashboard from "./EmployeeDashboard";
 import ItemMasterService from "../../services/ItemMasterService";
 import { useNavigate } from "react-router-dom";
 export default function ApplyLoan(props) {
@@ -41,16 +40,12 @@ export default function ApplyLoan(props) {
       employeeId,
       itemValuation: itemValue
     }
-    const data = [props['id'], props['des'], props["dept"]]
     try {
       const res = await ApplyLoanService.applyLoan(Payload);
 
       if (res.status === 200) {
         alert("Loan Applied Successfully");
         setSuccessMessage("Loan Applied successfully!");
-        setTimeout(() => {
-          // history("/employeeDashboard", { state: data });
-        }, 500)
       }
 
       if (res.status === 200) {
@@ -92,7 +87,7 @@ export default function ApplyLoan(props) {
                 <Form.Label>Employee Id</Form.Label>
                 <Form.Control
                   type="text"
-                  value={employeeId}
+                  value={props['id']}
                   onChange={(e) => setEmployeeId(e.target.value)}
                 />
               </Form.Group>
