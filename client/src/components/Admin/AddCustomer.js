@@ -47,7 +47,7 @@ export default function AddCustomer() {
     return (
         <Container fluid="md" className="py-5">
             <div className="text-center mb-5">
-                <hr style={{ width: '50%', opacity: 0.2 }} />
+                {/* <hr style={{ width: '50%', opacity: 0.2 }} /> */}
             </div>
             <Form>
                 <Row className="mb-3">
@@ -78,7 +78,7 @@ export default function AddCustomer() {
                     <Col md={6}>
                         <Form.Group controlId="dateOfBirth">
                             <Form.Label><FontAwesomeIcon icon={faCalendarAlt} className="mr-2" />Date of Birth</Form.Label>
-                            <Form.Control type="date" value={moment(dob).format('YYYY-MM-DD')} onChange={changeDobHandler} />
+                            <Form.Control type="date" value={dob} onChange={changeDobHandler} />
                         </Form.Group>
                     </Col>
                 </Row>
@@ -97,7 +97,7 @@ export default function AddCustomer() {
                     <Col md={6}>
                         <Form.Group controlId="dateOfJoining">
                             <Form.Label><FontAwesomeIcon icon={faCalendarAlt} className="mr-2" />Date of Joining</Form.Label>
-                            <Form.Control type="date" value={moment(doj).format('YYYY-MM-DD')} onChange={changeDojHandler} />
+                            <Form.Control type="date" value={doj} onChange={changeDojHandler} />
                         </Form.Group>
                     </Col>
                 </Row>
