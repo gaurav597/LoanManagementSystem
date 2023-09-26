@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,20 +7,22 @@ import Button from "react-bootstrap/Button";
 import ApplyLoanService from "../../services/ApplyLoanService";
 import ItemMasterService from "../../services/ItemMasterService";
 import { useNavigate } from "react-router-dom";
+import AppContext from "../../Context";
 export default function ApplyLoan(props) {
-  const history = useNavigate();
-  const [itemId, setItemId] = useState("");
-  const [itemCategory, setItemCategory] = useState("");
-  const [itemDescription, setItemDescription] = useState("");
-  const [itemValue, setItemValue] = useState("");
-  const [issueStatus, setIssueStatus] = useState("Y");
-  const [itemMake, setItemMake] = useState("");
-  const [issueId, setIssueId] = useState("");
-  const [employeeId, setEmployeeId] = useState("");
-  const [issueDate, setIssueDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-  const [itemIds, setItemIds] = useState([]);
-  const [successMessage, setSuccessMessage] = useState('');
+  const {
+    itemId, setItemId,
+    itemCategory, setItemCategory,
+    itemDescription, setItemDescription,
+    itemValue, setItemValue,
+    issueStatus, setIssueStatus,
+    itemMake, setItemMake,
+    issueId, setIssueId,
+    employeeId, setEmployeeId,
+    issueDate, setIssueDate,
+    returnDate, setReturnDate,
+    itemIds, setItemIds,
+    successMessage, setSuccessMessage
+  } = useContext(AppContext);
 
   useEffect(() => {
     ItemMasterService.getItemIds().then((response) => {
@@ -42,21 +44,14 @@ export default function ApplyLoan(props) {
     }
     try {
       const res = await ApplyLoanService.applyLoan(Payload);
-
       if (res.status === 200) {
         alert("Loan Applied Successfully");
         setSuccessMessage("Loan Applied successfully!");
-      }
-
-      if (res.status === 200) {
-        console.log(res.status);
-
       }
     }
     catch (error) {
       console.error(error)
     }
-
   }
 
   function handleItemIds(item) {
@@ -73,9 +68,9 @@ export default function ApplyLoan(props) {
 
   return (
     <div className="container" style={{ backgroundColor: "white" }}>
-      <br />
+      {/* <br />
       <h1>Apply for Loan</h1>
-      <br />
+      <br /> */}
       <Container fluid="md">
         <Form>
           <Row>
@@ -185,9 +180,9 @@ export default function ApplyLoan(props) {
             </Col>
           </Row>
         </Form>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        {/* <Button variant="primary" type="submit" onClick={handleSubmit}>
           Apply
-        </Button>
+        </Button> */}
         <br /> <br />
         {/* {errorMsg && <p className="error-message">{errorMsg}</p>} */}
         {successMessage && <p className="success-message">{successMessage}</p>}
