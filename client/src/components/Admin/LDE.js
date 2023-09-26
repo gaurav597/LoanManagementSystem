@@ -113,6 +113,7 @@ function LDE() {
             LoanService.addLoan(loan).then((Response) => {
                 console.log(Response)
             })
+            console.log("reaching here");
             setId("_none");
             setShow(false);
             setChanged(true);
@@ -151,7 +152,6 @@ function LDE() {
                         <div class="modal-content">
                             <div class="modal-header">
                                 {getTitle()}
-                                <h1 class="modal-title" id="exampleModalLabel">Add Loan Data</h1>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

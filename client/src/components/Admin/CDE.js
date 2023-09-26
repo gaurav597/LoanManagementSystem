@@ -11,6 +11,14 @@ import moment from "moment"
 
 function CDE() {
     const history = useNavigate();
+    function formatDateToYYYYMMDD(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const day = String(date.getDate()).padStart(2, '0');
+        
+        return `${year}-${month}-${day}`;
+      }
+    
 
     const [customers, setCustomers] = useState([]);
     const [message, setMessage] = useState('');
@@ -18,13 +26,15 @@ function CDE() {
     const [empId, setEmpId] = useState("");
     const [dsg, setDsg] = useState("Manager");
     const [name, setName] = useState("");
-    const [dob, setDob] = useState(new Date());
+    const [dob, setDob] = useState(formatDateToYYYYMMDD(new Date()));
     const [dept, setDept] = useState("Finance");
-    const [doj, setDoj] = useState(new Date());
+    const [doj, setDoj] = useState(formatDateToYYYYMMDD(new Date())); 
     const [gdr, setGdr] = useState("M");
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false);
     const [changed, setChanged] = useState(false);
+    console.log(doj);
+    console.log(dob);
 
     useEffect(() => {
         fetchCustomerData();
@@ -41,8 +51,8 @@ function CDE() {
             setDsg("Manager");
             setDept("Finance");
             setGdr("M");
-            setDob(new Date());
-            setDoj(new Date());
+            setDob(formatDateToYYYYMMDD(new Date()));
+            setDoj(formatDateToYYYYMMDD(new Date()));
             setPassword("");
             console.log('loli');
         }
@@ -66,8 +76,8 @@ function CDE() {
             setDsg("Manager");
             setDept("Finance");
             setGdr("M");
-            setDob(new Date());
-            setDoj(new Date());
+            setDob(formatDateToYYYYMMDD(new Date()));
+            setDoj(formatDateToYYYYMMDD(new Date()));
             setPassword("");
             setShow(true)
             console.log('lolli');
@@ -178,9 +188,9 @@ function CDE() {
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    {show ? <div className='container'>
+                                    {show ?
                                         <AddCustomer />
-                                    </div> : <></>}
+                                     : <></>}
                                 </div>
                                 <div class="modal-footer">
                                     <button className="btn btn-success" data-dismiss='modal' onClick={saveOrUpdateCustomer}>Submit</button>
