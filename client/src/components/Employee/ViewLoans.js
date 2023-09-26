@@ -9,6 +9,7 @@ const ViewLoans = (props) => {
   const [loans, setLoans] = useState([]);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("none");
+  const [errors, setErrors] = useState("");
 
   const [itemId, setItemId] = useState("");
   const [itemCategory, setItemCategory] = useState("");
@@ -46,6 +47,7 @@ const ViewLoans = (props) => {
       setReturnDate("");
       setItemIds([]);
       setSuccessMessage("");
+      setErrors("");
     }
   }, [id]);
 
@@ -53,10 +55,10 @@ const ViewLoans = (props) => {
     setId("add");
     setShow(true);
   }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (id === "add") {
+    const val = validateForm();
+    if (id === "add" && Object.keys(val).length === 0) {
       const Payload = {
         itemId,
         itemDescription,
@@ -80,11 +82,30 @@ const ViewLoans = (props) => {
       setId("none");
       setShow(false);
     }
+    else {
+      setErrors(val);
+      setShow(true);
+    }
   }
 
   const handleCancel = () => {
     setId("none");
     setShow(false);
+  }
+
+  const validateForm = () => {
+    let validationErrors = {};
+    console.log("here")
+    if (!employeeId) {
+      validationErrors.employeeId = "Employee ID is required";
+    }
+    if (!issueId) {
+      validationErrors.issueId = "Issue ID is required";
+    }
+    if (!itemIds) {
+      validationErrors.itemIds = "Item ID is required";
+    }
+    return validationErrors;
   }
 
   return (
@@ -101,31 +122,33 @@ const ViewLoans = (props) => {
         issueDate, setIssueDate,
         returnDate, setReturnDate,
         itemIds, setItemIds,
-        successMessage, setSuccessMessage
+        successMessage, setSuccessMessage,
+        errors, setErrors,
       }}>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="ml-4 pl-3">
-                  <h2> Apply for Loan</h2>
+        {show ?
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="ml-4 pl-3">
+                    <h2> Apply for Loan</h2>
+                  </div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                {show ? <div className='container'>
-                  <ApplyLoan />
-                </div> : <></>}
-              </div>
-              <div class="modal-footer">
-                <button className="btn btn-success" data-dismiss='modal' onClick={handleSubmit}>Apply</button>
-                <button className="btn btn-danger" data-dismiss='modal' onClick={handleCancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                <div class="modal-body">
+                  <div className='container'>
+                    <ApplyLoan />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button className="btn btn-success" data-dismiss={'modal'} onClick={handleSubmit.bind(this)}>Apply</button>
+                  <button className="btn btn-danger" data-dismiss='modal' onClick={handleCancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </div> : <></>}
       </AppContext.Provider>
       <br />
       <div
