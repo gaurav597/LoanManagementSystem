@@ -29,7 +29,7 @@ export default function ApplyLoan(props) {
     ItemMasterService.getItemIds().then((response) => {
       setItemIds(response.data);
     })
-  });
+  },[]);
 
   const handleSubmit = async (e) => {
     // e.preventDefault();

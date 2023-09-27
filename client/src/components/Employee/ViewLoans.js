@@ -4,6 +4,8 @@ import LoanService from "../../services/LoanService";
 import AppContext from "../../Context";
 import ApplyLoanService from "../../services/ApplyLoanService";
 import ApplyLoan from "./ApplyLoan";
+import { useContext } from "react";
+
 const ViewLoans = (props) => {
 
   const [loans, setLoans] = useState([]);
@@ -23,6 +25,8 @@ const ViewLoans = (props) => {
   const [returnDate, setReturnDate] = useState("");
   const [itemIds, setItemIds] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
+  const {itemPur, setItemPur} = useContext(AppContext);
+
 
   useEffect(() => {
     LoanService.getLoanById(props['id']).then((response) => {
