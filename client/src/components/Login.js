@@ -41,8 +41,8 @@ const Login = () => {
   return (
     <div>
       <NavBar />
-      <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div class="card card0 border-0" style={{borderRadius:"30px"}}>
+      <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ fontFamily: "Libre Baskerville" }} >
+        <div class="card card0 border-0" style={{ borderRadius: "30px" }}>
           <div class="row d-flex">
             <div class="col-lg-6">
               <div class="card1 pb-5">
@@ -58,7 +58,7 @@ const Login = () => {
             </div>
             <div class="col-lg-6">
               <div class="card2 card border-0 px-4 py-5">
-                <br /> <br /><br/>
+                <br /> <br /><br />
                 <div>
                   <label class="mb-1 mt-3"> Employee ID </label>
                   <input
@@ -110,10 +110,10 @@ const Login = () => {
                     Login{" "}
                   </Button>
                 </div>
-                <div class="row mb-4 px-3">
+                <div class="row mb-4 px-3" >
                   <small class="font-weight-bold">
                     Don't have an account?{" "}
-                    <a class="text-danger ">
+                    <a class="text-danger">
                       {" "}
                       <Link to="/register"> Register </Link>
                     </a>

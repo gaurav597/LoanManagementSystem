@@ -157,7 +157,8 @@ function IDE() {
 
     return (
         <React.Fragment>
-            <div>
+            <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
+                
                 <div className="modal fade bd-example-modal-lg-item" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-lg">
                         <div className="modal-content">
@@ -183,52 +184,56 @@ function IDE() {
                         </div>
                     </div>
                 </div>
-                <br />
-                <h1 className="text-center mb-4" style={{ color: "white" }}>Item Master Data Details</h1>
+                <br /> 
+                <div class="card card0" style={{ borderRadius: "35px", justifyContent: "center", paddingLeft: "120px", paddingRight: "120px" }}>
+                <br /> <br />
+                    <h1 className="text-center mb-4" style={{ color: "black" }}>Item Master Data Details</h1>
 
-                {message && <div className="alert alert-success">{message}</div>}
+                    {message && <div className="alert alert-success">{message}</div>}
 
 
-                <div className="d-flex justify-content-center mt-3 mb-4">
-                    <button className="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg-item" onClick={addItem}>Add Item</button>
-                </div>
-
-                <div className="d-flex justify-content-center">
-                    <div className="table-responsive" style={{ width: "80%" }}>
-                        <table className="table table-striped table-hover table-bordered w-100"
-                            style={{ borderRadius: "20px", textAlign: "center" }}>
-                            <thead className="table-success">
-                                <tr className="table-success">
-                                    <th>Item Id</th>
-                                    <th>Description</th>
-                                    <th>Issue Status</th>
-                                    <th>Item Make</th>
-                                    <th>Item Category</th>
-                                    <th>Item Valuation</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {items && items.map(item => (
-                                    <tr key={item.id}>
-                                        <td>{item.itemId}</td>
-                                        <td>{item.itemDescription}</td>
-                                        <td>{item.issueStatus}</td>
-                                        <td>{item.itemMake}</td>
-                                        <td>{item.itemCategory}</td>
-                                        <td>{item.itemValuation}</td>
-                                        <td>
-                                            {editButton(item)}
-                                            &nbsp;
-                                            {deleteButton(item)}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <div className="d-flex justify-content-center mt-3 mb-4">
+                        <button className="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg-item" onClick={addItem}>Add Item</button>
                     </div>
-                </div>
+                    <br />
 
+                    <div className="d-flex justify-content-center">
+                        <div className="table-responsive" style={{ width: "80%" }}>
+                            <table className="table table-striped table-hover table-bordered w-100"
+                                style={{ borderRadius: "20px", textAlign: "center" }}>
+                                <thead className="table-success">
+                                    <tr className="table-success">
+                                        <th>Item Id</th>
+                                        <th>Description</th>
+                                        <th>Issue Status</th>
+                                        <th>Item Make</th>
+                                        <th>Item Category</th>
+                                        <th>Item Valuation</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {items && items.map(item => (
+                                        <tr key={item.id}>
+                                            <td>{item.itemId}</td>
+                                            <td>{item.itemDescription}</td>
+                                            <td>{item.issueStatus}</td>
+                                            <td>{item.itemMake}</td>
+                                            <td>{item.itemCategory}</td>
+                                            <td>{item.itemValuation}</td>
+                                            <td>
+                                                {editButton(item)}
+                                                &nbsp;
+                                                {deleteButton(item)}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br /> <br />
+                </div>
             </div>
         </React.Fragment>
     )
