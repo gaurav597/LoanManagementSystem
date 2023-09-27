@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSign, faCameraRetro, faPeopleGroup, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faSignIn, faCameraRetro, faPeopleGroup, faTrash, faEdit, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import AddCustomer from './components/Admin/AddCustomer';
 import AdminDashboard from './components/Admin/AdminDashboard'
 import AddLoan from './components/Admin/AddLoan';
@@ -23,7 +23,7 @@ import IDE from './components/Admin/IDE'
 
 import { AuthProvider } from './context/AuthContext';
 import RequireAuth from './context/RequireAuth';
-library.add(faSign, faCameraRetro, faPeopleGroup, faTrash, faEdit);
+library.add(faSignIn, faCameraRetro, faPeopleGroup, faTrash, faEdit, faSignOut);
 
 function App() {
   return (
