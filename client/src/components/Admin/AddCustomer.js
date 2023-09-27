@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBriefcase, faCalendarAlt, faVenusMars, faKey } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '../../Context';
-import moment from "moment"
+
 
 export default function AddCustomer() {
     const {id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword, show, setShow} = useContext(AppContext);

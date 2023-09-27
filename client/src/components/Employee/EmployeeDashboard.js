@@ -9,12 +9,18 @@ import NavBar from "../NavBar";
 import "../../styles/Navbar.css"
 import { useAuth } from "../../context/AuthContext";
 import { useLocation } from "react-router-dom";
+import {useState} from "react";
+
+import AppContext from "../../Context";
+
 const EmployeeDashboard = () => {
   const auth = useAuth();
   const location = useLocation();
   const data = location.state;
+  const [itemPur, setItemPur] = useState(false);
   return (
     <div>
+      <AppContext.Provider value={{itemPur, setItemPur}}>
       <NavBar />
       <Tabs
         defaultActiveKey="viewLoans"
@@ -28,9 +34,10 @@ const EmployeeDashboard = () => {
           <ApplyLoan id={auth.user} des={data[0]} dept={data[1]} />
         </Tab> */}
         <Tab eventKey="itemsPurchased" title="Items Purchased">
-          {/* <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} /> */}
+          <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} />
         </Tab>
       </Tabs>
+      </AppContext.Provider>
     </div>
   );
 };

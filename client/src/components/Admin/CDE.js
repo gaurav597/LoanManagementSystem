@@ -7,7 +7,7 @@ import AdminDashboard from './AdminDashboard';
 import AddCustomer from './AddCustomer';
 
 import AppContext from '../../Context';
-import moment from "moment"
+
 
 function CDE() {
     const history = useNavigate();
