@@ -27,7 +27,7 @@ const NavBar = () => {
                         </li>
                         <li className="nav-item">
                             <Link to="/login" className="nav-link">
-                                <span> <FontAwesomeIcon icon={"camera-retro"}> </FontAwesomeIcon></span>&nbsp;
+                                <span> <FontAwesomeIcon icon="sign-hanging"> </FontAwesomeIcon></span>&nbsp;
                                 Login
                             </Link>
                         </li>
@@ -39,7 +39,9 @@ const NavBar = () => {
                 auth.user &&
                 <ul className="nav-list">
                     <li className="nav-item">
-                        <button onClick={handleLogout}> Logout </button>
+                        <button onClick={handleLogout} style={{ backgroundColor: "transparent", border: "none", color: "white" }}>
+                            <span> <FontAwesomeIcon icon="sign-hanging"> </FontAwesomeIcon></span>&nbsp;
+                            <b> Logout </b>  </button>
                     </li>
                 </ul>
             }

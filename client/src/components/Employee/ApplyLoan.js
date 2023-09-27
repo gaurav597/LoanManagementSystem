@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ApplyLoanService from "../../services/ApplyLoanService";
-import EmployeeDashboard from "./EmployeeDashboard";
 import ItemMasterService from "../../services/ItemMasterService";
 import { useNavigate } from "react-router-dom";
+import AppContext from "../../Context";
 export default function ApplyLoan(props) {
-  const history = useNavigate();
-  const [itemId, setItemId] = useState("");
-  const [itemCategory, setItemCategory] = useState("");
-  const [itemDescription, setItemDescription] = useState("");
-  const [itemValue, setItemValue] = useState("");
-  const [issueStatus, setIssueStatus] = useState("Y");
-  const [itemMake, setItemMake] = useState("");
-  const [issueId, setIssueId] = useState("");
-  const [employeeId, setEmployeeId] = useState("");
-  const [issueDate, setIssueDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-  const [itemIds, setItemIds] = useState([]);
-  const [successMessage, setSuccessMessage] = useState('');
+  const {
+    itemId, setItemId,
+    itemCategory, setItemCategory,
+    itemDescription, setItemDescription,
+    itemValue, setItemValue,
+    issueStatus, setIssueStatus,
+    itemMake, setItemMake,
+    issueId, setIssueId,
+    employeeId, setEmployeeId,
+    issueDate, setIssueDate,
+    returnDate, setReturnDate,
+    itemIds, setItemIds,
+    successMessage, setSuccessMessage,
+    errors, setErrors,
+     } = useContext(AppContext);
 
   useEffect(() => {
     ItemMasterService.getItemIds().then((response) => {
       setItemIds(response.data);
     })
-  })
+  });
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
@@ -41,27 +43,16 @@ export default function ApplyLoan(props) {
       employeeId,
       itemValuation: itemValue
     }
-    const data = [props['id'], props['des'], props["dept"]]
     try {
       const res = await ApplyLoanService.applyLoan(Payload);
-
       if (res.status === 200) {
         alert("Loan Applied Successfully");
         setSuccessMessage("Loan Applied successfully!");
-        setTimeout(() => {
-          // history("/employeeDashboard", { state: data });
-        }, 500)
-      }
-
-      if (res.status === 200) {
-        console.log(res.status);
-
       }
     }
     catch (error) {
       console.error(error)
     }
-
   }
 
   function handleItemIds(item) {
@@ -78,9 +69,9 @@ export default function ApplyLoan(props) {
 
   return (
     <div className="container" style={{ backgroundColor: "white" }}>
-      <br />
+      {/* <br />
       <h1>Apply for Loan</h1>
-      <br />
+      <br /> */}
       <Container fluid="md">
         <Form>
           <Row>
@@ -94,7 +85,11 @@ export default function ApplyLoan(props) {
                   type="text"
                   value={employeeId}
                   onChange={(e) => setEmployeeId(e.target.value)}
+                  className={errors.employeeId && "error"}
                 />
+                {errors.employeeId && (
+                  <p className="error-message">{errors.employeeId}</p>
+                )}
               </Form.Group>
             </Col>
 
@@ -108,7 +103,11 @@ export default function ApplyLoan(props) {
                   type="text"
                   value={issueId}
                   onChange={(e) => setIssueId(e.target.value)}
+                  className={errors.issueId && "error"}
                 />
+                {errors.issueId && (
+                  <p className="error-message">{errors.issueId}</p>
+                )}
               </Form.Group>
             </Col>
           </Row>
@@ -118,11 +117,16 @@ export default function ApplyLoan(props) {
               <Form.Select
                 aria-label="Default select example"
                 onChange={(e) => handleItemIds(e.target.value)}
+                name="itemIds"
+                className={errors.itemIds && "error"}
               >
                 <option>Select Item Id</option>
                 {itemIds.map((item) => (
                   <option value={item}>{item}</option>
                 ))}
+                {errors.itemIds && (
+                  <p className="error-message">{errors.itemIds}</p>
+                )}
               </Form.Select>
             </Col>
             <Col>
@@ -190,9 +194,9 @@ export default function ApplyLoan(props) {
             </Col>
           </Row>
         </Form>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        {/* <Button variant="primary" type="submit" onClick={handleSubmit}>
           Apply
-        </Button>
+        </Button> */}
         <br /> <br />
         {/* {errorMsg && <p className="error-message">{errorMsg}</p>} */}
         {successMessage && <p className="success-message">{successMessage}</p>}

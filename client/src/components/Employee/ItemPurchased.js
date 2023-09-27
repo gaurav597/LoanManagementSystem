@@ -4,23 +4,23 @@ import Table from "react-bootstrap/Table";
 import ItemMasterService from "../../services/ItemMasterService";
 
 const ItemPurchased = (props) => {
-  
+
   const [data, setData] = useState([]);
-  useEffect(()=>{
-     ItemMasterService.getItemsPurchased(props['id']).then((res)=>{
+  useEffect(() => {
+    ItemMasterService.getItemsPurchased(props['id']).then((res) => {
       setData(res.data);
       console.log(res.data);
-     })
-  },[]);
+    })
+  }, []);
 
 
   return (
-     <div>
+    <div>
       <br />
       <div
         style={{ color: "white", display: "flex", justifyContent: "center" }}
       >
-        <h3>Purchased Items</h3>
+        <h1>Purchased Items</h1>
       </div>
       <br />
 
@@ -38,8 +38,10 @@ const ItemPurchased = (props) => {
           </div>
         </div>
         <br /><br /><br />
-        <Table striped bordered hover style={{ width: "50%" }}>
-          <thead>
+        <Table striped bordered hover
+          style={{ width: "50%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
+        >
+          <thead class="table-success">
             <tr>
               <th>Issue ID</th>
               <th>Item Description</th>
@@ -49,14 +51,14 @@ const ItemPurchased = (props) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item)=>(
+            {data.map((item) => (
               <tr>
-              <td>{item.issueId}</td>
-              <td>{item.itemDescription}</td>
-              <td>{item.itemMake}</td>
-              <td>{item.itemCategory}</td>
-              <td>{item.itemValuation}</td>
-            </tr>
+                <td>{item.issueId}</td>
+                <td>{item.itemDescription}</td>
+                <td>{item.itemMake}</td>
+                <td>{item.itemCategory}</td>
+                <td>{item.itemValuation}</td>
+              </tr>
             ))}
             {/* {loans.map((loan) => (
               <tr key={loan.id}>

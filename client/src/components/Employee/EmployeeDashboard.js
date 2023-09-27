@@ -21,13 +21,13 @@ const EmployeeDashboard = () => {
         id="uncontrolled-tab-example"
         className="mb-3 navbar justify-content-center tabBg"
       >
-        <Tab eventKey="viewLoans" title="View Loans">
+        <Tab eventKey="viewLoans" title="Loans">
           <ViewLoans id={auth.user} des={data[0]} dept={data[1]} />
         </Tab>
-        <Tab eventKey="applyLoans" title="Apply Loans">
+        {/* <Tab eventKey="applyLoans" title="Apply Loans">
           <ApplyLoan id={auth.user} des={data[0]} dept={data[1]} />
-        </Tab>
-        <Tab eventKey="itemsPurchased" title="View Items Purchased">
+        </Tab> */}
+        <Tab eventKey="itemsPurchased" title="Items Purchased">
           {/* <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} /> */}
         </Tab>
       </Tabs>
