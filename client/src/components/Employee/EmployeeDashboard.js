@@ -9,7 +9,7 @@ import NavBar from "../NavBar";
 import "../../styles/Navbar.css"
 import { useAuth } from "../../context/AuthContext";
 import { useLocation } from "react-router-dom";
-import {useState} from "react";
+import { useState } from "react";
 
 import AppContext from "../../Context";
 
@@ -20,23 +20,24 @@ const EmployeeDashboard = () => {
   const [itemPur, setItemPur] = useState(false);
   return (
     <div>
-      <AppContext.Provider value={{itemPur, setItemPur}}>
-      <NavBar />
-      <Tabs
-        defaultActiveKey="viewLoans"
-        id="uncontrolled-tab-example"
-        className="mb-3 navbar justify-content-center tabBg"
-      >
-        <Tab eventKey="viewLoans" title="Loans">
-          <ViewLoans id={auth.user} des={data[0]} dept={data[1]} />
-        </Tab>
-        {/* <Tab eventKey="applyLoans" title="Apply Loans">
+      <AppContext.Provider value={{ itemPur, setItemPur }}>
+        <NavBar />
+        <Tabs
+          defaultActiveKey="viewLoans"
+          id="uncontrolled-tab-example"
+          className="mb-3 navbar justify-content-center tabBg"
+          style={{ fontFamily: "Libre Baskerville" }}
+        >
+          <Tab eventKey="viewLoans" title="Loans">
+            <ViewLoans id={auth.user} des={data[0]} dept={data[1]} />
+          </Tab>
+          {/* <Tab eventKey="applyLoans" title="Apply Loans">
           <ApplyLoan id={auth.user} des={data[0]} dept={data[1]} />
         </Tab> */}
-        <Tab eventKey="itemsPurchased" title="Items Purchased">
-          <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} />
-        </Tab>
-      </Tabs>
+          <Tab eventKey="itemsPurchased" title="Items Purchased">
+            <ItemPurchased id={auth.user} des={data[0]} dept={data[1]} />
+          </Tab>
+        </Tabs>
       </AppContext.Provider>
     </div>
   );

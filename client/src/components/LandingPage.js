@@ -22,20 +22,20 @@ const LandingPage = () => {
                 <br /> <br /> <br />
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 justify-content-center" style={{ justifyContent: "center" }}>
               <br /> <br /> <br /> <br /> <br />  <br /> <br />
               <div
                 class="row px-3 justify-content-center"
-                style={{ fontFamily: "Croissant One" }}
+                style={{ fontFamily: "Libre Baskerville" }}
               >
-                <h1> Welcome to Loan Management System</h1>
-                <br /> <br />  <br /> <br />  <br /> <br />
+                <h1> Welcome to Pro Loan-o!</h1>
+                <br /> <br />  <br />
               </div>
               <div
                 class="row px-3 justify-content-center"
-                style={{ fontFamily: "Croissant One" }}
+                style={{ fontFamily: "Libre Baskerville" }}
               >
-                <h3>GIS Global Mart</h3>
+                <h4>A loan management system for the employees of GIS Global Mart</h4>
               </div>
             </div>
           </div>

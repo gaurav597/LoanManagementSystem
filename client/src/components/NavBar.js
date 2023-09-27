@@ -14,7 +14,7 @@ const NavBar = () => {
     return (
         <nav className="navbar">
             <div class="row px-3 justify-content-center font">
-                <h2><Link to="/" style={{ textDecoration: 'none' }} className="link"> Loan Management System </Link></h2>
+                <h2><Link to="/" style={{ textDecoration: 'none' }} className="link"> Pro Loan-o! </Link></h2>
             </div>
             {
                 !auth.user && (

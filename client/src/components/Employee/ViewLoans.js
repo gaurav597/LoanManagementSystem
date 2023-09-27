@@ -5,7 +5,7 @@ import AppContext from "../../Context";
 import ApplyLoanService from "../../services/ApplyLoanService";
 import ApplyLoan from "./ApplyLoan";
 import { useContext } from "react";
-
+import "../../styles/Login.css"
 const ViewLoans = (props) => {
 
   const [loans, setLoans] = useState([]);
@@ -25,7 +25,7 @@ const ViewLoans = (props) => {
   const [returnDate, setReturnDate] = useState("");
   const [itemIds, setItemIds] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
-  const {itemPur, setItemPur} = useContext(AppContext);
+  const { itemPur, setItemPur } = useContext(AppContext);
 
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const ViewLoans = (props) => {
   }
 
   return (
-    <div>
+    <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
       <AppContext.Provider value={{
         itemId, setItemId,
         itemCategory, setItemCategory,
@@ -155,54 +155,58 @@ const ViewLoans = (props) => {
           </div> : <></>}
       </AppContext.Provider>
       <br />
-      <div
-        style={{ color: "white", display: "flex", justifyContent: "center" }}
-      >
-        <h1>Loan Cards Availed</h1>
-      </div>
-      <br />
-
-      <div className="row justify-content-center">
-
-        <div class="row d-flex text-center" style={{ color: "white", display: "flex", justifyContent: "center" }}>
-          <div class="col-lg-4" style={{ justifyContent: "center" }}>
-            <span style={{ fontSize: "16px" }}><b>Employee ID: {props['id']}</b></span>
-          </div>
-          <div class="col-lg-4">
-            <span style={{ fontSize: "16px" }}><b>Designation: {props['des']}</b></span>
-          </div>
-          <div class="col-lg-4">
-            <span style={{ fontSize: "16px" }}><b>Department: {props['dept']}</b></span>
-          </div>
-        </div>
-        <br /><br />
-
-        <div className="d-flex justify-content-center mt-3 mb-4">
-          <button className='btn btn-info w-auto' data-toggle='modal' data-target=".bd-example-modal-lg" onClick={applyLoan}>Apply for Loan</button>
-        </div>
-
-        <Table striped bordered hover
-          style={{ width: "50%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
+      <div class="card card0" style={{ borderRadius: "35px", justifyContent: "center", paddingLeft: "120px", paddingRight: "120px" }}>
+        <br /> <br />
+        <div
+          style={{ color: "black", display: "flex", justifyContent: "center" }}
         >
-          <thead class="table-success">
-            <tr>
-              <th>Loan ID</th>
-              <th>Loan Type</th>
-              <th>Duration (in years)</th>
-              <th>Card Issue Date</th>
-            </tr>
-          </thead>
-          <tbody style={{ backgroundColor: "white" }}>
-            {loans.map((loan, index) => (
-              <tr key={index} >
-                <td> {loan.loanId} </td>
-                <td> {loan.loanType} </td>
-                <td> {loan.durationInYears} </td>
-                <td> {loan.cardIssueDate} </td>
+          <h1>Loan Cards Availed</h1>
+        </div>
+        <br />
+
+        <div className="row justify-content-center">
+
+          <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
+            <div class="col-lg-4" style={{ justifyContent: "center" }}>
+              <span style={{ fontSize: "16px" }}><b>Employee ID: {props['id']}</b></span>
+            </div>
+            <div class="col-lg-4">
+              <span style={{ fontSize: "16px" }}><b>Designation: {props['des']}</b></span>
+            </div>
+            <div class="col-lg-4">
+              <span style={{ fontSize: "16px" }}><b>Department: {props['dept']}</b></span>
+            </div>
+          </div>
+          <br /><br />
+
+          <div className="d-flex justify-content-center mt-3 mb-4">
+            <button className='btn btn-info w-auto' data-toggle='modal' data-target=".bd-example-modal-lg" onClick={applyLoan}>Apply for Loan</button>
+          </div>
+
+          <Table striped bordered hover
+            style={{ width: "70%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
+          >
+            <thead class="table-success">
+              <tr>
+                <th>Loan ID</th>
+                <th>Loan Type</th>
+                <th>Duration (in years)</th>
+                <th>Card Issue Date</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody style={{ backgroundColor: "white" }}>
+              {loans.map((loan, index) => (
+                <tr key={index} >
+                  <td> {loan.loanId} </td>
+                  <td> {loan.loanType} </td>
+                  <td> {loan.durationInYears} </td>
+                  <td> {loan.cardIssueDate} </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+        <br /> <br />
       </div>
     </div>
   );
