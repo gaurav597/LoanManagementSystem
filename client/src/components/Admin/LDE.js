@@ -146,7 +146,7 @@ function LDE() {
 
     return (
         <React.Fragment>
-            <div>
+            <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
                 <div class="modal fade bd-example-modal-lg-loan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
@@ -171,51 +171,52 @@ function LDE() {
                     </div>
                 </div>
                 <br />
-                <div className="text-center text-white mb-4">
-                    <h1>Loan Master Data Details</h1>
-                </div>
-
-                <div className="d-flex justify-content-center mt-3 mb-4">
-                    <button className='btn btn-info w-auto' data-toggle='modal' data-target=".bd-example-modal-lg-loan" onClick={addLoan}>Add Loan</button>
-                </div>
-
-                <div className="d-flex justify-content-center">
-                    <div className="table-responsive" style={{ width: "80%" }}> {/* Adjust width as needed */}
-                        <table className="table table-bordered table-striped table-hover w-100"
-                            style={{ borderRadius: "20px", textAlign: "center" }}>
-                            <thead className="table-success">
-                                <tr>
-                                    <th style={{ width: "20%" }}>Loan Id</th>
-                                    <th style={{ width: "40%" }}>Loan Type</th>
-                                    <th style={{ width: "20%" }}>Duration</th>
-                                    <th style={{ width: "20%" }}>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* ... Your existing mapping code ... */}
-                                {loans && loans.map(loan =>
-                                    <tr key={loan.id}>
-                                        <td>{loan.loanId}</td>
-                                        <td>{loan.loanType}</td>
-                                        <td>{loan.durationInYears} years</td>
-                                        <td>
-                                            <button className='btn btn-success mr-2' data-toggle='modal' data-target=".bd-example-modal-lg-loan" onClick={() => editLoan(loan.loanId)}>
-                                                <FontAwesomeIcon icon="edit" />
-                                            </button>
-                                            <button className='btn btn-danger' onClick={() => deleteLoan(loan.loanId)}>
-                                                <FontAwesomeIcon icon="trash" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
+                <div class="card card0" style={{ borderRadius: "35px", justifyContent: "center", paddingLeft: "120px", paddingRight: "120px" }}>
+                    <br /><br />
+                    <div className="text-center mb-4" style={{ color: "black", display: "flex", justifyContent: "center" }}>
+                        <h1>Loan Master Data Details</h1>
                     </div>
+
+                    <div className="d-flex justify-content-center mt-3 mb-4">
+                        <button className='btn btn-info w-auto' data-toggle='modal' data-target=".bd-example-modal-lg-loan" onClick={addLoan}>Add Loan</button>
+                    </div>
+                    <br />
+                    <div className="d-flex justify-content-center">
+                        <div className="table-responsive" style={{ width: "80%" }}> {/* Adjust width as needed */}
+                            <table className="table table-bordered table-striped table-hover w-100"
+                                style={{ borderRadius: "20px", textAlign: "center" }}>
+                                <thead className="table-success">
+                                    <tr>
+                                        <th style={{ width: "20%" }}>Loan Id</th>
+                                        <th style={{ width: "40%" }}>Loan Type</th>
+                                        <th style={{ width: "20%" }}>Duration</th>
+                                        <th style={{ width: "20%" }}>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {/* ... Your existing mapping code ... */}
+                                    {loans && loans.map(loan =>
+                                        <tr key={loan.id}>
+                                            <td>{loan.loanId}</td>
+                                            <td>{loan.loanType}</td>
+                                            <td>{loan.durationInYears} years</td>
+                                            <td>
+                                                <button className='btn btn-success mr-2' data-toggle='modal' data-target=".bd-example-modal-lg-loan" onClick={() => editLoan(loan.loanId)}>
+                                                    <FontAwesomeIcon icon="edit" />
+                                                </button>
+                                                <button className='btn btn-danger' onClick={() => deleteLoan(loan.loanId)}>
+                                                    <FontAwesomeIcon icon="trash" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                            <br /><br />
+                        </div>
+                    </div>
+                    {message && <div className='alert alert-success mt-3 text-center'>{message}</div>}
                 </div>
-
-
-
-                {message && <div className='alert alert-success mt-3 text-center'>{message}</div>}
             </div>
         </React.Fragment>
     )

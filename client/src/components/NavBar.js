@@ -12,9 +12,9 @@ const NavBar = () => {
         history('/')
     }
     return (
-        <nav className="navbar">
-            <div class="row px-3 justify-content-center font">
-                <h2><Link to="/" style={{ textDecoration: 'none' }} className="link"> Pro Loan-o! </Link></h2>
+        <nav className="navbar" style={{ fontFamily: "Libre Baskerville" }}>
+            <div class="row px-3 justify-content-center">
+                <h2><Link to="/" style={{ textDecoration: 'none' }} className="link"> <b>Pro Loan-o</b></Link></h2>
             </div>
             {
                 !auth.user && (
@@ -38,7 +38,12 @@ const NavBar = () => {
             {
                 auth.user &&
                 <ul className="nav-list">
-                    <li className="nav-item">
+                     <li className="nav-item nav-link">
+                        <button style={{ backgroundColor: "transparent", border: "none", color: "white" }}>
+                            <span> <FontAwesomeIcon icon="person-half-dress"> </FontAwesomeIcon></span>&nbsp;
+                            <b> User ID: {auth.user} </b>  </button>
+                    </li>
+                    <li className="nav-item nav-link">
                         <button onClick={handleLogout} style={{ backgroundColor: "transparent", border: "none", color: "white" }}>
                             <span> <FontAwesomeIcon icon="sign-out"> </FontAwesomeIcon></span>&nbsp;
                             <b> Logout </b>  </button>

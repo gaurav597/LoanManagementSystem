@@ -120,7 +120,7 @@ const Registration = () => {
   return (
     <div>
       <NavBar />
-      <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+      <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ fontFamily: "Libre Baskerville" }}>
         <div class="card card0 border-0" style={{ borderRadius: "30px" }}>
           <div class="row d-flex">
             <div class="col-lg-6">
@@ -145,19 +145,35 @@ const Registration = () => {
                           <p className="error-message">{errors.employeeId}</p>
                         )}
                       </div>
-                      <div>
-                        <label>Name</label>
-                        <input
-                          type="text"
-                          name="employeeName"
-                          class="mb-3"
-                          value={dealer.employeeName}
-                          onChange={handleChange}
-                          className={errors.employeeName && "error"}
-                        />
-                        {errors.employeeName && (
-                          <p className="error-message">{errors.employeeName}</p>
-                        )}
+                      <div class="row d-flex">
+                        <div class="col-lg-6">
+                          <label>First Name</label>
+                          <input
+                            type="text"
+                            name="employeeName"
+                            class="mb-3"
+                            value={dealer.employeeName}
+                            onChange={handleChange}
+                            className={errors.employeeName && "error"}
+                          />
+                          {errors.employeeName && (
+                            <p className="error-message">{errors.employeeName}</p>
+                          )}
+                        </div>
+                        <div class="col-lg-6">
+                          <label>Last Name</label>
+                          <input
+                            type="text"
+                            name="employeeName"
+                            class="mb-3"
+                            value={dealer.employeeName}
+                            onChange={handleChange}
+                            className={errors.employeeName && "error"}
+                          />
+                          {errors.employeeName && (
+                            <p className="error-message">{errors.employeeName}</p>
+                          )}
+                        </div>
                       </div>
                       <div class="row d-flex">
                         <div class="col-lg-6">
@@ -295,7 +311,7 @@ const Registration = () => {
                               background: "radial-gradient(circle, rgba(0, 135, 145, 1) 0%, rgba(30, 140, 96, 1) 61%, rgba(89, 179, 76, 1) 93%)", color: "white",
                               borderRadius: "5px",
                               border: "none",
-                              height:"35px"
+                              height: "35px"
                             }}
                           >
                             {" "}
