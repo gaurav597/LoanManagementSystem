@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './components/Registration';
 import Login from './components/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSignIn, faCameraRetro, faPeopleGroup, faTrash, faEdit, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faSignIn, faCameraRetro, faPeopleGroup, faTrash, faEdit, faSignOut, faPersonHalfDress } from '@fortawesome/free-solid-svg-icons';
 import AddCustomer from './components/Admin/AddCustomer';
 import AdminDashboard from './components/Admin/AdminDashboard'
 import AddLoan from './components/Admin/AddLoan';
@@ -23,7 +23,7 @@ import IDE from './components/Admin/IDE'
 
 import { AuthProvider } from './context/AuthContext';
 import RequireAuth from './context/RequireAuth';
-library.add(faSignIn, faCameraRetro, faPeopleGroup, faTrash, faEdit, faSignOut);
+library.add(faSignIn, faCameraRetro, faPeopleGroup, faTrash, faEdit, faSignOut, faPersonHalfDress);
 
 function App() {
   return (
@@ -40,46 +40,46 @@ function App() {
                 <Route path="/register" element={<Registration />} />
                 <Route path="/login" element={<Login />} />
 
-                <Route path="/employeeDashboard" element={<EmployeeDashboard />}/>
+                <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
                 <Route path="/viewLoans" element={<RequireAuth><ViewLoans /></RequireAuth>} />
                 <Route path="/applyLoan" element={<ApplyLoan />} />
                 <Route path="/itemPurchased" element={<RequireAuth><ItemPurchased /></RequireAuth>} />
 
                 <Route path="/adminDashboard" element={
-                <RequireAuth>
-                  <AdminDashboard />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <AdminDashboard />
+                  </RequireAuth>
+                } />
                 <Route path='/CDE' element={
-                <RequireAuth>
-                  <CDE />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <CDE />
+                  </RequireAuth>
+                } />
                 <Route path='/addCustomer/:id' element={
-                <RequireAuth>
-                  <AddCustomer />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <AddCustomer />
+                  </RequireAuth>
+                } />
                 <Route path="/LDE" element={
-                <RequireAuth>
-                  <LDE />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <LDE />
+                  </RequireAuth>
+                } />
                 <Route path="/addLoan/:id" element={
-                <RequireAuth>
-                  <AddLoan />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <AddLoan />
+                  </RequireAuth>
+                } />
                 <Route path="/IDE" element={
-                <RequireAuth>
-                  <IDE />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <IDE />
+                  </RequireAuth>
+                } />
                 <Route path="/addItem/:id" element={
-                <RequireAuth>
-                  <AddItem />
-                </RequireAuth>
-              } />
+                  <RequireAuth>
+                    <AddItem />
+                  </RequireAuth>
+                } />
               </Routes>
             </Router>
           </div>

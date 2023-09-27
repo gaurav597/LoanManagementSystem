@@ -24,7 +24,9 @@ function AdminDashboard() {
       <Tabs
         defaultActiveKey="custDataMgmt"
         id="uncontrolled-tab-example"
-        className="mb-3 navbar justify-content-center tabBg">
+        className="mb-3 navbar justify-content-center tabBg"
+        style={{ fontFamily: "Libre Baskerville" }}
+        >
         <Tab eventKey="custDataMgmt" title="Customer Data Management">
           <CDE />
         </Tab>
