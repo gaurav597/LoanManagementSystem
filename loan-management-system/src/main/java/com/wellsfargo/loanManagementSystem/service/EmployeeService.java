@@ -28,6 +28,7 @@ public class EmployeeService {
     @Autowired
     private ItemRepository itemRepo;
 
+
     public EmployeeMaster registerEmployee(EmployeeMaster e)
     {
         return erepo.save(e);
@@ -55,8 +56,8 @@ public class EmployeeService {
         List<ItemPurchased> itemPurchasedList = new ArrayList<>();
         for (EmployeeIssueDetails eIssue: issueList
              ) {
-            ItemMaster item = itemRepo.findById(eIssue.getIssueId())
-                    .orElseThrow(() -> new ResourceNotFoundException("item does not exist"));
+            ItemMaster item = itemRepo.findById(eIssue.getItemId().getItemId())
+                    .orElseThrow(() -> new ResourceNotFoundException("item does not exist"+ eIssue.getIssueId()));
             ItemPurchased itemPur = new ItemPurchased();
             itemPur.setIssueId(eIssue.getIssueId());
             itemPur.setItemDescription(item.getItemDescription());
