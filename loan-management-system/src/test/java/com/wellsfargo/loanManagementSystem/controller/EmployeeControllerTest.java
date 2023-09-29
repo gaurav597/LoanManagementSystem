@@ -47,22 +47,11 @@ class EmployeeControllerTest {
 	private EmployeeService employeeService;
     @MockBean
     private EmployeeRepository employeeRepository;
-
-//	@BeforeEach
-//	void setUp() throws Exception {
-//		
-//	}
-//
-//	@AfterEach
-//	void tearDown() throws Exception {
-//	}
-
     private EmployeeMaster e;
 	@BeforeEach
 	void setUp() throws Exception {
 		e = new EmployeeMaster();
 	}
-
 	@AfterEach
 	void tearDown() throws Exception {
 		e = null;
@@ -124,21 +113,27 @@ class EmployeeControllerTest {
         assertEquals("Test Designation", response.b[0]);
         assertEquals("Test Department", response.b[1]);
     }
-//	@Test
-//    public void testLoginDealer_Failure() {
-//        // Mock an employee for a login failure scenario
-//        EmployeeMaster mockEmployee = new EmployeeMaster();
-//        mockEmployee.setEmployeeId("non_existent_id"); // Set an ID that doesn't exist
-//
-//        // Mock the behavior of the service to return an empty Optional (no employee found)
-//        when(employeeService.getEmployee("non_existent_id")).thenReturn(Optional.empty());
-//
-//        Pair<Boolean, String[]> response = employeeController.loginDealer(mockEmployee);
-//
-//        assertFalse(response.a); // Check if the login was a failure
-//
-//        // Check other assertions as needed for the returned response
-//    }
+	@Test
+    public void testLoginDealer_Failure(){
+        // Mock an employee for a login failure scenario
+        EmployeeMaster mockEmployee = new EmployeeMaster();
+        mockEmployee.setEmployeeId("non_existent_id"); // Set an ID that doesn't exist
+
+        // Mock the behavior of the service to return an empty Optional (no employee found)
+        when(employeeService.getEmployee("non_existent_id")).thenReturn(Optional.empty());
+        try {
+            Pair<Boolean, String[]> response = employeeController.loginDealer(mockEmployee);
+            // Check if the login was a failure
+            assertFalse(response.a);
+
+            // Check other assertions as needed for the returned response
+        } catch (ResourceNotFoundException ex) {
+            // Check if the exception message matches the expected message
+            assertEquals("Employee not found for this id.", ex.getMessage());
+        }
+
+        // Check other assertions as needed for the returned response
+    }
 
 	@Test
     public void testAddCustomer_Success() {
@@ -187,18 +182,18 @@ class EmployeeControllerTest {
         assertEquals(mockEmployees, response.getBody()); // Check if the returned list matches the mockEmployees
     }
 
-//    @Test
-//    public void testGetCustomer_Failure() {
-//        // Mock a failure scenario where getting customers results in an exception
-//        // This is just one example; you can adapt this scenario based on your actual error handling
-//
-//        // Mock the behavior of the service to throw an exception
+    @Test
+    public void testGetCustomer_Failure() {
+        // Mock a failure scenario where getting customers results in an exception
+        // This is just one example; you can adapt this scenario based on your actual error handling
+    	when(employeeService.getEmployees()).thenThrow(new Exception("Something went wrong"));
+        // Mock the behavior of the service to throw an exception
 //        when(employeeService.getEmployees()).thenThrow(new Exception("Something went wrong"));
-//        ResponseEntity<List<EmployeeMaster>> response = employeeController.getCustomer();
-//
-//        assertEquals(500, response.getStatusCode()); // Check if the response code is INTERNAL_SERVER_ERROR
-//        assertNull(response.getBody()); // Check if the response body is null
-//    }
+        ResponseEntity<List<EmployeeMaster>> response = employeeController.getCustomer();
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());// Check if the response code is INTERNAL_SERVER_ERROR
+        assertNull(response.getBody()); // Check if the response body is null
+    }
 
     @Test
     void testDeleteCustomer_Success() {
