@@ -103,9 +103,9 @@ const ViewLoans = (props) => {
     if (!employeeId) {
       validationErrors.employeeId = "Employee ID is required";
     }
-    if (!issueId) {
-      validationErrors.issueId = "Issue ID is required";
-    }
+    // if (!issueId) {
+    //   validationErrors.issueId = "Issue ID is required";
+    // }
     if (!itemIds) {
       validationErrors.itemIds = "Item ID is required";
     }

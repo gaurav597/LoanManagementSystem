@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -16,10 +14,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-//@NoArgsConstructor
+@NoArgsConstructor
 public class EmployeeIssueDetails {
     @Id
-    private  String issueId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long issueId;
 
     @ManyToOne
     @JsonIgnore
@@ -34,8 +33,8 @@ public class EmployeeIssueDetails {
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate returnDate;
 
-    public EmployeeIssueDetails(){
-        this.issueId = "123";
-    }
+//    public EmployeeIssueDetails(){
+//        this.issueId = "123";
+//    }
 
 }

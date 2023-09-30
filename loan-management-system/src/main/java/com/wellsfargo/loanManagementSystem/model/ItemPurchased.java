@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class ItemPurchased {
-    private String issueId;
+    private Long issueId;
     private String itemDescription;
     private String itemMake;
     private String itemCategory;
