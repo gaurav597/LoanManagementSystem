@@ -18,7 +18,7 @@ public class EmployeeCardDetails {
     @Id
     @Column(nullable = false)
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String cardId;
+    private Long cardId;
 
 
     @ManyToOne

@@ -23,13 +23,13 @@ export default function ApplyLoan(props) {
     itemIds, setItemIds,
     successMessage, setSuccessMessage,
     errors, setErrors,
-     } = useContext(AppContext);
+  } = useContext(AppContext);
 
   useEffect(() => {
     ItemMasterService.getItemIds().then((response) => {
       setItemIds(response.data);
     })
-  },[]);
+  }, []);
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
@@ -94,7 +94,7 @@ export default function ApplyLoan(props) {
             </Col>
 
             <Col>
-              <Form.Group
+              {/* <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
@@ -108,11 +108,7 @@ export default function ApplyLoan(props) {
                 {errors.issueId && (
                   <p className="error-message">{errors.issueId}</p>
                 )}
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
+              </Form.Group> */}
               <Form.Label>Item Id</Form.Label>
               <Form.Select
                 aria-label="Default select example"
@@ -129,6 +125,8 @@ export default function ApplyLoan(props) {
                 )}
               </Form.Select>
             </Col>
+          </Row>
+          <Row>
             <Col>
               <Form.Label>Item Category</Form.Label>
               <Form.Control
@@ -137,8 +135,6 @@ export default function ApplyLoan(props) {
                 value={itemCategory}
               />
             </Col>
-          </Row>
-          <Row>
             <Col>
               <Form.Group
                 className="mb-3"
@@ -153,6 +149,8 @@ export default function ApplyLoan(props) {
                 />
               </Form.Group>
             </Col>
+          </Row>
+          <Row>
             <Col>
               <Form.Group
                 className="mb-3"
@@ -167,8 +165,6 @@ export default function ApplyLoan(props) {
                 />
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
             <Col>
               <Form.Group
                 className="mb-3"
@@ -182,6 +178,8 @@ export default function ApplyLoan(props) {
                 />
               </Form.Group>
             </Col>
+          </Row>
+          <Row>
             <Col>
               <Form.Group>
                 <Form.Label>Item Make</Form.Label>
@@ -191,6 +189,9 @@ export default function ApplyLoan(props) {
                   value={itemMake}
                 />
               </Form.Group>
+            </Col>
+            <Col>
+
             </Col>
           </Row>
         </Form>
