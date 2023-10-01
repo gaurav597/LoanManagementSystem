@@ -4,9 +4,8 @@ import Table from "react-bootstrap/Table";
 import ItemMasterService from "../../services/ItemMasterService";
 
 import "../../styles/Login.css"
-const ItemPurchased = (props) => {
 
-import "../../styles/Login.css";
+
 import AppContext from "../../Context";
 import { useContext } from "react";
 
