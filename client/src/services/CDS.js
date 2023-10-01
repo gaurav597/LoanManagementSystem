@@ -20,7 +20,7 @@ class CustomerService {
     }
 
     static updateCustomer(customer, empId)
-    {
+    {   console.log("reaching here"+ customer);
         return axios.put(CRA_URL+'/addCustomer/'+empId, customer);
     }
 
