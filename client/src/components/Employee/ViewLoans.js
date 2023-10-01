@@ -76,6 +76,7 @@ const ViewLoans = (props) => {
       try {
         const res = await ApplyLoanService.applyLoan(Payload);
         if (res.status === 200) {
+          setItemPur(!itemPur);
           alert("Loan Applied Successfully");
           setSuccessMessage("Loan Applied successfully!");
         }
