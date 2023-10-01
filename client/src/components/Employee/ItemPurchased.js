@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import EmployeeDashboard from "./EmployeeDashboard";
 import Table from "react-bootstrap/Table";
 import ItemMasterService from "../../services/ItemMasterService";
+
+import "../../styles/Login.css"
+const ItemPurchased = (props) => {
+
 import "../../styles/Login.css";
 import AppContext from "../../Context";
 import { useContext } from "react";
+
 
 
 const ItemPurchased = (props) => {
@@ -16,7 +21,9 @@ const ItemPurchased = (props) => {
       setData(res.data);
       console.log(res.data);
     })
+
   }, [itemPur]);
+
 
   return (
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
