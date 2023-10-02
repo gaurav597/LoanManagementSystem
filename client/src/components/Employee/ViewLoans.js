@@ -167,7 +167,7 @@ const ViewLoans = (props) => {
 
         <div className="row justify-content-center">
 
-          <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
+          {/* <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
             <div class="col-lg-4" style={{ justifyContent: "center" }}>
               <span style={{ fontSize: "16px" }}><b>Employee ID: {props['id']}</b></span>
             </div>
@@ -178,7 +178,7 @@ const ViewLoans = (props) => {
               <span style={{ fontSize: "16px" }}><b>Department: {props['dept']}</b></span>
             </div>
           </div>
-          <br /><br />
+          <br /><br /> */}
 
           <div className="d-flex justify-content-center mt-3 mb-4">
             <button className='btn btn-info w-auto' data-toggle='modal' data-target=".bd-example-modal-lg" onClick={applyLoan}>Apply for Loan</button>

@@ -38,7 +38,7 @@ const ItemPurchased = (props) => {
         <br />
 
         <div className="row justify-content-center">
-          <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
+          {/* <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
 
             <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
               <div class="col-lg-4" style={{ justifyContent: "center" }}>
@@ -52,7 +52,7 @@ const ItemPurchased = (props) => {
               </div>
             </div>
           </div>
-          <br /><br /> <br />
+          <br /><br /> <br /> */}
           <Table striped bordered hover
             style={{ width: "70%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
           >

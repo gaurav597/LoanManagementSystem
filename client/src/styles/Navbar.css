@@ -72,3 +72,38 @@
     padding: 10px;
   }
 }
+
+.custom-tooltip {
+  position: relative;
+}
+
+.custom-tooltip:hover::before {
+  content: attr(data-title);
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%; 
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 4px;
+  white-space: pre-line; 
+  pointer-events: none; 
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.custom-tooltip:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(0, 0, 0, 0.8);
+  margin-bottom: 3px;
+}
