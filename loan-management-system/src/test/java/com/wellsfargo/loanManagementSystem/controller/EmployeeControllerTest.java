@@ -130,7 +130,7 @@ class EmployeeControllerTest {
             // Check other assertions as needed for the returned response
         } catch (ResourceNotFoundException | CustomException ex) {
             // Check if the exception message matches the expected message
-            assertEquals("Employee not found for this id.", ex.getMessage());
+            assertEquals("Employee Not found", ex.getMessage());
         }
 
         // Check other assertions as needed for the returned response
@@ -205,7 +205,7 @@ class EmployeeControllerTest {
         doNothing().when(employeeService).deleteEmployee(employeeId);
 
         // Act
-        String response = String.valueOf(employeeController.deleteCustomer(employeeId));
+        String response = employeeController.deleteCustomer(employeeId).getBody();
 
         // Assert
         verify(employeeService).deleteEmployee(employeeId);
