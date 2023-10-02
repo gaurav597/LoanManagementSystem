@@ -10,7 +10,7 @@ import AppContext from '../../Context';
 
 
 export default function AddCustomer() {
-    const {id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword, show, setShow, error, errors} = useContext(AppContext);
+    const {id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword, show, setShow, errors} = useContext(AppContext);
    
 
     const changeIdHandler = (event) => {
@@ -77,6 +77,9 @@ export default function AddCustomer() {
                         <Form.Group controlId="employeeName">
                             <Form.Label><FontAwesomeIcon icon={faUser} className="mr-2" />Employee Name</Form.Label>
                             <Form.Control type="text" value={name} onChange={changeNameHandler} />
+                            {errors.name && (
+                          <p className="error-message">{errors.name}</p>
+                        )}
                         </Form.Group>
                     </Col>
                     <Col md={6}>
@@ -121,6 +124,9 @@ export default function AddCustomer() {
                         <Form.Group controlId="password">
                             <Form.Label><FontAwesomeIcon icon={faKey} className="mr-2" />Password</Form.Label>
                             <Form.Control type="password" value={password} onChange={changePasswordHandler} />
+                            {errors.password && (
+                          <p className="error-message">{errors.password}</p>
+                        )}
                         </Form.Group>
                     </Col>
                 </Row>

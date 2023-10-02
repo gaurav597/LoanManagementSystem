@@ -36,7 +36,7 @@ function CDE() {
     const [changed, setChanged] = useState(false);
 
     const [errors, setErrors] = useState("");
-    const [error, setError] = useState(false);
+
 
     const modalCloseButton = useRef(null);
 
@@ -158,11 +158,9 @@ function CDE() {
             //     alert("Password can not be empty");
             // }
             // else{
-                let validationErrors = {};
-                if(empId===""){
-                    validationErrors.empId = "Employee Id can not be empty"
+                const validationErrors = formValidation();
+                if(Object.keys(validationErrors).length != 0){              
                     setErrors(validationErrors);
-                    setError(true);
                 } 
                 else{
                     CustomerService.addCustomer(customer).then((Response) => {
@@ -171,7 +169,6 @@ function CDE() {
                     setId("_none");
                     setShow(false);
                     setChanged(true);
-                    setError(true);
                     if (modalCloseButton.current) {
                           modalCloseButton.current.click();
                     }
@@ -192,6 +189,21 @@ function CDE() {
         }
     };
 
+    const formValidation = () => {
+        let validationErrors = {};
+        if(empId===""){
+            validationErrors.empId = "Employee Id can not be empty";
+        }
+        if(name===""){
+            validationErrors.name = "Employee name can not be empty";
+        }
+        if(password===""){
+            validationErrors.password = "Password can not be empty";
+        }
+        
+        return validationErrors;
+    }
+
     const getTitle = () => {
         if (id === '_add') {
             return <h1 className="modal-title">Add Customer</h1>;
@@ -210,7 +222,7 @@ function CDE() {
     return (
         <React.Fragment>
             <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
-                <AppContext.Provider value={{ id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword , error, setError, errors}}>
+                <AppContext.Provider value={{ id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword , errors}}>
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
