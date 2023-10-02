@@ -54,7 +54,7 @@ class ItemCardControllerTest {
 	
 	    when(itemCardService.addItemData(any(ItemMaster.class))).thenReturn(i);
 	
-	    String result = String.valueOf(itemCardController.addItemData(i));
+	    String result = itemCardController.addItemData(i).getBody();
 	
 	    // Assert the result
 	    assertEquals("Item added", result);

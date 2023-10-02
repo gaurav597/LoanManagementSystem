@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0c26c6-54f3-469b-a463-6d365b50640c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeCardDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeCardDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeIssueDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/EmployeeIssueDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/ItemPurchased.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/model/ItemPurchased.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/LoanCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/java/com/wellsfargo/loanManagementSystem/service/LoanCardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loan-management-system/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loan-management-system/src/test/java/com/wellsfargo/loanManagementSystem/controller/ItemCardControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/loan-management-system/src/test/java/com/wellsfargo/loanManagementSystem/controller/ItemCardControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmployeeControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ItemCardControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="loan-management-system" />
       <extension name="coverage">
         <pattern>
@@ -93,13 +90,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.wellsfargo.loanManagementSystem.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.controller.EmployeeControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.controller.ItemCardControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmployeeControllerTest.testGetCustomer_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoanCardControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="loan-management-system" />
       <extension name="coverage">
         <pattern>
@@ -108,25 +105,31 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.wellsfargo.loanManagementSystem.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.controller.EmployeeControllerTest" />
-      <option name="METHOD_NAME" value="testGetCustomer_Failure" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.controller.LoanCardControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmployeeControllerTest.testLoginDealer_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoanManagementSystemApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="loan-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wellsfargo.loanManagementSystem.controller.*" />
+          <option name="PATTERN" value="com.wellsfargo.loanManagementSystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.wellsfargo.loanManagementSystem.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.controller.EmployeeControllerTest" />
-      <option name="METHOD_NAME" value="testLoginDealer_Failure" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.wellsfargo.loanManagementSystem" />
+      <option name="MAIN_CLASS_NAME" value="com.wellsfargo.loanManagementSystem.LoanManagementSystemApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="controller in loan-management-system" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="loan-management-system" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/loan-management-system/src/test/java/com/wellsfargo/loanManagementSystem/controller" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -138,22 +141,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Write tests for method LoanCardService.applyLoan" type="com.diffblue.cover.write-tests-run-configuration" factoryName="com.diffblue.cover.write-tests-run-configuration" activateToolWindowBeforeRun="false" temporary="true">
-      <module name="loan-management-system" />
-      <settings run-config-name="Write tests for method LoanCardService.applyLoan" include-system-env-vars="true">
-        <jvm-args />
-        <selection-scope>method</selection-scope>
-        <selected-element key="com.wellsfargo.loanManagementSystem.service.LoanCardService.applyLoan:(Ljava/util/Map;)V" />
-      </settings>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.LoanManagementSystemApplication" />
-        <item itemvalue="Diffblue Cover.Write tests for method LoanCardService.applyLoan" />
-        <item itemvalue="JUnit.EmployeeControllerTest.testGetCustomer_Failure" />
-        <item itemvalue="JUnit.EmployeeControllerTest" />
-        <item itemvalue="JUnit.EmployeeControllerTest.testLoginDealer_Failure" />
+        <item itemvalue="JUnit.controller in loan-management-system" />
+        <item itemvalue="JUnit.ItemCardControllerTest" />
+        <item itemvalue="JUnit.LoanManagementSystemApplicationTests" />
+        <item itemvalue="JUnit.LoanCardControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -201,8 +195,21 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LoanManagementSystem$EmployeeControllerTest.ic" NAME="EmployeeControllerTest Coverage Results" MODIFIED="1696240953889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wellsfargo.loanManagementSystem.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LoanManagementSystem$ItemCardControllerTest.ic" NAME="ItemCardControllerTest Coverage Results" MODIFIED="1696241889736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wellsfargo.loanManagementSystem.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/LoanManagementSystem$LoanManagementSystemApplication.ic" NAME="LoanManagementSystemApplication Coverage Results" MODIFIED="1696079031573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.wellsfargo.loanManagementSystem.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/LoanManagementSystem$LoanCardControllerTest.ic" NAME="LoanCardControllerTest Coverage Results" MODIFIED="1696241492765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wellsfargo.loanManagementSystem.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LoanManagementSystem$LoanManagementSystemApplicationTests.ic" NAME="LoanManagementSystemApplicationTests Coverage Results" MODIFIED="1696241551520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wellsfargo.loanManagementSystem.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LoanManagementSystem$controller_in_loan_management_system.ic" NAME="controller in loan-management-system Coverage Results" MODIFIED="1696242115937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

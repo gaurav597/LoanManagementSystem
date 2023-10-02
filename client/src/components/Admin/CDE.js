@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import CustomerService from '../../services/CDS'
@@ -7,6 +7,7 @@ import AdminDashboard from './AdminDashboard';
 import AddCustomer from './AddCustomer';
 
 import AppContext from '../../Context';
+import $ from 'jquery';
 
 
 function CDE() {
@@ -33,6 +34,12 @@ function CDE() {
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false);
     const [changed, setChanged] = useState(false);
+
+    const [errors, setErrors] = useState("");
+    const [error, setError] = useState(false);
+
+    const modalCloseButton = useRef(null);
+
     console.log(doj);
     console.log(dob);
 
@@ -141,12 +148,36 @@ function CDE() {
         const customer = { "employeeId": empId, "employeeName": name, "password": password, "gender": gdr, "dateOfBirth": dob, "dateOfJoin": doj, "designation": dsg, "department": dept };
 
         if (id === '_add') {
-            CustomerService.addCustomer(customer).then((Response) => {
-                console.log(Response)
-            })
-            setId("_none");
-            setShow(false);
-            setChanged(true);
+            // if(empId===""){
+            //     alert("Employee Id can not be empty");
+            // } 
+            // else if(name===""){
+            //     alert("Employee Name can not be empty")
+            // }
+            // else if(password===""){
+            //     alert("Password can not be empty");
+            // }
+            // else{
+                let validationErrors = {};
+                if(empId===""){
+                    validationErrors.empId = "Employee Id can not be empty"
+                    setErrors(validationErrors);
+                    setError(true);
+                } 
+                else{
+                    CustomerService.addCustomer(customer).then((Response) => {
+                        console.log(Response)
+                    })
+                    setId("_none");
+                    setShow(false);
+                    setChanged(true);
+                    setError(true);
+                    if (modalCloseButton.current) {
+                          modalCloseButton.current.click();
+                    }
+                }
+            // }
+        
             // history('/CDE');
         }
         else if (id !== "_none") {
@@ -173,12 +204,13 @@ function CDE() {
         // history('/CDE');
         setId("_none");
         setShow(false);
+        setErrors("");
     };
 
     return (
         <React.Fragment>
             <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
-                <AppContext.Provider value={{ id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword }}>
+                <AppContext.Provider value={{ id, empId, setEmpId, dsg, setDsg, name, setName, dob, setDob, dept, setDept, doj, setDoj, gdr, setGdr, password, setPassword , error, setError, errors}}>
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
@@ -194,7 +226,8 @@ function CDE() {
                                         : <></>}
                                 </div>
                                 <div class="modal-footer">
-                                    <button className="btn btn-success" data-dismiss='modal' onClick={saveOrUpdateCustomer}>Submit</button>
+                                    <button className="btn btn-success" onClick={saveOrUpdateCustomer}>Submit</button>
+                                    <button ref={modalCloseButton} data-dismiss='modal' style={{display:"none"}}/>
                                     <button className="btn btn-danger" data-dismiss='modal' onClick={cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </div>
                             </div>
