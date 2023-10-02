@@ -146,20 +146,20 @@ const Registration = () => {
                         )}
                       </div>
                       <div class="row d-flex">
-                        <div class="col-lg-6">
-                          <label>First Name</label>
-                          <input
-                            type="text"
-                            name="employeeName"
-                            class="mb-3"
-                            value={dealer.employeeName}
-                            onChange={handleChange}
-                            className={errors.employeeName && "error"}
-                          />
-                          {errors.employeeName && (
-                            <p className="error-message">{errors.employeeName}</p>
-                          )}
-                        </div>
+                        {/* <div class="col-lg-6"> */}
+                        <label>First Name</label>
+                        <input
+                          type="text"
+                          name="employeeName"
+                          class="mb-3"
+                          value={dealer.employeeName}
+                          onChange={handleChange}
+                          className={errors.employeeName && "error"}
+                        />
+                        {errors.employeeName && (
+                          <p className="error-message">{errors.employeeName}</p>
+                        )}
+                        {/* </div> */}
                         {/* <div class="col-lg-6">
                           <label>Last Name</label>
                           <input
