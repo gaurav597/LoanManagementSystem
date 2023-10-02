@@ -151,6 +151,7 @@ function CDE() {
         }
         else if (id !== "_none") {
             console.log("lol", customer);
+            console.log("trying to update");
             CustomerService.updateCustomer(customer, id).then(() => {
                 // history('/CDE');
             });

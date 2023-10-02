@@ -5,12 +5,15 @@ import com.wellsfargo.loanManagementSystem.model.EmployeeMaster;
 import com.wellsfargo.loanManagementSystem.model.ItemMaster;
 import com.wellsfargo.loanManagementSystem.service.ItemCardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:3000")
@@ -23,9 +26,14 @@ public class ItemCardController {
 
 
     @PostMapping(value = "/addItemData")
-    public String addItemData(@Validated @RequestBody ItemMaster itemMaster) {
-        itemCardService.addItemData(itemMaster);
-        return "Item added";
+    public ResponseEntity<String> addItemData(@Validated @RequestBody ItemMaster itemMaster) {
+        try {
+            itemCardService.addItemData(itemMaster);
+            return ResponseEntity.ok("Item added");
+        } catch (Exception ex) {
+            // Handle other exceptions
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + ex.getMessage());
+        }
     }
 
 //    @GetMapping("/getItemData")
@@ -37,8 +45,12 @@ public class ItemCardController {
 
     @GetMapping("/getItemIds")
     public ResponseEntity<List<String>> getItemIds(){
-        List<String> l = itemCardService.getItemIds();
-        return new ResponseEntity<>(l, HttpStatus.OK);
+        try{
+            List<String> l = itemCardService.getItemIds();
+            return new ResponseEntity<>(l, HttpStatus.OK);
+        } catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.singletonList(e.getMessage()));
+        }
     }
 
     @PostMapping("/getItemDetail")

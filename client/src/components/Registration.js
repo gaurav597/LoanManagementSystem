@@ -160,7 +160,7 @@ const Registration = () => {
                             <p className="error-message">{errors.employeeName}</p>
                           )}
                         </div>
-                        <div class="col-lg-6">
+                        {/* <div class="col-lg-6">
                           <label>Last Name</label>
                           <input
                             type="text"
@@ -173,7 +173,7 @@ const Registration = () => {
                           {errors.employeeName && (
                             <p className="error-message">{errors.employeeName}</p>
                           )}
-                        </div>
+                        </div> */}
                       </div>
                       <div class="row d-flex">
                         <div class="col-lg-6">

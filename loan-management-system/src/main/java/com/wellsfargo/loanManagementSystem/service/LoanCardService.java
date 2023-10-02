@@ -62,7 +62,7 @@ public class LoanCardService {
 
 	public void applyLoan(Map<String, Object> payload)throws Exception {
 		EmployeeIssueDetails eissue= new EmployeeIssueDetails();
-		eissue.setIssueId((String)payload.get("issueId"));
+//		eissue.setIssueId((String)payload.get("issueId"));
 		ItemMaster i = itemRepo.findById((String) payload.get("itemId"))
 				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
 		eissue.setItemId(i);
@@ -84,7 +84,7 @@ public class LoanCardService {
 
 
 		EmployeeCardDetails ecard = new EmployeeCardDetails();
-		ecard.setCardId((String)payload.get("issueId"));
+		ecard.setCardId(eissue.getIssueId());
 		EmployeeMaster e1 = eRepo.findById((String) payload.get("employeeId"))
 				.orElseThrow(() -> new ResourceNotFoundException("item not there"));
 		ecard.setEmployeeId(e1);

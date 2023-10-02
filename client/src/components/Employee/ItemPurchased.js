@@ -2,16 +2,27 @@ import React, { useEffect, useState } from "react";
 import EmployeeDashboard from "./EmployeeDashboard";
 import Table from "react-bootstrap/Table";
 import ItemMasterService from "../../services/ItemMasterService";
-import "../../styles/Login.css"
-const ItemPurchased = (props) => {
 
+import "../../styles/Login.css"
+
+
+import AppContext from "../../Context";
+import { useContext } from "react";
+
+
+
+const ItemPurchased = (props) => {
+ 
+  const { itemPur, setItemPur } = useContext(AppContext);
   const [data, setData] = useState([]);
   useEffect(() => {
     ItemMasterService.getItemsPurchased(props['id']).then((res) => {
       setData(res.data);
       console.log(res.data);
     })
-  }, []);
+
+  }, [itemPur]);
+
 
   return (
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style={{ justifyContent: "center", fontFamily: "Libre Baskerville" }}>
@@ -27,7 +38,7 @@ const ItemPurchased = (props) => {
         <br />
 
         <div className="row justify-content-center">
-          <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
+          {/* <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
 
             <div class="row d-flex text-center" style={{ color: "black", display: "flex", justifyContent: "center" }}>
               <div class="col-lg-4" style={{ justifyContent: "center" }}>
@@ -41,7 +52,7 @@ const ItemPurchased = (props) => {
               </div>
             </div>
           </div>
-          <br /><br /> <br />
+          <br /><br /> <br /> */}
           <Table striped bordered hover
             style={{ width: "70%", borderRadius: "20px", backgroundColor: "#77dd77", textAlign: "center" }}
           >
