@@ -135,23 +135,26 @@ public class EmployeeController {
 	 //Open PostMan, make a PUT Request - http://localhost:8085/ims/api/products/1003
     //Select body -> raw -> JSON 
     //Update JSON product object with new Values.
-//	@PutMapping("/addCustomer/{id}")
-//	public ResponseEntity<EmployeeMaster> updateProduct(@PathVariable(value="id") String empId, @Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException
-//	{
-//		EmployeeMaster employee = employeeService.getEmployee(empId).orElseThrow(()->new ResourceNotFoundException("Employee not found for this Id: "+empId));
-//
-//		//Update product with new values
-////		employee.setEmployeeId(e.getEmployeeId());
-//		employee.setEmployeeName(e.getEmployeeName());
-//		employee.setGender(e.getGender());
-//		employee.setDesignation(e.getDesignation());
-//		employee.setDateOfBirth(e.getDateOfBirth());
-//		employee.setDateOfJoin(e.getDateOfJoin());
-//		employee.setDepartment(e.getDepartment());
-//
-//		final EmployeeMaster updatedEmployee = employeeService.addEmployee(employee);
-//		return ResponseEntity.ok().body(updatedEmployee);
-//	}
+	@PutMapping("/addCustomer/{id}")
+	public ResponseEntity<EmployeeMaster> updateProduct(@PathVariable(value="id") String empId, @Validated @RequestBody EmployeeMaster e) throws ResourceNotFoundException, CustomException {  try{
+        EmployeeMaster employee = employeeService.getEmployee(empId).orElseThrow(()->new ResourceNotFoundException("Employee not found for this Id: "+empId));
+
+        //Update product with new values
+//		employee.setEmployeeId(e.getEmployeeId());
+        employee.setEmployeeName(e.getEmployeeName());
+        employee.setGender(e.getGender());
+        employee.setDesignation(e.getDesignation());
+        employee.setDateOfBirth(e.getDateOfBirth());
+        employee.setDateOfJoin(e.getDateOfJoin());
+        employee.setDepartment(e.getDepartment());
+
+        final EmployeeMaster updatedEmployee = employeeService.addEmployee(employee);
+        return ResponseEntity.ok().body(updatedEmployee);
+    }  catch(Exception ex){
+        throw new CustomException(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+	}
 
     @PutMapping("/updateCustomer")
     public String updateCustomer(@RequestBody EmployeeMaster employeeMaster) throws ResourceNotFoundException, CustomException {

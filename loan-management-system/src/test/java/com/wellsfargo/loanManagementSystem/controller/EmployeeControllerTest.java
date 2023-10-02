@@ -2,6 +2,7 @@ package com.wellsfargo.loanManagementSystem.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.wellsfargo.loanManagementSystem.exception.CustomException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -90,7 +91,7 @@ class EmployeeControllerTest {
 //
 //
 	@Test
-    public void testLoginDealer_Success() throws ResourceNotFoundException {
+    public void testLoginDealer_Success() throws ResourceNotFoundException, CustomException {
 
         e.setEmployeeId("testId");
         e.setPassword("testPassword");
@@ -106,7 +107,7 @@ class EmployeeControllerTest {
         request.setPassword("testPassword");
 
         // Call the loginDealer method
-        Pair<Boolean, String[]> response = employeeController.loginDealer(request);
+        Pair<Boolean, String[]> response = employeeController.loginDealer(request).getBody();
 
         // Verify that the response is as expected
         assertEquals(true, response.a);
@@ -122,12 +123,12 @@ class EmployeeControllerTest {
         // Mock the behavior of the service to return an empty Optional (no employee found)
         when(employeeService.getEmployee("non_existent_id")).thenReturn(Optional.empty());
         try {
-            Pair<Boolean, String[]> response = employeeController.loginDealer(mockEmployee);
+            Pair<Boolean, String[]> response = employeeController.loginDealer(mockEmployee).getBody();
             // Check if the login was a failure
             assertFalse(response.a);
 
             // Check other assertions as needed for the returned response
-        } catch (ResourceNotFoundException ex) {
+        } catch (ResourceNotFoundException | CustomException ex) {
             // Check if the exception message matches the expected message
             assertEquals("Employee not found for this id.", ex.getMessage());
         }
@@ -164,7 +165,7 @@ class EmployeeControllerTest {
         assertEquals("Couldn't add customer.", response.getBody());
     }
     @Test
-    public void testGetCustomer_Success() {
+    public void testGetCustomer_Success() throws CustomException {
         EmployeeMaster e1 = new EmployeeMaster();
         e1.setEmployeeId("1");
         e1.setEmployeeName("John");
@@ -183,7 +184,7 @@ class EmployeeControllerTest {
     }
 
     @Test
-    public void testGetCustomer_Failure() {
+    public void testGetCustomer_Failure() throws CustomException {
         // Mock a failure scenario where getting customers results in an exception
         // This is just one example; you can adapt this scenario based on your actual error handling
     	when(employeeService.getEmployees()).thenThrow(new Exception("Something went wrong"));
@@ -204,7 +205,7 @@ class EmployeeControllerTest {
         doNothing().when(employeeService).deleteEmployee(employeeId);
 
         // Act
-        String response = employeeController.deleteCustomer(employeeId);
+        String response = String.valueOf(employeeController.deleteCustomer(employeeId));
 
         // Assert
         verify(employeeService).deleteEmployee(employeeId);
@@ -249,7 +250,7 @@ class EmployeeControllerTest {
 
 
     @Test
-    void testUpdateProduct() throws ResourceNotFoundException {
+    void testUpdateProduct() throws ResourceNotFoundException, CustomException {
         // Arrange
         String empId = "some-employee-id";
         e.setEmployeeName("Updated Name");
@@ -270,7 +271,7 @@ class EmployeeControllerTest {
     }
     
     @Test
-    public void testUpdateCustomer() {
+    public void testUpdateCustomer() throws CustomException, ResourceNotFoundException {
         e.setEmployeeId("123");
         e.setEmployeeName("John Doe");
 
