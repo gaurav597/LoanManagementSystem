@@ -60,16 +60,7 @@ class ItemCardControllerTest {
 	    assertEquals("Item added", result);
 	}
 	
-//	@Test
-//	public void testAddItemData_Failure() {
-//		when(itemCardService.addItemData(any(ItemMaster.class))).thenReturn(null);;
-//        
-//        // Invoke the controller
-//        String response = itemCardController.addItemData(i);
-//
-//        // Verify the response
-//        assertEquals("Couldn't add item", response);
-//	}
+
 
 	@Test
     public void testAddItem_Success() {
@@ -137,19 +128,7 @@ class ItemCardControllerTest {
         assertEquals(i, response.getBody());
     }
 
-//    @Test
-//    public void testGetItemDetail_Failure() {
-//        // Mock the behavior of itemCardService.getItem to return an empty Optional
-//        String itemId = "item2";
-//        when(itemCardService.getItem(itemId)).thenReturn(Optional.empty());
-//
-//        // Test the getItemDetail method
-//        ResponseEntity<ItemMaster> response = itemCardController.getItemDetail(itemId + "x"); // Pass itemId as a string
-//
-//        // Verify the response
-//        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-//    }
-//
+
 
     @Test
     public void testDeleteItem_Success() {
@@ -163,24 +142,7 @@ class ItemCardControllerTest {
         // Verify the response
         assertEquals("Item Deleted", response);
     }
-//
-//    @Test
-//    public void testDeleteItem_Failure() {
-//        // Mock the behavior of itemCardService.deleteItemData to throw an exception
-//        String itemId = "nonExistentItemId";
-//        doThrow(new ResourceNotFoundException("Item not found for this Id: " + itemId))
-//            .when(itemCardService).deleteItemData(itemId);
-//
-//        // Test the deleteItem method and verify the exception
-//
-//        // Use assertThrows to verify that a ResourceNotFoundException is thrown
-//        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> {
-//            itemCardController.deleteItem(itemId);
-//        });
-//
-//        // You can also verify the exception message or details if needed
-//         assertEquals("Expected exception message", exception.getMessage());
-//    }
+
     
     @Test
     public void testGetItemById_Success() {
@@ -229,16 +191,6 @@ class ItemCardControllerTest {
     	assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-//    @Test
-//    public void testUpdateItem_Failure() {
-//    	i.setItemId("nonExistentItemId");
-//    	// Create a mock ItemCardService
-//    	when(itemCardService.getItemData(eq("nonExistentItemId"))).thenReturn(Optional.empty());
-//
-//    	// Act and Assert
-//    	assertThrows(ResourceNotFoundException.class, () -> {
-//    	    itemCardController.updateItem("nonExistentItemId", i);
-//    	});
-//    }
+
 
 }
